@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 
-import { ThemeProvider } from 'styled-components'
-import { baseTheme } from '../../core/theme/theme';
-import GlobalStyles from '../../styles/global-styles';
+const AppWrapper = styled.div`
+    min-height: 100vh;
+    width: 100%;
+`
 
 function App() {
-  return (
-      <ThemeProvider theme={baseTheme}>
-        <div className="App">
-
-        </div>
-        <GlobalStyles/>
-      </ThemeProvider>
-  );
+    return (
+        <AppWrapper>
+            
+        </AppWrapper>
+    );
 }
 
 export default App;
