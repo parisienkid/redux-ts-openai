@@ -7,7 +7,10 @@ interface ISizes {
 
 export interface ITheme {
     colors: {
-      bg: string
+      bg: string,
+      header: string,
+      main: string,
+      footer: string,
     }
   
     media: {

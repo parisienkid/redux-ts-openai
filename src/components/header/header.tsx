@@ -2,10 +2,11 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import Container from '../container/container';
 // const openAi = require('../../assets/icons/openai.svg');
-import openAi from '../../assets/icons/openai.svg';
+import openAi from '../../assets/icons/light/openaiIcon.svg';
 
 const HeaderWrapper = styled.header`
     height: ${({theme}) => theme.sizes.default.header.height}px;
+    background-color: rgb(${({theme}) => theme.colors.header});
 `
 
 const NavWrapper = styled.nav`

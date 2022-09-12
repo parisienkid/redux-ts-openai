@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { FC } from 'react';
 
 import Header from '../header/header';
+import Footer from '../footer/footer';
 
 
 const AppWrapper = styled.div`
@@ -21,6 +22,7 @@ const App: FC = () => {
         <ThemeProvider theme={theme}>
             <AppWrapper>
                 <Header/>
+                <Footer/>
             </AppWrapper>
         </ThemeProvider>
     );

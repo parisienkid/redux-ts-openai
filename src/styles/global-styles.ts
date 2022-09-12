@@ -8,6 +8,8 @@ body, html {
     width: 100%;
     font-family: "TS", sans-serif;
     background-color: rgb(${baseTheme.colors.bg});
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 #root {

@@ -1,20 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { DefaultTheme } from "styled-components";
-import { lightTheme } from '../theme/theme';
+import { lightTheme, darkTheme } from '../theme/theme';
 
 interface themeState {
     theme: DefaultTheme
 }
 
 const initialState: themeState = {
-    theme: lightTheme
+    theme: darkTheme
 }
 
 const themeSlice = createSlice({
     name: 'theme',
     initialState,
     reducers: {
-
+        changeTheme: (state, action: PayloadAction<DefaultTheme>) => {
+            state.theme = action.payload
+        }
     }
 })
 

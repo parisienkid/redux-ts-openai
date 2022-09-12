@@ -1,14 +1,18 @@
 import { ITheme } from "../interfaces/styled"
-import  {DefaultTheme } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 
-export enum ThemeEnum  {
+export enum ThemeEnum {
     light = "light",
-    dark = "dark"
+    dark = "dark",
+    dalle = "dalle",
 }
 
 export const baseTheme: ITheme = {
     colors: {
-        bg: '255, 255, 255',
+        bg: '0, 0, 0',
+        header: '255, 255, 255',
+        main: '255, 255, 255',
+        footer: '0, 0, 0',
     },
 
     media: {
@@ -67,19 +71,38 @@ export const baseTheme: ITheme = {
 export const lightTheme: DefaultTheme = {
     ...baseTheme,
     type: ThemeEnum.light,
-  
+
     colors: {
-      ...baseTheme.colors,
-      bg: '#E5E4E8',
+        ...baseTheme.colors,
+        bg: '255, 255, 255',
+        header: '..',
+        main: '255, 255, 255',
+        footer: '255, 255, 255'
     },
 }
 
 export const darkTheme: DefaultTheme = {
     ...baseTheme,
     type: ThemeEnum.dark,
-  
+
     colors: {
-      ...baseTheme.colors,
-      bg: '#19191B',
+        ...baseTheme.colors,
+        bg: '0, 0, 0',
+        header: '255, 255, 255',
+        main: '255, 255, 255',
+        footer: '0, 0, 0',
     },
-  }
+}
+
+export const dalle: DefaultTheme = {
+    ...baseTheme,
+    type: ThemeEnum.dark,
+
+    colors: {
+        ...baseTheme.colors,
+        bg: '0, 0, 0',
+        header: '0, 0, 0',
+        main: '255, 255, 255',
+        footer: '0, 0, 0'
+    },
+}
