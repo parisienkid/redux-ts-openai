@@ -1,12 +1,13 @@
+interface ISizes {
+  header: { height: number }
+  container: { width: number }
+  footer: { height: number }
+  modal: { width: number }
+}
+
 export interface ITheme {
     colors: {
-      primary: string
-      secondary: string
-      success: string
-      danger: string
-  
-      bg: string,
-      font: string,
+      bg: string
     }
   
     media: {
@@ -17,10 +18,11 @@ export interface ITheme {
     }
   
     sizes: {
-      header: { height: number }
-      container: { width: number }
-      footer: { height: number }
-      modal: { width: number }
+      default: ISizes,
+      xl: ISizes,
+      l: ISizes,
+      m: ISizes,
+      s: ISizes
     }
   
     durations: {

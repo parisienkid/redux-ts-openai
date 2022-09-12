@@ -24,3 +24,7 @@ const apiSlice = createSlice({
 
     }
 })
+
+const {reducer, actions} = apiSlice;
+
+export default reducer;

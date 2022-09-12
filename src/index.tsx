@@ -1,9 +1,11 @@
 import './assets/fonts/fonts.scss';
 
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ThemeProvider } from 'styled-components'
-// import { Theme}
+import { Provider } from 'react-redux';
+import store from './core/store';
+
 import GlobalStyles from './styles/global-styles';
 import './reboot/bs-reboot.scss';
 import App from './components/app/App';
@@ -14,10 +16,8 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    // <ThemeProvider >
-      <>
+    <Provider store={store}>
         <App/>
         <GlobalStyles/>
-      </>
-    // </ThemeProvider>
+    </Provider>
 );

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { baseTheme } from '../core/theme/theme'
 
 export default createGlobalStyle`
 
@@ -6,7 +7,7 @@ body, html {
     height: 100%;
     width: 100%;
     font-family: "TS", sans-serif;
-    background-color: #000;
+    background-color: rgb(${baseTheme.colors.bg});
 }
 
 #root {
