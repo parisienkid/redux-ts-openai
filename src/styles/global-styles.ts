@@ -22,4 +22,13 @@ body, html {
     min-height: 100vh;
 }
 
+a {
+    color: white;
+    &:hover {
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
+
 `

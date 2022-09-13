@@ -50,11 +50,13 @@ const MainPage = () => {
                     <MainPageCard 
                         img={dalleImage} 
                         date={'AUGUST 31, 2022'} 
-                        title={'DALL·E: Introducing Outpainting'}/>
+                        title={'DALL·E: Introducing Outpainting'}
+                        url={"#"}/>
                     <MainPageCard 
                         img={jellyfishImage}
                         date={'AUGUST 24, 2022'}
-                        title={'Our approach to alignment research.'}/>
+                        title={'Our approach to alignment research.'}
+                        url={"#"}/>
                 </MainPageContent>
             </Container>
         </MainPageWrapper>

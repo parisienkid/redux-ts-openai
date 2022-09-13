@@ -35,36 +35,58 @@ const CardContent = styled.div`
     height: 100%;
     padding-bottom: 60px;
     position: relative;
+    @media ${({theme}) => theme.media.medium} {
+        padding-bottom: 30px;
+    }
+    @media ${({theme}) => theme.media.small} {
+        padding: 0 20px 20px 20px;
+    }
 `
 
 const CardDate = styled.div`
     font-family: "ColfaxAI",sans-serif;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 13.5px;
+    @media ${({theme}) => theme.media.medium} {
+        font-size: 12px;
+    }
 `
 
-const CardTitle = styled.div`
+const CardTitle = styled.a`
+    display: block;
+    color: #fff;
     font-size: 40px;
     line-height: 44px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    &:hover {
+        color: #fff;
+    }
+    @media ${({theme}) => theme.media.large} {
+        font-size: 35px;
+        line-height: 38px;
+    }
+    @media ${({theme}) => theme.media.small} {
+        font-size: 29px;
+        line-height: 33px;
+        margin-bottom: 15px;
+    }
 `
-
-
 
 interface IMainPage {
     img: string,
     date: string,
-    title: string
+    title: string,
+    url: string,
 }
 
-const MainPageCard: FC<IMainPage> = ({img, date, title}) => {
+const MainPageCard: FC<IMainPage> = ({img, date, title, url}) => {
     return (
         <CardWrapper background={img}>
             <CardShadow/>
             <CardContent>
                 <CardDate>{date}</CardDate>
-                <CardTitle>{title}</CardTitle>
+                <CardTitle href={url}>{title}</CardTitle>
                 <Btn background='255, 255, 255' color='0, 0, 0'>Read now</Btn>
             </CardContent>
         </CardWrapper>

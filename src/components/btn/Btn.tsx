@@ -10,7 +10,7 @@ const BtnWrapper = styled.a<IBtn>`
     border-radius: 3em;
     border: none;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 13.5px;
     line-height: 13px;
     position: relative;
     text-align: center;
@@ -20,14 +20,21 @@ const BtnWrapper = styled.a<IBtn>`
         position: absolute;
         top: 50%;
         right: 14px;
-        transform: translateY(calc(-50% - 1px));
+        transform: translateY(calc(-50% - 0.5px));
         font-size: 15px;
         line-height: 15px;
+        @media ${({theme}) => theme.media.medium} {
+            font-size: 12px;
+            transform: translateY(calc(-50% - 0.5px));
+        }
     }
     &:hover {
         background: rgba(${props => props.background}, 0.90);
         color: rgb(${props => props.color});
         text-decoration: none;
+    }
+    @media ${({theme}) => theme.media.medium} {
+            font-size: 12px;
     }
 `
 

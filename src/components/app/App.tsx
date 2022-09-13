@@ -8,7 +8,8 @@ import { FC } from 'react';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 
-import MainPage from '../../pages/mainPage/MainPage';
+import {BrowserRouter as Router} from "react-router-dom";
+import AppRoutes from '../../routes/Routes';
 
 
 const AppWrapper = styled.div`
@@ -22,11 +23,13 @@ const App: FC = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <AppWrapper>
-                <Header/>
-                <MainPage/>
-                <Footer/>
-            </AppWrapper>
+            <Router>
+                <AppWrapper>
+                    <Header/>
+                    <AppRoutes/>
+                    <Footer/>
+                </AppWrapper>
+            </Router>
         </ThemeProvider>
     );
 }

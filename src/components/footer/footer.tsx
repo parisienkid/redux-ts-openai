@@ -19,6 +19,9 @@ const FooterLogo = styled.svg`
     fill: white;
     height: 30px;
     display: block;
+    @media ${({theme}) => theme.media.medium} {
+       margin: 0 auto;
+    }
 `
 
 const FooterNav = styled.nav`
@@ -26,13 +29,30 @@ const FooterNav = styled.nav`
     justify-content: space-between;
     margin-top: 50px;
     width: 100%;
+    @media ${({theme}) => theme.media.medium} {
+       display: grid;
+       grid-template-columns: 50fr 50fr;
+       grid-template-rows: 50fr 50fr;
+       grid-column-gap: 10px;
+       grid-row-gap: 50px
+    }
+    @media ${({theme}) => theme.media.small} {
+        grid-column-gap: 20px
+    }
 `
 
 const FooterLinks = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 20%;
+    justify-content: flex-start;
+    @media ${({theme}) => theme.media.medium} {
+        width: 50%;
+        margin: 0 auto;
+    }
+    @media ${({theme}) => theme.media.small} {
+        width: 80%;
+    }
 `
 
 const FooterLinksTitle = styled.div`
@@ -56,6 +76,9 @@ const FooterLink = styled.a`
         color: #d3d2d2;
         text-decoration: none;
     }
+    @media ${({theme}) => theme.media.large} {
+        font-size: 14px;
+    }
 `
 
 const FooterUseful = styled.div`
@@ -63,11 +86,25 @@ const FooterUseful = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
+    @media ${({theme}) => theme.media.large} {
+        flex-direction: column;
+        align-items: center;
+    }
+    @media ${({theme}) => theme.media.medium} {
+       margin-top: 50px;
+    }
 `
 
 const FooterInfo = styled.div`
     display: flex;
     font-size: 16px;
+    @media ${({theme}) => theme.media.large} {
+        margin-bottom: 30px;
+    }
+    @media ${({theme}) => theme.media.small} {
+        flex-wrap: wrap;
+        width: 80%;
+    }
 `
 
 const FooterInfoLink = styled(FooterLink)`
@@ -76,11 +113,24 @@ const FooterInfoLink = styled(FooterLink)`
     &:nth-last-child() {
         margin-right: 0;
     }
+    @media ${({theme}) => theme.media.small} {
+        margin-bottom: 10px;
+    }
 `
 
 const FooterIconsLinks = styled.div`
     display: flex;
     margin-left: auto;
+    @media ${({theme}) => theme.media.large} {
+        margin-right: auto;
+    }
+    @media ${({theme}) => theme.media.small} {
+        display: grid;
+        width: 100%;
+        grid-template-columns:  1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-row-gap: 30px;
+    }
 `
 
 const FooterIconLink = styled(FooterLink)`
@@ -93,6 +143,10 @@ const FooterIconLink = styled(FooterLink)`
     display: block;
     &:nth-last-child() {
         margin-right: 0;
+    }
+    @media ${({theme}) => theme.media.small} {
+        margin: 0;
+        text-align: center;
     }
 `
 
