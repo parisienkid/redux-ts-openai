@@ -5,8 +5,10 @@ import { RootState } from '../../core/store';
 import { ThemeProvider } from 'styled-components';
 import { FC } from 'react';
 
-import Header from '../header/header';
-import Footer from '../footer/footer';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
+
+import MainPage from '../../pages/mainPage/MainPage';
 
 
 const AppWrapper = styled.div`
@@ -22,6 +24,7 @@ const App: FC = () => {
         <ThemeProvider theme={theme}>
             <AppWrapper>
                 <Header/>
+                <MainPage/>
                 <Footer/>
             </AppWrapper>
         </ThemeProvider>

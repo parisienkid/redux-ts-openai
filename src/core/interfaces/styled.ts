@@ -2,7 +2,10 @@ interface ISizes {
   header: { height: number }
   container: { width: number }
   footer: { height: number }
-  modal: { width: number }
+  mainPage: { 
+    col: string
+    row: string
+  },
 }
 
 export interface ITheme {

@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import Container from '../container/container';
+import Container from '../container/Container';
 
 const FooterWrapper = styled.footer`
     background-color: rgb(${({theme}) => theme.colors.footer});
     color: #fff;
-    padding: 60px 0 20px 0;
+    padding: 60px 0 35px 0;
     font-family: "ColfaxAI",sans-serif;
     margin-bottom: 0;
 `

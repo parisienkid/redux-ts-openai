@@ -6,7 +6,7 @@ export default createGlobalStyle`
 body, html {
     height: 100%;
     width: 100%;
-    font-family: "TS", sans-serif;
+    font-family: Charter,Georgia,serif;
     background-color: rgb(${baseTheme.colors.bg});
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

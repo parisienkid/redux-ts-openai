@@ -28,31 +28,46 @@ export const baseTheme: ITheme = {
             header: { height: 50 },
             container: { width: 93 },
             footer: { height: 128 },
-            modal: { width: 540 },
+            mainPage: { 
+                col: '65fr 35fr',
+                row: '1fr',
+            },
         },
         xl: {
             header: { height: 50 },
             container: { width: 93 },
             footer: { height: 128 },
-            modal: { width: 540 },
+            mainPage: { 
+                col: '60fr 40fr',
+                row: '1fr',
+            },
         },
         l: {
             header: { height: 50 },
             container: { width: 93 },
             footer: { height: 128 },
-            modal: { width: 540 },
+            mainPage: { 
+                col: '55fr 45fr',
+                row: '1fr',
+            },
         },
         m: {
             header: { height: 50 },
             container: { width: 93 },
             footer: { height: 128 },
-            modal: { width: 540 },
+            mainPage: { 
+                col: '1fr',
+                row: '50fr 50fr',
+            },
         },
         s: {
             header: { height: 50 },
             container: { width: 93 },
             footer: { height: 128 },
-            modal: { width: 540 },
+            mainPage: { 
+                col: '1fr',
+                row: '50fr 50fr',
+            },
         }
     },
 
