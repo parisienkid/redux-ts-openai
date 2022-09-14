@@ -5,49 +5,23 @@ import { apiTheme } from '../../core/theme/theme';
 import styled, { css } from 'styled-components';
 import Btn from '../../components/buttons/Btn';
 
+import { useLocation } from 'react-router-dom';
+
 import Container from '../../components/container/Container';
 
-const ApiPageWrapper = styled.div`
+import ApiHeader from './components/ApiHeader';
+
+
+export const ApiPageWrapper = styled.div`
 
 `
 
-const Navbar = styled.div`
-    height: ${({theme}) => theme.sizes.default.header.height + 10}px;
-    position: sticky;
-    backdrop-filter: blur(1.5rem);
-    background-color: rgba(247, 247, 248, .7);
-    top: 0;
-    z-index: ${({theme}) => theme.order.header};
-`
-
-const NavContent = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-`
-
-const NavBurger = styled.div`
-    display: none;
-`
-
-const NavLinks = styled.div`
-    display: flex;
-`
-
-const NavLogin = styled.div`
-    display: flex;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 185px;
-    justify-content: space-between;
-`
-
-const StyledLink = styled(Btn)`
+export const StyledLink = styled(Btn)`
     &:hover {
         color: rgba(0,0,0, .65)
+    }
+    &.active {
+        opacity: .5;
     }
 `
 
@@ -89,11 +63,11 @@ const CompaniesTitle = styled.div`
     }
     display: block;
     padding-bottom: 20px;
-    border-bottom: 1px solid rgba(0,0,0, 0.1);
+    border-bottom: 2px solid  rgba(${({theme}) => theme.colors.constants.silver});
     font-weight: bold;
 `
 
-const Companies = styled.div`
+const Companies = styled.ul`
     display: grid;
     max-width: 1000px;
     margin: 0 auto;
@@ -109,9 +83,55 @@ const Company = styled.svg`
     justify-self: center;
 `
 
+interface ISilverComponent {
+    padding: string;
+}
+
+const SilverComponent = styled.div<ISilverComponent>`
+    background-color: rgba(${({theme}) => theme.colors.constants.silver});
+    padding: ${props => props.padding};
+`
+
+interface ISilverComponentContent {
+    direction: string;
+}
+
+const SilverComponentContent = styled.div<ISilverComponentContent>`
+    display: flex;
+    flex-direction: ${props => props.direction};
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+`
+
+const SilverTitle = styled.div`
+    max-width: 460px;
+    font-size: 32px;
+    line-height: 37px;
+`
+
+const SilverInfo = styled.div`
+    max-width: 650px;
+`
+
+const GroupBtns = styled.div`
+    display: flex;
+    width: auto;
+`
+
+const SilverP = styled.div`
+    margin-bottom: 25px;
+    font-size: 18px;
+    line-height: 24px;
+    font-family: "ColfaxAI", sans-serif;
+`
+
 const ApiPage: FC = () => {
 
     const dispatch = useDispatch();
+
+    const location = useLocation();
+    console.log(location.pathname);
 
     useEffect(() => {
         dispatch(changeTheme(apiTheme));
@@ -119,23 +139,7 @@ const ApiPage: FC = () => {
 
     return (
         <ApiPageWrapper>
-            <Navbar>
-                <Container>
-                    <NavContent>
-                        <NavBurger></NavBurger>
-                        <NavLinks>
-                            <Btn to="/api" background='inherit' color='0,0,0' after=''>overview</Btn>
-                            <Btn to="/" background='inherit' color='0,0,0' after=''>pricing</Btn>
-                            <StyledLink to="/" background='inherit' color='0,0,0' after='↗'>docs</StyledLink>
-                            <StyledLink to="/" background='inherit' color='0,0,0' after='↗'>examples</StyledLink>
-                        </NavLinks>
-                        <NavLogin>
-                            <StyledLink to="/" background='inherit' color='0,0,0' after=''>log in</StyledLink>
-                            <Btn to="/" background='0,0,0' color='255,255,255' after=''>sign up</Btn>
-                        </NavLogin>
-                    </NavContent>
-                </Container>
-            </Navbar>
+            <ApiHeader/>
             <Title>Build next-gen apps with OpenAI’s powerful models.</Title>
             <Subtitle>OpenAI’s API provides access to GPT-3, which performs a wide variety of natural language tasks, and Codex, which translates natural language to code.</Subtitle>
             <DocsBtns>
@@ -149,6 +153,20 @@ const ApiPage: FC = () => {
                 <Company width="63" height="33" viewBox="0 0 63 33" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M62.1307 10.7101C62.1307 9.97215 61.532 9.39465 60.8038 9.39465C60.0594 9.39465 59.4607 9.98819 59.4607 10.7101V13.4853C59.4607 14.2233 60.0594 14.8168 60.8038 14.8168C61.532 14.8168 62.1307 14.2233 62.1307 13.4853V10.7101ZM54.784 7.05252C54.784 6.33064 54.1853 5.73708 53.4409 5.73708C52.6965 5.73708 52.1139 6.33064 52.1139 7.05252V13.4853C52.1139 14.2233 52.7127 14.8168 53.4409 14.8168C54.2014 14.8168 54.784 14.2233 54.784 13.4853V7.05252ZM47.4211 2.06349C47.4211 1.32556 46.8223 0.748047 46.0941 0.748047C45.3498 0.748047 44.7672 1.3416 44.7672 2.06349V16.1323C44.7672 16.8702 45.3659 17.4637 46.0941 17.4637C46.8385 17.4637 47.4211 16.8702 47.4211 16.1323V2.06349ZM40.0743 7.05252C40.0743 6.33064 39.4756 5.73708 38.7474 5.73708C38.0192 5.73708 37.4205 6.33064 37.4205 7.05252V13.4853C37.4205 14.2233 38.0192 14.8168 38.7474 14.8168C39.4918 14.8168 40.0743 14.2233 40.0743 13.4853V7.05252ZM32.7114 10.7101C32.7114 9.97215 32.1127 9.39465 31.3845 9.39465C30.6401 9.39465 30.0414 9.98819 30.0414 10.7101V13.4853C30.0414 14.2233 30.6401 14.8168 31.3845 14.8168C32.1127 14.8168 32.7114 14.2233 32.7114 13.4853V10.7101ZM25.3647 7.05252C25.3647 6.33064 24.766 5.73708 24.0216 5.73708C23.2772 5.73708 22.6784 6.33064 22.6784 7.05252V13.4853C22.6784 14.2233 23.2772 14.8168 24.0216 14.8168C24.766 14.8168 25.3647 14.2233 25.3647 13.4853V7.05252ZM18.018 2.06349C18.018 1.32556 17.4192 0.748047 16.6748 0.748047C15.9305 0.748047 15.3317 1.3416 15.3317 2.06349V16.1323C15.3317 16.8702 15.9305 17.4637 16.6748 17.4637C17.4192 17.4637 18.018 16.8702 18.018 16.1323V2.06349ZM10.6551 7.05252C10.6551 6.33064 10.0563 5.73708 9.31193 5.73708C8.56755 5.73708 7.96881 6.33064 7.96881 7.05252V13.4853C7.96881 14.2233 8.56755 14.8168 9.31193 14.8168C10.0563 14.8168 10.6551 14.2233 10.6551 13.4853V7.05252ZM3.30832 10.7101C3.30832 9.97215 2.70958 9.39465 1.9652 9.39465C1.22082 9.39465 0.62207 9.98819 0.62207 10.7101V13.4853C0.62207 14.2233 1.22082 14.8168 1.9652 14.8168C2.70958 14.8168 3.30832 14.2233 3.30832 13.4853V10.7101ZM30.9476 22.2282C30.8667 22.2122 29.6368 21.8913 28.3261 21.8913C25.834 21.8913 24.3452 23.2228 24.3452 25.1959C24.3452 26.9445 25.5913 27.8268 27.0962 28.292C27.258 28.3402 27.5008 28.4204 27.6788 28.4685C28.3422 28.677 28.8763 28.9818 28.8763 29.5273C28.8763 30.1208 28.2613 30.5219 26.9182 30.5219C25.7369 30.5219 24.6041 30.185 24.3776 30.1208V32.5592C24.507 32.5913 25.8502 32.8479 27.2904 32.8479C29.3617 32.8479 31.7081 31.9496 31.7081 29.2866C31.7081 28.0033 30.9152 26.8001 29.1675 26.2547L28.4231 26.0141C27.9862 25.8697 27.1933 25.6451 27.1933 25.0034C27.1933 24.4901 27.7759 24.1372 28.8601 24.1372C29.7986 24.1372 30.9314 24.442 30.9638 24.458V22.2282H30.9476ZM53.7322 27.3776C53.7322 28.9177 52.5347 30.1689 50.9488 30.1689C49.3468 30.1689 48.1655 28.9177 48.1655 27.3776C48.1655 25.8376 49.3468 24.5863 50.9488 24.5863C52.5347 24.6024 53.7322 25.8537 53.7322 27.3776ZM50.9488 21.9074C47.6638 21.9074 45.3012 24.3618 45.3012 27.3937C45.3012 30.4256 47.6638 32.88 50.9488 32.88C54.2338 32.88 56.5964 30.4256 56.5964 27.3937C56.5964 24.3618 54.2338 21.9074 50.9488 21.9074ZM14.3122 22.2763C14.0533 22.1961 13.1148 21.8913 11.8525 21.8913C8.56755 21.8913 6.15639 24.2174 6.15639 27.3776C6.15639 30.7946 8.81028 32.864 11.8525 32.864C13.05 32.864 13.9724 32.5752 14.3122 32.479V29.6396C14.199 29.7037 13.3089 30.201 12.0467 30.201C10.2505 30.201 9.08538 28.9498 9.08538 27.3776C9.08538 25.7574 10.299 24.5543 12.0467 24.5543C13.3413 24.5543 14.199 25.0676 14.3122 25.1157V22.2763ZM42.4531 22.2763C42.1942 22.1961 41.2556 21.8913 39.9934 21.8913C36.7084 21.8913 34.2973 24.2174 34.2973 27.3776C34.2973 30.7946 36.9674 32.864 39.9934 32.864C41.1909 32.864 42.1133 32.5752 42.4531 32.479V29.6396C42.3399 29.7037 41.4498 30.201 40.1876 30.201C38.3914 30.201 37.2425 28.9498 37.2425 27.3776C37.2425 25.7574 38.4561 24.5543 40.1876 24.5543C41.4822 24.5543 42.3399 25.0676 42.4531 25.1157V22.2763ZM20.7204 32.6875H18.018V22.0998H20.7204V32.6875Z" fill="#191927"></path></Company>
                 <Company width="56" height="24" viewBox="0 0 56 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.33548 0.624512H0.00183105V4.9206H4.33548V0.624512Z" fill="#191927"></path><path d="M4.22734 23.0066V7.53449H0.125V23.0066H4.22734ZM31.494 23.1595V19.3679C30.8925 19.3679 30.3836 19.3373 30.0135 19.2761C29.5816 19.215 29.2578 19.0621 29.0419 18.8481C28.8259 18.634 28.6871 18.3283 28.61 17.9307C28.5483 17.5485 28.5175 17.044 28.5175 16.4325V11.0203H31.494V7.53449H28.5175V1.49549H24.3997V16.463C24.3997 17.732 24.5077 18.8022 24.7236 19.6584C24.9395 20.4992 25.3097 21.1872 25.8186 21.707C26.3275 22.2268 27.0061 22.5938 27.8235 22.8231C28.6563 23.0524 29.705 23.1595 30.9542 23.1595H31.494ZM55.0593 23.0066V0.302979H50.9416V23.0066H55.0593ZM20.4362 9.04806C19.2949 7.82498 17.691 7.21343 15.6553 7.21343C14.6682 7.21343 13.7738 7.41218 12.9564 7.80969C12.1544 8.20719 11.4604 8.75758 10.9206 9.46086L10.6893 9.75134V9.49143V7.53449H6.63322V23.0066H10.7201V14.766V15.3317C10.7201 15.24 10.7201 15.1482 10.7201 15.0565C10.7664 13.6041 11.1211 12.5339 11.7997 11.8459C12.5245 11.112 13.4036 10.7451 14.4061 10.7451C15.5936 10.7451 16.5035 11.112 17.105 11.8153C17.691 12.5186 17.9995 13.5123 17.9995 14.7813V14.8119V22.9913H22.1481V14.2156C22.1635 12.0141 21.5774 10.2712 20.4362 9.04806ZM48.8133 15.24C48.8133 14.1239 48.6128 13.0843 48.2272 12.1058C47.8262 11.1426 47.271 10.2864 46.577 9.55259C45.8676 8.81873 45.0194 8.25306 44.0324 7.84026C43.0453 7.42747 41.9503 7.22872 40.7628 7.22872C39.637 7.22872 38.5728 7.44276 37.5858 7.85555C36.5988 8.28363 35.7351 8.84931 35.0103 9.56788C34.2854 10.2864 33.6994 11.1426 33.283 12.1211C32.8512 13.0995 32.6507 14.1545 32.6507 15.2705C32.6507 16.3866 32.8512 17.4415 33.2521 18.42C33.6531 19.3985 34.2238 20.2546 34.9332 20.9732C35.6426 21.6917 36.5217 22.2727 37.5396 22.6855C38.5574 23.1136 39.6833 23.3276 40.8862 23.3276C44.3716 23.3276 46.5308 21.7529 47.8262 20.2852L44.8652 18.0531C44.2483 18.7869 42.7677 19.7807 40.917 19.7807C39.7604 19.7807 38.8042 19.5208 38.0793 18.9857C37.3545 18.4658 36.861 17.732 36.5988 16.83L36.5525 16.6924H48.8133V15.24ZM36.5834 13.8181C36.5834 12.6868 37.8943 10.7145 40.7166 10.6992C43.5388 10.6992 44.8652 12.6715 44.8652 13.8028L36.5834 13.8181Z" fill="#191927"></path></Company>
             </Companies>
+            <SilverComponent padding='100px 0'>
+                <Container>
+                    <SilverComponentContent direction='row'>
+                        <SilverTitle>Developers can now customize GPT-3 for their own applications.</SilverTitle>
+                        <SilverInfo>
+                            <SilverP>GPT-3 can now be customized via our API. With a single command, developers can fine-tune powerful AI models tailored to their needs.</SilverP>
+                            <GroupBtns>
+                                <Btn to="/" background='0,0,0' color='255,255,255' after=''>get started</Btn>
+                                <StyledLink to="/" background='inherit' color='0,0,0' after=''>learn more</StyledLink>
+                            </GroupBtns>
+                        </SilverInfo>
+                    </SilverComponentContent>
+                </Container>
+            </SilverComponent>
         </ApiPageWrapper>
     );
 };

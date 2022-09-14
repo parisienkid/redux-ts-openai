@@ -12,6 +12,9 @@ export enum ThemeEnum {
 
 export const baseTheme: ITheme = {
     colors: {
+        constants: {
+            silver: '0,0,0, 0.03'
+        },
         bg: '255, 255, 255',
         header: '255, 255, 255',
         footer: '255, 255, 255',

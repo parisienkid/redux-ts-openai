@@ -10,6 +10,9 @@ interface ISizes {
 
 export interface ITheme {
     colors: {
+      constants: {
+        silver: string
+      }
       bg: string,
       header: string,
       footer: string,

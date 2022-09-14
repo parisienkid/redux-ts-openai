@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const BtnWrapper = styled(NavLink)<IBtn>`
+const BtnWrapper = styled(Link)<IBtn>`
     background: rgb(${props => props.background});
     color: rgb(${props => props.color});
     font-family: "ColfaxAI",sans-serif;
@@ -35,9 +35,6 @@ const BtnWrapper = styled(NavLink)<IBtn>`
     }
     @media ${({theme}) => theme.media.medium} {
         font-size: 12px;
-    }
-    &.active {
-        opacity: .5;
     }
 `
 
