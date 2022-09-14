@@ -6,7 +6,6 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from './core/store';
 
-import GlobalStyles from './styles/global-styles';
 import './reboot/bs-reboot.scss';
 import App from './components/app/App';
 
@@ -18,6 +17,5 @@ const root = ReactDOM.createRoot(
 root.render(
     <Provider store={store}>
         <App/>
-        <GlobalStyles/>
     </Provider>
 );

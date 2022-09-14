@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-const BtnWrapper = styled.a<IBtn>`
+const BtnWrapper = styled(NavLink)<IBtn>`
     background: rgb(${props => props.background});
     color: rgb(${props => props.color});
     font-family: "ColfaxAI",sans-serif;
     font-weight: bold;
-    padding: 10px 33px 10px 18px;
+    padding: 10px ${props => props.after !== '' ? '33px' : '18px'} 10px 18px;
     border-radius: 3em;
     border: none;
     text-transform: uppercase;
@@ -15,7 +16,7 @@ const BtnWrapper = styled.a<IBtn>`
     position: relative;
     text-align: center;
     &:after {
-        content: '▻';
+        content: '${props => props.after}';
         font-family: 'IconsAI';
         position: absolute;
         top: 50%;
@@ -29,24 +30,29 @@ const BtnWrapper = styled.a<IBtn>`
         }
     }
     &:hover {
-        background: rgba(${props => props.background}, 0.90);
         color: rgb(${props => props.color});
-        text-decoration: none;
+        background: rgba(${props => props.background}, .9);
     }
     @media ${({theme}) => theme.media.medium} {
-            font-size: 12px;
+        font-size: 12px;
+    }
+    &.active {
+        opacity: .5;
     }
 `
 
 interface IBtn {
-    background: string;
-    color: string;
+    background: string
+    color: string
     children?: React.ReactElement | string
+    after: string
+    to: string
+    className?: string
 }
 
-const Btn: FC<IBtn> = ({background, color, children}) => {
+const Btn: FC<IBtn> = ({background, color, children, after, to, className}) => {
     return (
-        <BtnWrapper href="#" background={background} color={color}>
+        <BtnWrapper className={className} after={after} to={to} background={background} color={color}>
             {children}
         </BtnWrapper>
     );

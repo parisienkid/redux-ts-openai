@@ -1,13 +1,16 @@
 import { createGlobalStyle } from 'styled-components'
-import { baseTheme } from '../core/theme/theme'
 
-export default createGlobalStyle`
+interface IGlobalStyle {
+    background: string;
+}
+
+export default createGlobalStyle<IGlobalStyle>`
 
 body, html {
     height: 100%;
     width: 100%;
     font-family: Charter,Georgia,serif;
-    background-color: rgb(${baseTheme.colors.bg});
+    background-color: rgb(${props => props.background});
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { FC, useEffect, Dispatch } from 'react';
+import { useDispatch } from 'react-redux';
+import { changeTheme } from '../../core/reducers/themeSlice';
 import styled from 'styled-components';
+
+import { mainTheme } from '../../core/theme/theme';
 
 import Container from '../../components/container/Container';
 import MainPageCard from '../../components/main-page-card/MainPageCard';
@@ -9,7 +13,7 @@ const jellyfishImage = require('../../assets/images/jellyfish-some-overlay-optim
 
 const MainPageWrapper = styled.div`
     height: calc(100vh - ${({theme}) => theme.sizes.default.header.height}px);
-    background-color: rgb( ${({theme}) => theme.colors.main});
+    background-color: rgb( ${({theme}) => theme.colors.header});
     padding-bottom: ${({theme}) => theme.sizes.default.header.height}px;
 `
 
@@ -42,7 +46,14 @@ const MainPageContent = styled.div`
     }
 `
 
-const MainPage = () => {
+const MainPage: FC = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(changeTheme(mainTheme));
+    }, []);
+
     return (
         <MainPageWrapper>
             <Container>
@@ -51,12 +62,12 @@ const MainPage = () => {
                         img={dalleImage} 
                         date={'AUGUST 31, 2022'} 
                         title={'DALL·E: Introducing Outpainting'}
-                        url={"#"}/>
+                        to="/"/>
                     <MainPageCard 
                         img={jellyfishImage}
                         date={'AUGUST 24, 2022'}
                         title={'Our approach to alignment research.'}
-                        url={"#"}/>
+                        to="/"/>
                 </MainPageContent>
             </Container>
         </MainPageWrapper>

@@ -12,8 +12,8 @@ export interface ITheme {
     colors: {
       bg: string,
       header: string,
-      main: string,
       footer: string,
+      footerColor: string
     }
   
     media: {

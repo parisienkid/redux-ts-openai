@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { DefaultTheme } from "styled-components";
-import { lightTheme, darkTheme } from '../theme/theme';
+import { mainTheme } from '../theme/theme';
 
-interface themeState {
-    theme: DefaultTheme
-}
+// interface themeState {
+//     theme: DefaultTheme
+// }
 
-const initialState: themeState = {
-    theme: darkTheme
+const initialState = {
+    theme: mainTheme
 }
 
 const themeSlice = createSlice({
@@ -21,5 +21,7 @@ const themeSlice = createSlice({
 })
 
 const {reducer, actions} = themeSlice;
+
+export const {changeTheme} = actions;
 
 export default reducer;

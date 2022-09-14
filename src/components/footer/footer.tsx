@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import Container from '../container/Container';
 
 const FooterWrapper = styled.footer`
     background-color: rgb(${({theme}) => theme.colors.footer});
-    color: #fff;
+    color: rgb(${({theme}) => theme.colors.footerColor});
     padding: 60px 0 35px 0;
     font-family: "ColfaxAI",sans-serif;
     margin-bottom: 0;
@@ -19,6 +19,7 @@ const FooterLogo = styled.svg`
     fill: white;
     height: 30px;
     display: block;
+    fill: rgb(${({theme}) => theme.colors.footerColor});
     @media ${({theme}) => theme.media.medium} {
        margin: 0 auto;
     }
@@ -68,6 +69,7 @@ const FooterLink = styled.a`
     text-decoration: none;
     font-size: 16px;
     line-height: 16px;
+    color: rgb(${({theme}) => theme.colors.footerColor});
     &:last-child {
         margin-bottom: 0;
         margin-right: 0;
@@ -141,6 +143,7 @@ const FooterIconLink = styled(FooterLink)`
     color: #fff;
     margin-bottom: 0;
     display: block;
+    color: rgb(${({theme}) => theme.colors.footerColor});
     &:nth-last-child() {
         margin-right: 0;
     }
@@ -151,7 +154,7 @@ const FooterIconLink = styled(FooterLink)`
 `
 
 
-const Footer = () => {
+const Footer: FC = () => {
     return (
         <FooterWrapper>
             <Container>

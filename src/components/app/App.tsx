@@ -1,16 +1,16 @@
+import { FC } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../core/store';
 
 import { ThemeProvider } from 'styled-components';
-import { FC } from 'react';
+import GlobalStyles from '../../styles/global-styles';
 
 import Header from '../header/Header';
+import AppRoutes from '../../routes/Routes';
 import Footer from '../footer/Footer';
 
 import {BrowserRouter as Router} from "react-router-dom";
-import AppRoutes from '../../routes/Routes';
-
 
 const AppWrapper = styled.div`
     min-height: 100vh;
@@ -30,6 +30,7 @@ const App: FC = () => {
                     <Footer/>
                 </AppWrapper>
             </Router>
+            <GlobalStyles background={theme.colors.bg}/>
         </ThemeProvider>
     );
 }

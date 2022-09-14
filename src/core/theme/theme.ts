@@ -2,17 +2,20 @@ import { ITheme } from "../interfaces/styled"
 import { DefaultTheme } from 'styled-components';
 
 export enum ThemeEnum {
-    light = "light",
-    dark = "dark",
+    main = "main",
+    api = "api",
     dalle = "dalle",
-}
+    research = "research",
+    blog = "blog",
+    about = "about"
+  }
 
 export const baseTheme: ITheme = {
     colors: {
-        bg: '0, 0, 0',
+        bg: '255, 255, 255',
         header: '255, 255, 255',
-        main: '255, 255, 255',
-        footer: '0, 0, 0',
+        footer: '255, 255, 255',
+        footerColor: '255, 255, 255',
     },
 
     media: {
@@ -83,41 +86,72 @@ export const baseTheme: ITheme = {
     },
 }
 
-export const lightTheme: DefaultTheme = {
+export const mainTheme: DefaultTheme = {
     ...baseTheme,
-    type: ThemeEnum.light,
-
-    colors: {
-        ...baseTheme.colors,
-        bg: '255, 255, 255',
-        header: '..',
-        main: '255, 255, 255',
-        footer: '255, 255, 255'
-    },
-}
-
-export const darkTheme: DefaultTheme = {
-    ...baseTheme,
-    type: ThemeEnum.dark,
+    type: ThemeEnum.main,
 
     colors: {
         ...baseTheme.colors,
         bg: '0, 0, 0',
         header: '255, 255, 255',
-        main: '255, 255, 255',
-        footer: '0, 0, 0',
+        footer: '0, 0, 0'
     },
 }
 
-export const dalle: DefaultTheme = {
+export const apiTheme: DefaultTheme = {
     ...baseTheme,
-    type: ThemeEnum.dark,
+    type: ThemeEnum.api,
+
+    colors: {
+        ...baseTheme.colors,
+        bg: '247, 247, 248',
+        header: '255, 255, 255',
+        footer: '247, 247, 248',
+        footerColor: '0, 0, 0',
+    },
+}
+
+export const dalleTheme: DefaultTheme = {
+    ...baseTheme,
+    type: ThemeEnum.dalle,
 
     colors: {
         ...baseTheme.colors,
         bg: '0, 0, 0',
         header: '0, 0, 0',
-        main: '255, 255, 255',
         footer: '0, 0, 0'
+    },
+}
+
+export const researchTheme: DefaultTheme = {
+    ...baseTheme,
+    type: ThemeEnum.dalle,
+
+    colors: {
+        ...baseTheme.colors,
+        bg: '246, 246, 244',
+        header: '246, 246, 244',
+        footer: '246, 246, 244',
+        footerColor: '0, 0, 0'
+    },
+}
+
+export const blogTheme: DefaultTheme = {
+    ...baseTheme,
+    type: ThemeEnum.blog,
+
+    colors: {
+        ...baseTheme.colors,
+        footerColor: '0, 0, 0',
+    },
+}
+
+export const aboutTheme: DefaultTheme = {
+    ...baseTheme,
+    type: ThemeEnum.about,
+
+    colors: {
+        ...baseTheme.colors,
+        footerColor: '0, 0, 0'
     },
 }

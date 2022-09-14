@@ -7,6 +7,7 @@ const ContainerWrapper = styled.div`
     max-width: 1470px;
     height: 100%;
     margin: 0 auto;
+    position: relative;
     @media ${({theme}) => theme.media.extraLarge} {
         width: ${({theme}) => theme.sizes.xl.container.width}%;
     }

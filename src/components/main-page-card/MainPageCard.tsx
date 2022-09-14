@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
-import Btn from '../btn/Btn';
+import Btn from '../buttons/Btn';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 interface ICardWrapper {
     background: string;
@@ -52,7 +53,7 @@ const CardDate = styled.div`
     }
 `
 
-const CardTitle = styled.a`
+const CardTitle = styled(Link)`
     display: block;
     color: #fff;
     font-size: 40px;
@@ -77,17 +78,17 @@ interface IMainPage {
     img: string,
     date: string,
     title: string,
-    url: string,
+    to: string,
 }
 
-const MainPageCard: FC<IMainPage> = ({img, date, title, url}) => {
+const MainPageCard: FC<IMainPage> = ({img, date, title, to}) => {
     return (
         <CardWrapper background={img}>
             <CardShadow/>
             <CardContent>
                 <CardDate>{date}</CardDate>
-                <CardTitle href={url}>{title}</CardTitle>
-                <Btn background='255, 255, 255' color='0, 0, 0'>Read now</Btn>
+                <CardTitle to={to}>{title}</CardTitle>
+                <Btn after='▻' background='255, 255, 255' to={to} color='0, 0, 0'>Read now</Btn>
             </CardContent>
         </CardWrapper>
     );
