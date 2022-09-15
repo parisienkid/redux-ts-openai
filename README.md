@@ -1,8 +1,10 @@
-## Description
+| `Status`: In progres |
+
+## About the Project:
 
 I turned a  multi-page [`openai.com`](https://openai.com/) site into a single page application.
 
-## Project setup
+## Setup / Installation:
 
 ```jsx
 npm i
@@ -13,11 +15,12 @@ npm start
 
 [http://localhost:3000](http://localhost:3000) - data.
 
-## Stack
+## Technologies Used:
 
 * React
 * Redux
 * TS
+* Styled components
 * Json-server
 
 ## View now!
