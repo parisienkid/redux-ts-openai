@@ -7,7 +7,7 @@ import Btn from '../../components/buttons/Btn';
 
 
 import Container from '../../components/container/Container';
-
+import ApiTabs from './components/ApiTabs';
 import ApiHeader from './components/ApiHeader';
 
 
@@ -24,14 +24,25 @@ export const StyledLink = styled(Btn)`
     }
 `
 
-const Title = styled.h2`
-    font-size: 50px;
-    line-height: 55px;
+interface ITitle {
+    fz: string
+    width?: string
+    margin: string
+    left?: boolean
+}
+
+const Title = styled.h2<ITitle>`
+    font-size: ${props => props.fz};
+    line-height: 1.05;
     display: block;
-    margin: 100px auto 0 auto;
+    margin: ${props => props.margin};
     max-width: 600px;
     font-weight: 400;
     text-align: center;
+    width: ${props => props.width};
+    ${props => props.left && css`
+        text-align: left;
+    `}
 `
 
 const Subtitle = styled.h3`
@@ -44,8 +55,12 @@ const Subtitle = styled.h3`
     margin: 40px auto 0 auto;
 `
 
-const DocsBtns = styled.div`
-    margin: 40px auto 0 auto;
+interface IDocsBtns {
+    margin: string
+}
+
+const DocsBtns = styled.div<IDocsBtns>`
+    margin: ${props => props.margin};
     display: flex;
     max-width: 330px;
     align-items: center;
@@ -125,6 +140,68 @@ const SilverP = styled.div`
     font-family: "ColfaxAI", sans-serif;
 `
 
+interface ICodeBlock {
+    padding: string
+    margin: string
+    children: React.ReactElement | React.ReactNode
+    width: string
+}
+
+const CodeBlock = styled.code<ICodeBlock>`
+    padding: ${props => props.padding};
+    background-color: #191927;
+    border-radius: 6px;
+    display: block;
+    margin: ${props => props.margin};
+    width: ${props => props.width};
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+`
+
+interface ISword {
+    margin?: string
+    color?: string
+    padding?: string
+    red?: boolean
+    green?: boolean
+}
+
+const Sword = styled.span<ISword>`
+    color: ${props => props.color || "white"};
+    line-height: 1;
+    padding: ${props => props.padding};
+    font-size: 15px;
+    ${props => props.red && css`
+        color: #f22c3d;
+    `}
+    ${props => props.green && css`
+        color: #009c72;
+    `}
+`
+
+const GPT3 = styled.div`
+    display: grid;
+    grid-template-columns: 60fr 40fr;
+    grid-column-gap: 250px;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 500px;
+    margin-top: 150px;
+`
+
+const GPTTabs = styled.div`
+    width: 100%;
+    overflow: hidden;
+`
+
+const GPTDescr = styled.div`
+    
+`
+
+
+
+
+
+
 const ApiPage: FC = () => {
 
     const dispatch = useDispatch();
@@ -134,13 +211,15 @@ const ApiPage: FC = () => {
         dispatch(changeTheme(apiTheme));
     }, []);
 
+
+
     return (
         <ApiPageWrapper>
             <ApiHeader/>
-            <Title>Build next-gen apps with OpenAI’s powerful models.</Title>
+            <Title margin="100px auto 0 auto" fz="50px">Build next-gen apps with OpenAI’s powerful models.</Title>
             <Subtitle>OpenAI’s API provides access to GPT-3, which performs a wide variety of natural language tasks, and Codex, which translates natural language to code.</Subtitle>
-            <DocsBtns>
-                <Btn to="/" background='0,0,0' color='255,255,255' after=''>get started</Btn>
+            <DocsBtns margin="40px auto 0 auto">
+                <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
                 <StyledLink to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledLink>
             </DocsBtns>
             <CompaniesTitle>COMPANIES DEVELOPING WITH OPENAI’S API</CompaniesTitle>
@@ -164,6 +243,37 @@ const ApiPage: FC = () => {
                     </SilverComponentContent>
                 </Container>
             </SilverComponent>
+            <Container>
+                <Title margin="130px auto 0 auto" width="350px" fz="40px">Start building with a simple API call.</Title>
+                <DocsBtns margin="30px auto 0 auto">
+                    <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
+                    <StyledLink to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledLink>
+                </DocsBtns>
+                <CodeBlock width="650px" padding="30px" margin="40px auto 0 auto">
+                    <Sword red>import</Sword><Sword> openai</Sword>
+                    <br></br>
+                    <br></br>
+                    <Sword >openai.Completion.create(</Sword>
+                    <br></br>
+                    <Sword padding="0 0 0 20px">  engine=<Sword green>"davinci"</Sword>,</Sword>
+                    <br></br>
+                    <Sword padding="0 0 0 20px">  prompt=<Sword green>"Make a list of astronomical observatories:"</Sword></Sword>
+                    <br></br>
+                    <Sword >)</Sword>
+                </CodeBlock>
+                <GPT3>
+                    <GPTTabs>
+                        <ApiTabs tabs={['Copywriting', 'Summarization', 'Parsing unstructured text', 'Classification', 'Translation']}/>
+                    </GPTTabs>
+                    <GPTDescr>
+                        <Title left margin="0 auto 0 auto" width="100%" fz="40px">Perform a wide variety of natural language tasks with GPT-3.</Title>
+                        <DocsBtns margin="30px auto 0 0">
+                            <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
+                            <StyledLink to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledLink>
+                        </DocsBtns>
+                    </GPTDescr>
+                </GPT3>
+            </Container>
         </ApiPageWrapper>
     );
 };
