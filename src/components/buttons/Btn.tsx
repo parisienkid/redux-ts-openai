@@ -31,7 +31,7 @@ const BtnWrapper = styled(Link)<IBtn>`
     }
     &:hover {
         color: rgb(${props => props.color});
-        background: rgba(${props => props.background}, .9);
+        /* background: rgba(${props => props.background}, .9); */
     }
     @media ${({theme}) => theme.media.medium} {
         font-size: 12px;

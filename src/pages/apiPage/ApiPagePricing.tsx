@@ -5,7 +5,6 @@ import { apiTheme } from '../../core/theme/theme';
 import styled, { css } from 'styled-components';
 import Btn from '../../components/buttons/Btn';
 
-import { useLocation } from 'react-router-dom';
 
 import ApiHeader from './components/ApiHeader';
 import Container from '../../components/container/Container';
@@ -19,8 +18,6 @@ const ApiPagePricing = () => {
 
     const dispatch = useDispatch();
 
-    const location = useLocation();
-    console.log(location.pathname);
 
     useEffect(() => {
         dispatch(changeTheme(apiTheme));

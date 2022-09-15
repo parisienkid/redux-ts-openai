@@ -2,6 +2,10 @@ import { FC } from "react"
 import styled from "styled-components"
 import Container from "../../../components/container/Container"
 import { StyledLink } from "../ApiPageMain"
+import Btn from "../../../components/buttons/Btn"
+
+import { useLocation } from 'react-router-dom';
+
 
 const Navbar = styled.div`
     height: ${({ theme }) => theme.sizes.default.header.height + 10}px;
@@ -39,20 +43,23 @@ const NavLogin = styled.div`
 
 
 const ApiHeader: FC = () => {
+
+    const {pathname} = useLocation();
+
     return (
         <Navbar>
             <Container>
                 <NavContent>
                     <NavBurger></NavBurger>
                     <NavLinks>
-                        <StyledLink to="/api" background='inherit' color='0,0,0' after=''>overview</StyledLink>
-                        <StyledLink to="/api/pricing" background='inherit' color='0,0,0' after=''>pricing</StyledLink>
+                        <StyledLink className={`${pathname === "/api" ? "active" : ""}`} to="/api" background='inherit' color='0,0,0' after=''>overview</StyledLink>
+                        <StyledLink className={`${pathname === "/api/pricing" ? "active" : ""}`} to="/api/pricing" background='inherit' color='0,0,0' after=''>pricing</StyledLink>
                         <StyledLink to="/" background='inherit' color='0,0,0' after='↗'>docs</StyledLink>
                         <StyledLink to="/" background='inherit' color='0,0,0' after='↗'>examples</StyledLink>
                     </NavLinks>
                     <NavLogin>
                         <StyledLink to="/" background='inherit' color='0,0,0' after=''>log in</StyledLink>
-                        <StyledLink to="/" background='0,0,0' color='255,255,255' after=''>sign up</StyledLink>
+                        <Btn to="/" background='0,0,0' color='255,255,255' after=''>sign up</Btn>
                     </NavLogin>
                 </NavContent>
             </Container>

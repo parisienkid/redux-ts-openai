@@ -5,7 +5,6 @@ import { apiTheme } from '../../core/theme/theme';
 import styled, { css } from 'styled-components';
 import Btn from '../../components/buttons/Btn';
 
-import { useLocation } from 'react-router-dom';
 
 import Container from '../../components/container/Container';
 
@@ -18,7 +17,7 @@ export const ApiPageWrapper = styled.div`
 
 export const StyledLink = styled(Btn)`
     &:hover {
-        color: rgba(0,0,0, .65)
+        color: rgba(0,0,0, .65) !important;
     }
     &.active {
         opacity: .5;
@@ -130,8 +129,6 @@ const ApiPage: FC = () => {
 
     const dispatch = useDispatch();
 
-    const location = useLocation();
-    console.log(location.pathname);
 
     useEffect(() => {
         dispatch(changeTheme(apiTheme));
