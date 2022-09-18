@@ -21,7 +21,6 @@ const App: FC = () => {
 
     const {theme} = useSelector((state: RootState) => state.theme);
 
-    
 
     return (
         <ThemeProvider theme={theme}>

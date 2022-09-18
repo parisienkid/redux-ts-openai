@@ -2,12 +2,13 @@ import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { apiTheme } from '../../core/theme/theme';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import Btn from '../../components/buttons/Btn';
 
 
 import Container from '../../components/container/Container';
-import ApiTabs from './components/ApiTabs';
+import ApiTabs from './components/ApiTabsHeader';
+import ApiTabsContent from './components/ApiTabsContent';
 import ApiHeader from './components/ApiHeader';
 
 
@@ -147,7 +148,7 @@ interface ICodeBlock {
     width: string
 }
 
-const CodeBlock = styled.code<ICodeBlock>`
+export const CodeBlock = styled.code<ICodeBlock>`
     padding: ${props => props.padding};
     background-color: #191927;
     border-radius: 6px;
@@ -155,46 +156,106 @@ const CodeBlock = styled.code<ICodeBlock>`
     margin: ${props => props.margin};
     width: ${props => props.width};
     font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+    white-space: pre-wrap;
 `
 
 interface ISword {
-    margin?: string
     color?: string
-    padding?: string
     red?: boolean
     green?: boolean
+    blue?: boolean
 }
 
-const Sword = styled.span<ISword>`
+
+const typing = keyframes`
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+`
+
+export const Sword = styled.span<ISword>`
     color: ${props => props.color || "white"};
-    line-height: 1;
-    padding: ${props => props.padding};
     font-size: 15px;
+    line-height: 20px;
+    /* overflow: hidden; */
+    /* white-space: pre-wrap; */
     ${props => props.red && css`
         color: #f22c3d;
     `}
     ${props => props.green && css`
         color: #009c72;
     `}
+    ${props => props.blue && css`
+        color: #3582ca;
+    `}
 `
 
-const GPT3 = styled.div`
+interface IString {
+    typing?: boolean
+    delay?: string
+    padding?: string
+    ff?: string
+    bold?: boolean
+    width?: string
+    prewrap?: boolean
+    color?: string
+}
+
+export const String = styled.div<IString>`
+    overflow: hidden;
+    white-space: nowrap;
+    transition: .5s width;
+    width: 0;
+    font-size: 15px;
+    ${props => props.prewrap && css`
+        white-space: pre-wrap;
+    `}
+    ${props => props.ff && css`
+        font-family: ${props.ff};
+    `}
+    ${props => props.typing && css`
+        animation: ${typing} .5s  linear forwards;
+        width: 0;
+    `}
+    ${props => props.delay && css`
+        animation-delay: ${props.delay};
+    `}
+    ${props => props.padding && css`
+        padding-left: ${props.padding};
+    `}
+    ${props => props.bold && css`
+        font-weight: bold;
+    `}
+    ${props => props.width && css`
+        width: ${props.width};
+    `}
+    ${props => props.color && css`
+        color: ${props.color};
+    `}
+    line-height: 20px;
+`
+
+interface ITabs {
+    gridCol: string
+}
+
+const Tabs = styled.div<ITabs>`
     display: grid;
-    grid-template-columns: 60fr 40fr;
+    grid-template-columns: ${props => props.gridCol};
     grid-column-gap: 250px;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     width: 100%;
-    height: 500px;
     margin-top: 150px;
 `
 
-const GPTTabs = styled.div`
+const TabsHeadWrapper = styled.div`
     width: 100%;
-    overflow: hidden;
 `
 
-const GPTDescr = styled.div`
-    
+const TabsContentWrapper = styled.div`
 `
 
 
@@ -250,29 +311,39 @@ const ApiPage: FC = () => {
                     <StyledLink to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledLink>
                 </DocsBtns>
                 <CodeBlock width="650px" padding="30px" margin="40px auto 0 auto">
-                    <Sword red>import</Sword><Sword> openai</Sword>
+                    <String width='100%'><Sword red>import</Sword><Sword> openai</Sword></String>
                     <br></br>
-                    <br></br>
-                    <Sword >openai.Completion.create(</Sword>
-                    <br></br>
-                    <Sword padding="0 0 0 20px">  engine=<Sword green>"davinci"</Sword>,</Sword>
-                    <br></br>
-                    <Sword padding="0 0 0 20px">  prompt=<Sword green>"Make a list of astronomical observatories:"</Sword></Sword>
-                    <br></br>
-                    <Sword >)</Sword>
+                    <String width='100%'><Sword >openai.Completion.create(</Sword></String>
+                    <String width='100%' padding='18px' ><Sword >  engine=<Sword green>"davinci"</Sword>,</Sword></String>
+                    <String width='100%' padding='18px' ><Sword>  prompt=<Sword green>"Make a list of astronomical observatories:"</Sword></Sword></String>
+                    <String width='100%'><Sword >)</Sword></String>
                 </CodeBlock>
-                <GPT3>
-                    <GPTTabs>
-                        <ApiTabs tabs={['Copywriting', 'Summarization', 'Parsing unstructured text', 'Classification', 'Translation']}/>
-                    </GPTTabs>
-                    <GPTDescr>
+                <Tabs gridCol='65fr 35fr'>
+                    <TabsHeadWrapper>
+                        <ApiTabs actionName='gpt' tabs={['Copywriting', 'Summarization', 'Parsing unstructured text', 'Classification', 'Translation']}/>
+                        <ApiTabsContent nameOfTab='gpt'/>
+                    </TabsHeadWrapper>
+                    <TabsContentWrapper>
                         <Title left margin="0 auto 0 auto" width="100%" fz="40px">Perform a wide variety of natural language tasks with GPT-3.</Title>
                         <DocsBtns margin="30px auto 0 0">
                             <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
                             <StyledLink to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledLink>
                         </DocsBtns>
-                    </GPTDescr>
-                </GPT3>
+                    </TabsContentWrapper>
+                </Tabs>
+                <Tabs gridCol='35fr 65fr'>
+                    <TabsContentWrapper>
+                        <Title left margin="0 auto 0 auto" width="100%" fz="40px">Translate natural language to code with Codex.</Title>
+                        <DocsBtns margin="30px auto 0 0">
+                            <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
+                            <StyledLink to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledLink>
+                        </DocsBtns>
+                    </TabsContentWrapper>
+                    <TabsHeadWrapper>
+                        <ApiTabs actionName='codex' tabs={['Text to SQL translation', 'Calling an API via natural language', 'Code continuation']}/>
+                        <ApiTabsContent nameOfTab='codex'/>
+                    </TabsHeadWrapper>
+                </Tabs>
             </Container>
         </ApiPageWrapper>
     );

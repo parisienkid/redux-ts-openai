@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { changeActiveTabCodex, changeActiveTabGPT } from '../../../core/reducers/apiPageSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../core/store';
 
 const TabsHeaderWrapper = styled.div`
     padding: 10px 0;
@@ -12,6 +15,7 @@ const TabsHeaderWrapper = styled.div`
 const TabsHeaderContent = styled.div`
     display: flex;
     transition: .25s transform;
+    position: relative;
 `
 
 const TabsItem = styled.button`
@@ -30,13 +34,19 @@ const TabsItem = styled.button`
     &:focus {
         outline: none;
     }
+    &.active {
+        color: #000
+    }
 `
 
 interface IApiTabs {
-    tabs: string[]
+    tabs: string[],
+    actionName: string
 }
 
-const ApiTabs: FC<IApiTabs> = ({tabs}) => {
+const ApiTabs: FC<IApiTabs> = ({tabs, actionName}) => {
+
+    const dispatch = useDispatch<AppDispatch>();
 
     let translate: number = 0;
 
@@ -44,16 +54,47 @@ const ApiTabs: FC<IApiTabs> = ({tabs}) => {
         parent.style.transform = `translateX(-${translate}px)`;
     }
 
+    const changeActiveTab = (actionname: string, payload: string | null) => {
+        switch (actionname) {
+            case ('codex'):
+                return dispatch(changeActiveTabCodex(payload))
+            case ('gpt'):
+                return dispatch(changeActiveTabGPT(payload))
+            default:
+                throw new Error ('Unexpected process state')
+        }
+    }
+
+
+
     const onClickTab = (e: React.MouseEvent<HTMLButtonElement>) => {
 
         const current = e.currentTarget;
         const parent = current.parentElement;
         const offsetLeftsPlusWidth = current.offsetLeft + current.offsetWidth;
+        
+        console.log(parent)
+        console.log(current)
+        console.log(current.offsetParent)
 
         if (parent) {
 
+            parent.querySelectorAll(TabsItem).forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            current.classList.add('active');
+
+            changeActiveTab(actionName, current.getAttribute('data-tab-id'))
+
+
             const offsetLeft = current.offsetLeft - translate;
             const offsetRight = parent.offsetWidth - offsetLeftsPlusWidth + translate;
+
+            console.log(offsetRight + 'right')
+            console.log(offsetLeft + 'left')
+
+
             let difference: number = 0;
 
             if (offsetRight < 50) {
@@ -81,16 +122,17 @@ const ApiTabs: FC<IApiTabs> = ({tabs}) => {
     }
 
 
+
     return (
         <TabsHeaderWrapper>
             <TabsHeaderContent>
                 {tabs.map((tab, i) => {
                     if (i === 0) {
-                        return <TabsItem key={i} data-first-tab onClick={onClickTab} >{tab}</TabsItem>
+                        return <TabsItem data-tab-id={i+1} className={i === 0 ? 'active' : ''} key={i} data-first-tab onClick={onClickTab} >{tab}</TabsItem>
                     } else if (i === tabs.length - 1) {
-                        return <TabsItem key={i} data-last-tab onClick={onClickTab} >{tab}</TabsItem>
+                        return <TabsItem data-tab-id={i+1} className={i === 0 ? 'active' : ''} key={i} data-last-tab onClick={onClickTab} >{tab}</TabsItem>
                     } else {
-                        return <TabsItem key={i} onClick={onClickTab} >{tab}</TabsItem>
+                        return <TabsItem data-tab-id={i+1} className={i === 0 ? 'active' : ''} key={i} onClick={onClickTab} >{tab}</TabsItem>
                     }
                 })}
             </TabsHeaderContent>

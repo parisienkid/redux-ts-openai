@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import  theme  from '../reducers/themeSlice';
-import  api  from '../reducers/apiSlice';
+import  api  from '../reducers/apiPageSlice';
 
 
 const store = configureStore({
