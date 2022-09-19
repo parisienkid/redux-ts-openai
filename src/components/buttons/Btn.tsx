@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const BtnWrapper = styled(Link)<IBtn>`
@@ -15,6 +15,9 @@ const BtnWrapper = styled(Link)<IBtn>`
     line-height: 13px;
     position: relative;
     text-align: center;
+    ${props => props.margin && css`
+        margin: ${props.margin};
+    `}
     &:after {
         content: '${props => props.after}';
         font-family: 'IconsAI';
@@ -45,11 +48,12 @@ interface IBtn {
     after: string
     to: string
     className?: string
+    margin?: string
 }
 
-const Btn: FC<IBtn> = ({background, color, children, after, to, className}) => {
+const Btn: FC<IBtn> = ({background, color, children, after, to, className, margin}) => {
     return (
-        <BtnWrapper className={className} after={after} to={to} background={background} color={color}>
+        <BtnWrapper margin={margin} className={className} after={after} to={to} background={background} color={color}>
             {children}
         </BtnWrapper>
     );

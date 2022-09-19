@@ -109,6 +109,7 @@ const SilverComponent = styled.div<ISilverComponent>`
 
 interface ISilverComponentContent {
     direction: string;
+    center?: boolean
 }
 
 const SilverComponentContent = styled.div<ISilverComponentContent>`
@@ -117,12 +118,31 @@ const SilverComponentContent = styled.div<ISilverComponentContent>`
     width: 100%;
     justify-content: space-between;
     align-items: flex-start;
+    ${props => props.center && css`
+        align-items: center;
+    `}
 `
 
-const SilverTitle = styled.div`
+interface ISilverTitle {
+    fz?: number
+    tac?: boolean
+    width?: string
+}
+
+const SilverTitle = styled.div<ISilverTitle>`
     max-width: 460px;
     font-size: 32px;
     line-height: 37px;
+    ${props => props.fz && css`
+        font-size: ${props.fz}px;
+        line-height: ${props.fz + 6}px;
+    `}
+    ${props => props.tac && css`
+        text-align: center;
+    `}
+    ${props => props.width && css`
+        max-width: ${props.width};
+    `}
 `
 
 const SilverInfo = styled.div`
@@ -258,6 +278,47 @@ const TabsHeadWrapper = styled.div`
 const TabsContentWrapper = styled.div`
 `
 
+const Benefits = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 40px;
+    padding: 200px 0 100px 0;
+    justify-content: space-between;
+`
+
+const BenifitsItem = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 100fr;
+    grid-template-rows: 1fr 2fr;
+    grid-row-gap: 10px;
+`
+
+const BenifitsIcon = styled.span`
+    font-family: IconsAI;
+    display: inline-block;
+    font-size: 28px;
+    line-height: 28px;
+`
+
+
+const BenifitsTitle = styled.div`
+    position: relative;
+    font-size: 27.5px;
+    line-height: 27.5px;
+    transform: translateY(2px);
+    padding-left: 15px;
+`
+
+const BenifitsDescr = styled.div`
+    grid-column-start: 1;
+    grid-column-end: 3;
+    align-items: start;
+    justify-self: start;
+    align-content: start;
+    font-size: 20px;
+`
+
 
 
 
@@ -344,7 +405,44 @@ const ApiPage: FC = () => {
                         <ApiTabsContent nameOfTab='codex'/>
                     </TabsHeadWrapper>
                 </Tabs>
+                <Benefits>
+                    <BenifitsItem>
+                        <BenifitsIcon>lightning</BenifitsIcon>
+                        <BenifitsTitle>Fast</BenifitsTitle>
+                        <BenifitsDescr>Our advanced inference infrastructure provides extremely short response times.</BenifitsDescr>
+                    </BenifitsItem>
+                    <BenifitsItem>
+                        <BenifitsIcon>expand</BenifitsIcon>
+                        <BenifitsTitle>Scalable</BenifitsTitle>
+                        <BenifitsDescr>We can handle high volume requests that scale with your needs.</BenifitsDescr>
+                    </BenifitsItem>
+                    <BenifitsItem>
+                        <BenifitsIcon>fork</BenifitsIcon>
+                        <BenifitsTitle>Flexible</BenifitsTitle>
+                        <BenifitsDescr>Easy to use and flexible enough to make machine learning teams more productive.</BenifitsDescr>
+                    </BenifitsItem>
+                </Benefits>
             </Container>
+            <SilverComponent padding='80px 0'>
+                <Container>
+                    <SilverComponentContent direction='row'>
+                        <SilverTitle>Like our developers, we strive to ensure machine learning models are used responsibly.</SilverTitle>
+                        <SilverInfo>
+                            <SilverP>We help developers use best practices and provide tools, including:</SilverP>
+                            <SilverP>Our API allows us to review applications before they go live, continually improve our safety tools, help developers scale over time, and better understand the effects of our technology.</SilverP>
+                            <Btn to="/" background='0,0,0' color='255,255,255' after=''>get started</Btn>
+                        </SilverInfo>
+                    </SilverComponentContent>
+                </Container>
+            </SilverComponent>
+            <SilverComponent padding='150px 0'>
+                <Container>
+                    <SilverComponentContent center direction='column'>
+                        <SilverTitle width='800px' tac fz={45}>Get started with OpenAI’s powerful language and code generation models.</SilverTitle>
+                        <Btn margin="40px auto 0 auto" to="/" background='0,0,0' color='255,255,255' after=''>get started</Btn>
+                    </SilverComponentContent>
+                </Container>
+            </SilverComponent>
         </ApiPageWrapper>
     );
 };

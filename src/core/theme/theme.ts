@@ -74,7 +74,7 @@ export const baseTheme: ITheme = {
                 col: '1fr',
                 row: '50fr 50fr',
             },
-        }
+        },
     },
 
     // in ms

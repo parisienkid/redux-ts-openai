@@ -13,7 +13,9 @@ body, html {
     background-color: rgb(${props => props.background});
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 20px;
 }
+
 
 #root {
     height: 100%;
