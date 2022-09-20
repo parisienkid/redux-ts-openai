@@ -5,15 +5,39 @@ import { apiTheme } from '../../core/theme/theme';
 import styled, { css, keyframes } from 'styled-components';
 import Btn from '../../components/buttons/Btn';
 
-
 import Container from '../../components/container/Container';
 import ApiTabs from './components/ApiTabsHeader';
 import ApiTabsContent from './components/ApiTabsContent';
 import ApiHeader from './components/ApiHeader';
 
+const copilot = require('../../assets/images/copilot.png');
+const keeper = require('../../assets/images/keeper.png');
+const viable = require('../../assets/images/viable.png');
+const duolingo = require('../../assets/images/duolingo.png');
+
+
+
+
 
 export const ApiPageWrapper = styled.div`
-
+    h1 {
+        margin-top: 100px;
+        max-width: 600px;
+        margin: 100px auto 0;
+        text-align: center;
+    }
+    h2.center {
+        text-align: center;
+    }
+    h3 {
+        max-width: 470px;
+    }
+    h4 {
+        font-family: "ColfaxAI", sans-serif;
+        max-width: 600px;
+        text-align: center;
+        margin: 40px auto 0 auto;
+    }
 `
 
 export const StyledLink = styled(Btn)`
@@ -23,37 +47,6 @@ export const StyledLink = styled(Btn)`
     &.active {
         opacity: .5;
     }
-`
-
-interface ITitle {
-    fz: string
-    width?: string
-    margin: string
-    left?: boolean
-}
-
-const Title = styled.h2<ITitle>`
-    font-size: ${props => props.fz};
-    line-height: 1.05;
-    display: block;
-    margin: ${props => props.margin};
-    max-width: 600px;
-    font-weight: 400;
-    text-align: center;
-    width: ${props => props.width};
-    ${props => props.left && css`
-        text-align: left;
-    `}
-`
-
-const Subtitle = styled.h3`
-    font-family: "ColfaxAI", sans-serif;
-    font-size: 22px;
-    line-height: 24px;
-    max-width: 600px;
-    text-align: center;
-    font-weight: 400;
-    margin: 40px auto 0 auto;
 `
 
 interface IDocsBtns {
@@ -98,6 +91,10 @@ const Company = styled.svg`
     justify-self: center;
 `
 
+const BuildingWrapper = styled.div`
+    padding: 100px 0 120px;
+`
+
 interface ISilverComponent {
     padding: string;
 }
@@ -120,29 +117,17 @@ const SilverComponentContent = styled.div<ISilverComponentContent>`
     align-items: flex-start;
     ${props => props.center && css`
         align-items: center;
+        h2 {
+            text-align: center;
+            max-width: 700px;
+        }
     `}
-`
-
-interface ISilverTitle {
-    fz?: number
-    tac?: boolean
-    width?: string
-}
-
-const SilverTitle = styled.div<ISilverTitle>`
-    max-width: 460px;
-    font-size: 32px;
-    line-height: 37px;
-    ${props => props.fz && css`
-        font-size: ${props.fz}px;
-        line-height: ${props.fz + 6}px;
-    `}
-    ${props => props.tac && css`
-        text-align: center;
-    `}
-    ${props => props.width && css`
-        max-width: ${props.width};
-    `}
+    p {
+        margin-bottom: 25px;
+        font-size: 18px;
+        line-height: 24px;
+        font-family: "ColfaxAI", sans-serif;
+    }
 `
 
 const SilverInfo = styled.div`
@@ -154,12 +139,6 @@ const GroupBtns = styled.div`
     width: auto;
 `
 
-const SilverP = styled.div`
-    margin-bottom: 25px;
-    font-size: 18px;
-    line-height: 24px;
-    font-family: "ColfaxAI", sans-serif;
-`
 
 interface ICodeBlock {
     padding: string
@@ -265,7 +244,7 @@ interface ITabs {
 const Tabs = styled.div<ITabs>`
     display: grid;
     grid-template-columns: ${props => props.gridCol};
-    grid-column-gap: 250px;
+    grid-column-gap: 200px;
     grid-template-rows: auto;
     width: 100%;
     margin-top: 150px;
@@ -283,15 +262,31 @@ const Benefits = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 40px;
-    padding: 200px 0 100px 0;
+    padding: 200px 0 0 0;
     justify-content: space-between;
+    h3 {
+        position: relative;
+        font-size: 27.5px;
+        line-height: 27.5px;
+        transform: translateY(2px);
+        padding-left: 15px;
+    }
+    p {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        align-items: start;
+        justify-self: start;
+        align-content: start;
+        /* font-size: 20px; */
+        font-family: ColfaxAI,Helvetica,sans-serif;
+    }
 `
 
 const BenifitsItem = styled.div`
     display: grid;
     grid-template-columns: 1fr 100fr;
     grid-template-rows: 1fr 2fr;
-    grid-row-gap: 10px;
+    grid-row-gap: 20px;
 `
 
 const BenifitsIcon = styled.span`
@@ -301,26 +296,45 @@ const BenifitsIcon = styled.span`
     line-height: 28px;
 `
 
+//
 
-const BenifitsTitle = styled.div`
-    position: relative;
-    font-size: 27.5px;
-    line-height: 27.5px;
-    transform: translateY(2px);
-    padding-left: 15px;
+const OpenaiApps = styled.div`
+    padding: 170px 0;
 `
 
-const BenifitsDescr = styled.div`
+const OpenaiAppsContent = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 40px;
+    grid-template-rows: auto auto;
+    grid-row-gap: 60px;
+`
+
+const OpenaiDescr = styled.div`
     grid-column-start: 1;
-    grid-column-end: 3;
-    align-items: start;
-    justify-self: start;
-    align-content: start;
-    font-size: 20px;
+    grid-column-end: 5;
+    h2 {
+        margin-bottom: 30px;
+    }
 `
 
-
-
+const OpenaiAppItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    img {
+        display: block;
+        max-width: 100%;
+        border: 1px solid rgba(0,0,0,.15)
+    }
+    h3 {
+        margin-top: 20px;
+    }
+    p {
+        margin-top: 20px;
+        color: rgba(0,0,0,.6)
+    }
+`
 
 
 
@@ -328,18 +342,15 @@ const ApiPage: FC = () => {
 
     const dispatch = useDispatch();
 
-
     useEffect(() => {
         dispatch(changeTheme(apiTheme));
     }, []);
 
-
-
     return (
         <ApiPageWrapper>
             <ApiHeader/>
-            <Title margin="100px auto 0 auto" fz="50px">Build next-gen apps with OpenAI’s powerful models.</Title>
-            <Subtitle>OpenAI’s API provides access to GPT-3, which performs a wide variety of natural language tasks, and Codex, which translates natural language to code.</Subtitle>
+            <h1>Build next-gen apps with OpenAI’s powerful models.</h1>
+            <h4>OpenAI’s API provides access to GPT-3, which performs a wide variety of natural language tasks, and Codex, which translates natural language to code.</h4>
             <DocsBtns margin="40px auto 0 auto">
                 <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
                 <StyledLink to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledLink>
@@ -354,9 +365,9 @@ const ApiPage: FC = () => {
             <SilverComponent padding='100px 0'>
                 <Container>
                     <SilverComponentContent direction='row'>
-                        <SilverTitle>Developers can now customize GPT-3 for their own applications.</SilverTitle>
+                        <h3>Developers can now customize GPT-3 for their own applications.</h3>
                         <SilverInfo>
-                            <SilverP>GPT-3 can now be customized via our API. With a single command, developers can fine-tune powerful AI models tailored to their needs.</SilverP>
+                            <p>GPT-3 can now be customized via our API. With a single command, developers can fine-tune powerful AI models tailored to their needs.</p>
                             <GroupBtns>
                                 <Btn to="/" background='0,0,0' color='255,255,255' after=''>get started</Btn>
                                 <StyledLink to="/" background='inherit' color='0,0,0' after=''>learn more</StyledLink>
@@ -366,79 +377,111 @@ const ApiPage: FC = () => {
                 </Container>
             </SilverComponent>
             <Container>
-                <Title margin="130px auto 0 auto" width="350px" fz="40px">Start building with a simple API call.</Title>
-                <DocsBtns margin="30px auto 0 auto">
-                    <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
-                    <StyledLink to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledLink>
-                </DocsBtns>
-                <CodeBlock width="650px" padding="30px" margin="40px auto 0 auto">
-                    <String width='100%'><Sword red>import</Sword><Sword> openai</Sword></String>
-                    <br></br>
-                    <String width='100%'><Sword >openai.Completion.create(</Sword></String>
-                    <String width='100%' padding='18px' ><Sword >  engine=<Sword green>"davinci"</Sword>,</Sword></String>
-                    <String width='100%' padding='18px' ><Sword>  prompt=<Sword green>"Make a list of astronomical observatories:"</Sword></Sword></String>
-                    <String width='100%'><Sword >)</Sword></String>
-                </CodeBlock>
-                <Tabs gridCol='65fr 35fr'>
-                    <TabsHeadWrapper>
-                        <ApiTabs actionName='gpt' tabs={['Copywriting', 'Summarization', 'Parsing unstructured text', 'Classification', 'Translation']}/>
-                        <ApiTabsContent nameOfTab='gpt'/>
-                    </TabsHeadWrapper>
-                    <TabsContentWrapper>
-                        <Title left margin="0 auto 0 auto" width="100%" fz="40px">Perform a wide variety of natural language tasks with GPT-3.</Title>
-                        <DocsBtns margin="30px auto 0 0">
-                            <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
-                            <StyledLink to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledLink>
-                        </DocsBtns>
-                    </TabsContentWrapper>
-                </Tabs>
-                <Tabs gridCol='35fr 65fr'>
-                    <TabsContentWrapper>
-                        <Title left margin="0 auto 0 auto" width="100%" fz="40px">Translate natural language to code with Codex.</Title>
-                        <DocsBtns margin="30px auto 0 0">
-                            <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
-                            <StyledLink to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledLink>
-                        </DocsBtns>
-                    </TabsContentWrapper>
-                    <TabsHeadWrapper>
-                        <ApiTabs actionName='codex' tabs={['Text to SQL translation', 'Calling an API via natural language', 'Code continuation']}/>
-                        <ApiTabsContent nameOfTab='codex'/>
-                    </TabsHeadWrapper>
-                </Tabs>
-                <Benefits>
-                    <BenifitsItem>
-                        <BenifitsIcon>lightning</BenifitsIcon>
-                        <BenifitsTitle>Fast</BenifitsTitle>
-                        <BenifitsDescr>Our advanced inference infrastructure provides extremely short response times.</BenifitsDescr>
-                    </BenifitsItem>
-                    <BenifitsItem>
-                        <BenifitsIcon>expand</BenifitsIcon>
-                        <BenifitsTitle>Scalable</BenifitsTitle>
-                        <BenifitsDescr>We can handle high volume requests that scale with your needs.</BenifitsDescr>
-                    </BenifitsItem>
-                    <BenifitsItem>
-                        <BenifitsIcon>fork</BenifitsIcon>
-                        <BenifitsTitle>Flexible</BenifitsTitle>
-                        <BenifitsDescr>Easy to use and flexible enough to make machine learning teams more productive.</BenifitsDescr>
-                    </BenifitsItem>
-                </Benefits>
+               <BuildingWrapper>
+                <h2 className='center'>Start building with a simple API call.</h2>
+                    <DocsBtns margin="30px auto 0 auto">
+                        <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
+                        <StyledLink to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledLink>
+                    </DocsBtns>
+                    <CodeBlock width="650px" padding="30px" margin="40px auto 0 auto">
+                        <String width='100%'><Sword red>import</Sword><Sword> openai</Sword></String>
+                        <br></br>
+                        <String width='100%'><Sword >openai.Completion.create(</Sword></String>
+                        <String width='100%' padding='18px' ><Sword >  engine=<Sword green>"davinci"</Sword>,</Sword></String>
+                        <String width='100%' padding='18px' ><Sword>  prompt=<Sword green>"Make a list of astronomical observatories:"</Sword></Sword></String>
+                        <String width='100%'><Sword >)</Sword></String>
+                    </CodeBlock>
+                    <Tabs gridCol='65fr 35fr'>
+                        <TabsHeadWrapper>
+                            <ApiTabs actionName='gpt' tabs={['Copywriting', 'Summarization', 'Parsing unstructured text', 'Classification', 'Translation']}/>
+                            <ApiTabsContent nameOfTab='gpt'/>
+                        </TabsHeadWrapper>
+                        <TabsContentWrapper>
+                            <h2>Perform a wide variety of natural language tasks with GPT-3.</h2>
+                            <DocsBtns margin="30px auto 0 0">
+                                <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
+                                <StyledLink to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledLink>
+                            </DocsBtns>
+                        </TabsContentWrapper>
+                    </Tabs>
+                    <Tabs gridCol='35fr 65fr'>
+                        <TabsContentWrapper>
+                            <h2>Translate natural language to code with Codex.</h2>
+                            <DocsBtns margin="30px auto 0 0">
+                                <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
+                                <StyledLink to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledLink>
+                            </DocsBtns>
+                        </TabsContentWrapper>
+                        <TabsHeadWrapper>
+                            <ApiTabs actionName='codex' tabs={['Text to SQL translation', 'Calling an API via natural language', 'Code continuation']}/>
+                            <ApiTabsContent nameOfTab='codex'/>
+                        </TabsHeadWrapper>
+                    </Tabs>
+                    <Benefits>
+                        <BenifitsItem>
+                            <BenifitsIcon>lightning</BenifitsIcon>
+                            <h3>Fast</h3>
+                            <p>Our advanced inference infrastructure provides extremely short response times.</p>
+                        </BenifitsItem>
+                        <BenifitsItem>
+                            <BenifitsIcon>expand</BenifitsIcon>
+                            <h3>Scalable</h3>
+                            <p>We can handle high volume requests that scale with your needs.</p>
+                        </BenifitsItem>
+                        <BenifitsItem>
+                            <BenifitsIcon>fork</BenifitsIcon>
+                            <h3>Flexible</h3>
+                            <p>Easy to use and flexible enough to make machine learning teams more productive.</p>
+                        </BenifitsItem>
+                    </Benefits>
+               </BuildingWrapper>
             </Container>
             <SilverComponent padding='80px 0'>
                 <Container>
                     <SilverComponentContent direction='row'>
-                        <SilverTitle>Like our developers, we strive to ensure machine learning models are used responsibly.</SilverTitle>
+                        <h3>Like our developers, we strive to ensure machine learning models are used responsibly.</h3>
                         <SilverInfo>
-                            <SilverP>We help developers use best practices and provide tools, including:</SilverP>
-                            <SilverP>Our API allows us to review applications before they go live, continually improve our safety tools, help developers scale over time, and better understand the effects of our technology.</SilverP>
+                            <p>We help developers use best practices and provide tools, including:</p>
+                            <p>Our API allows us to review applications before they go live, continually improve our safety tools, help developers scale over time, and better understand the effects of our technology.</p>
                             <Btn to="/" background='0,0,0' color='255,255,255' after=''>get started</Btn>
                         </SilverInfo>
                     </SilverComponentContent>
                 </Container>
             </SilverComponent>
-            <SilverComponent padding='150px 0'>
+            <OpenaiApps>
+                <Container>
+                   <OpenaiAppsContent>
+                       <OpenaiDescr>
+                            <h2>Built with OpenAI’s API</h2>
+                            <p>Our API has been deployed in thousands of applications with tasks ranging from helping people learn new languages to solving complex classification problems.</p>
+                       </OpenaiDescr>
+                       <OpenaiAppItem>
+                            <a href="#"><img src={copilot} alt="" /></a>
+                            <h3>GitHub Copilot</h3>
+                            <p>AI pair programmer that helps you write code faster with less work. Using Codex, GitHub Copilot applies the context in your editor and synthesizes whole lines and even entire functions of code.</p>
+                       </OpenaiAppItem>
+                       <OpenaiAppItem>
+                            <a href="#"><img src={keeper} alt="" /></a>
+                            <h3>Keeper Tax</h3>
+                            <p>Helps freelancers automatically find tax-deductible expenses by using GPT-3 to interpret data from their bank statements into usable transaction information.</p>
+                       </OpenaiAppItem>
+                       <OpenaiAppItem>
+                            <a href="#"><img src={viable} alt="" /></a>
+                            <h3>Viable</h3>
+                            <p>Helps businesses better and more quickly understand what customers are telling them by using language models, including GPT-3, to analyze customer feedback and generate summaries and insights.</p>
+                       </OpenaiAppItem>
+                       <OpenaiAppItem>
+                            <a href="#"><img src={duolingo} alt="" /></a>
+                            <h3>Duolingo</h3>
+                            <p>Uses GPT-3 to provide French grammar corrections. An internal Duolingo study shows that use of this feature leads to measurably better second language writing skills!</p>
+                       </OpenaiAppItem>
+                   </OpenaiAppsContent>
+                </Container>
+            </OpenaiApps>
+            <SilverComponent padding='120px 0'>
                 <Container>
                     <SilverComponentContent center direction='column'>
-                        <SilverTitle width='800px' tac fz={45}>Get started with OpenAI’s powerful language and code generation models.</SilverTitle>
+                        <h2>Get started with OpenAI’s powerful language and code generation models.</h2>
                         <Btn margin="40px auto 0 auto" to="/" background='0,0,0' color='255,255,255' after=''>get started</Btn>
                     </SilverComponentContent>
                 </Container>

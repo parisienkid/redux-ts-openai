@@ -16,6 +16,37 @@ body, html {
     font-size: 20px;
 }
 
+h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 1.9rem;
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+h3 {
+    font-size: 1.55rem;
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+h4 {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+
+p {
+    font-size: 0.83rem;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
 
 #root {
     height: 100%;
