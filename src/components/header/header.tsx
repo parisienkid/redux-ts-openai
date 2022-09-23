@@ -7,6 +7,9 @@ import { NavLink } from 'react-router-dom';
 
 const HeaderWrapper = styled.header`
     height: ${({theme}) => theme.sizes.default.header.height}px;
+    @media ${({theme}) => theme.media.medium} {
+        height: ${({theme}) => theme.sizes.m.header.height}px;
+    }
     background-color: rgb(${({theme}) => theme.colors.header});
 `
 

@@ -58,7 +58,7 @@ export const baseTheme: ITheme = {
             },
         },
         m: {
-            header: { height: 50 },
+            header: { height: 45 },
             container: { width: 93 },
             footer: { height: 128 },
             mainPage: { 

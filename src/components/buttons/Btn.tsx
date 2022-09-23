@@ -15,6 +15,9 @@ const BtnWrapper = styled(Link)<IBtn>`
     line-height: 13px;
     position: relative;
     text-align: center;
+    ${props => props.nobg && css`
+        padding: 10px 5px;
+    `}
     ${props => props.margin && css`
         margin: ${props.margin};
     `}
@@ -23,7 +26,7 @@ const BtnWrapper = styled(Link)<IBtn>`
         font-family: 'IconsAI';
         position: absolute;
         top: 50%;
-        right: 14px;
+        right: 12px;
         transform: translateY(calc(-50% - 0.5px));
         font-size: 15px;
         line-height: 15px;
@@ -38,6 +41,7 @@ const BtnWrapper = styled(Link)<IBtn>`
     }
     @media ${({theme}) => theme.media.medium} {
         font-size: 12px;
+        padding: 8px ${props => props.after !== '' ? '31px' : '16px'} 8px 16px;
     }
 `
 
@@ -49,11 +53,12 @@ interface IBtn {
     to: string
     className?: string
     margin?: string
+    nobg?: boolean
 }
 
-const Btn: FC<IBtn> = ({background, color, children, after, to, className, margin}) => {
+const Btn: FC<IBtn> = ({background, color, children, after, to, className, margin, nobg}) => {
     return (
-        <BtnWrapper margin={margin} className={className} after={after} to={to} background={background} color={color}>
+        <BtnWrapper margin={margin} className={className} after={after} nobg={nobg} to={to} background={background} color={color}>
             {children}
         </BtnWrapper>
     );
