@@ -14,6 +14,7 @@ const BtnWrapper = styled(Link)<IBtn>`
     font-size: 13.5px;
     line-height: 13px;
     position: relative;
+    width: max-content;
     text-align: center;
     ${props => props.nobg && css`
         padding: 10px 5px;

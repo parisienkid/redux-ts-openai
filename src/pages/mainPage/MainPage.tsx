@@ -15,6 +15,22 @@ const MainPageWrapper = styled.div`
     height: calc(100vh - ${({theme}) => theme.sizes.default.header.height}px);
     background-color: rgb( ${({theme}) => theme.colors.header});
     padding-bottom: ${({theme}) => theme.sizes.default.header.height}px;
+    @media ${({theme}) => theme.media.extraLarge} {
+        height: calc(100vh - ${({theme}) => theme.sizes.xl.header.height}px);
+        padding-bottom: ${({theme}) => theme.sizes.xl.header.height}px;
+    }
+    @media ${({theme}) => theme.media.large} {
+        height: calc(100vh - ${({theme}) => theme.sizes.l.header.height}px);
+        padding-bottom: ${({theme}) => theme.sizes.l.header.height}px;
+    }
+    @media ${({theme}) => theme.media.medium} {
+        height: calc(100vh - ${({theme}) => theme.sizes.m.header.height}px);
+        padding-bottom: ${({theme}) => theme.sizes.m.header.height}px;
+    }
+    @media ${({theme}) => theme.media.small} {
+        height: calc(100vh - ${({theme}) => theme.sizes.s.header.height}px);
+        padding-bottom: ${({theme}) => theme.sizes.s.header.height}px;
+    }
 `
 
 const MainPageContent = styled.div`
