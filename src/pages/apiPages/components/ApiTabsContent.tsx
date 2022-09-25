@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../core/store';
 import styled, {css} from 'styled-components';
 import { Sword, String } from '../ApiPageMain';
-import { useEffect } from 'react';
-import { typing } from '../../../styles/animations';
 import { CodeBlock } from '../ApiPageMain';
 
 

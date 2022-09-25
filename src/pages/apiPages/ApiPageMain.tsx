@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { apiTheme } from '../../core/theme/theme';
 import styled, { css, keyframes } from 'styled-components';
-import Btn from '../../components/buttons/Btn';
+import {Btn} from '../../components/buttons/Btn';
 
 import Container from '../../components/container/Container';
 import ApiTabs from './components/ApiTabsHeader';
@@ -446,7 +446,7 @@ const ApiPage: FC = () => {
                     <h4>OpenAI’s API provides access to GPT-3, which performs a wide variety of natural language tasks, and Codex, which translates natural language to code.</h4>
                     <DocsBtns margin="40px auto 0 auto">
                         <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
-                        <StyledLink nobg to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledLink>
+                        <StyledLink $nobg to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledLink>
                     </DocsBtns>
                     <CompaniesTitle>COMPANIES DEVELOPING WITH OPENAI’S API</CompaniesTitle>
                     <Companies>
@@ -465,7 +465,7 @@ const ApiPage: FC = () => {
                             <p>GPT-3 can now be customized via our API. With a single command, developers can fine-tune powerful AI models tailored to their needs.</p>
                             <DocsBtns margin='40px 0 0 0'>
                                 <Btn to="/" background='0,0,0' color='255,255,255' after=''>get started</Btn>
-                                <StyledLink nobg to="/" background='inherit' color='0,0,0' after=''>learn more</StyledLink>
+                                <StyledLink $nobg to="/" background='inherit' color='0,0,0' after=''>learn more</StyledLink>
                             </DocsBtns>
                         </SilverInfo>
                     </SilverComponentContent>
@@ -476,7 +476,7 @@ const ApiPage: FC = () => {
                 <h2 className='center'>Start building with a simple API call.</h2>
                     <DocsBtns margin="30px auto 0 auto">
                         <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
-                        <StyledLink nobg to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledLink>
+                        <StyledLink $nobg to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledLink>
                     </DocsBtns>
                     <CodeBlock width="650px" padding="30px" margin="40px auto 0 auto">
                         <String width='100%'><Sword red>import</Sword><Sword> openai</Sword></String>
@@ -495,7 +495,7 @@ const ApiPage: FC = () => {
                             <h2>Perform a wide variety of natural language tasks with GPT-3.</h2>
                             <DocsBtns margin="30px auto 0 0">
                                 <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
-                                <StyledLink nobg to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledLink>
+                                <StyledLink $nobg to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledLink>
                             </DocsBtns>
                         </TabsContentWrapper>
                     </Tabs>
@@ -504,7 +504,7 @@ const ApiPage: FC = () => {
                             <h2>Translate natural language to code with Codex.</h2>
                             <DocsBtns margin="30px auto 0 0">
                                 <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
-                                <StyledLink nobg to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledLink>
+                                <StyledLink $nobg to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledLink>
                             </DocsBtns>
                         </TabsContentWrapper>
                         <TabsHeadWrapper>

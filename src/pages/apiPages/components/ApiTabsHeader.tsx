@@ -72,10 +72,6 @@ const ApiTabs: FC<IApiTabs> = ({tabs, actionName}) => {
         const current = e.currentTarget;
         const parent = current.parentElement;
         const offsetLeftsPlusWidth = current.offsetLeft + current.offsetWidth;
-        
-        console.log(parent)
-        console.log(current)
-        console.log(current.offsetParent)
 
         if (parent) {
 
@@ -90,10 +86,6 @@ const ApiTabs: FC<IApiTabs> = ({tabs, actionName}) => {
 
             const offsetLeft = current.offsetLeft - translate;
             const offsetRight = parent.offsetWidth - offsetLeftsPlusWidth + translate;
-
-            console.log(offsetRight + 'right')
-            console.log(offsetLeft + 'left')
-
 
             let difference: number = 0;
 

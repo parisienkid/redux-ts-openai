@@ -2,7 +2,7 @@ import { FC, useRef } from "react"
 import styled from "styled-components"
 import Container from "../../../components/container/Container"
 import { StyledLink } from "../ApiPageMain"
-import Btn from "../../../components/buttons/Btn"
+import {Btn} from "../../../components/buttons/Btn"
 import ApiPage from "../ApiPageMain"
 import { Link } from "react-router-dom"
 import { useLocation } from 'react-router-dom';
@@ -18,10 +18,6 @@ const Navbar = styled.div`
     background-color: rgba(247, 247, 248, .7);
     top: 0;
     z-index: ${({ theme }) => theme.order.header};
-    /* overflow: hidden;
-    &.active {
-        overflow: visible;
-    } */
 `
 
 const NavContent = styled.div`
@@ -77,9 +73,6 @@ const NavMobileBurger = styled.button`
             }
             transition: .15s;
         }
-    }
-    &:focus {
-        /* outline: none; */
     }
     &:hover {
         span {

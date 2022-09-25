@@ -2,7 +2,19 @@ import React, { FC } from 'react';
 import styled, {css} from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const BtnWrapper = styled(Link)<IBtn>`
+
+interface IBtn {
+    background: string
+    color: string
+    children?: React.ReactElement | string
+    after: string
+    to: string
+    className?: string
+    margin?: string
+    $nobg?: boolean
+}
+
+export const Btn = styled(Link)<IBtn>`
     background: rgb(${props => props.background});
     color: rgb(${props => props.color});
     font-family: "ColfaxAI",sans-serif;
@@ -16,7 +28,7 @@ const BtnWrapper = styled(Link)<IBtn>`
     position: relative;
     width: max-content;
     text-align: center;
-    ${props => props.nobg && css`
+    ${props => props.$nobg && css`
         padding: 10px 5px;
     `}
     ${props => props.margin && css`
@@ -45,24 +57,3 @@ const BtnWrapper = styled(Link)<IBtn>`
         padding: 8px ${props => props.after !== '' ? '31px' : '16px'} 8px 16px;
     }
 `
-
-interface IBtn {
-    background: string
-    color: string
-    children?: React.ReactElement | string
-    after: string
-    to: string
-    className?: string
-    margin?: string
-    nobg?: boolean
-}
-
-const Btn: FC<IBtn> = ({background, color, children, after, to, className, margin, nobg}) => {
-    return (
-        <BtnWrapper margin={margin} className={className} after={after} nobg={nobg} to={to} background={background} color={color}>
-            {children}
-        </BtnWrapper>
-    );
-};
-
-export default Btn;

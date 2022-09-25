@@ -1,8 +1,8 @@
 import { FC } from "react";
 
 import MainPage from "../pages/mainPage/MainPage";
-import ApiPage from "../pages/apiPage/ApiPageMain";
-import ApiPagePricing from "../pages/apiPage/ApiPagePricing";
+import ApiPage from "../pages/apiPages/ApiPageMain";
+import ApiPagePricing from "../pages/apiPages/ApiPagePricing";
 import ResearchPage from "../pages/researchPage/ResearchPage";
 import BlogPage from "../pages/blogPage/BlogPage";
 import AboutPage from "../pages/aboutPage/AboutPage";

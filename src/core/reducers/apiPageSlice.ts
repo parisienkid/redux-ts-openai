@@ -1,22 +1,38 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { useHttp } from '../hooks/http-hook';
 
 interface apiState {
-    pricing: number,
-    oldPricing: number,
+    statusData: string
+    pricing: IPricing[],
     tabs: {
         gpt3ActiveTab: number,
         codexActiveTab: number,
     }
 }
 
+export interface IPricing {
+    name: string,
+    addition: string,
+    price: number
+}
+
+
 const initialState: apiState = {
-    pricing: 0,
-    oldPricing: 0,
+    statusData: 'waiting',
+    pricing: [],
     tabs: {
         gpt3ActiveTab: 1,
         codexActiveTab: 1,
     }
 }
+
+export const FetchApiPricing = createAsyncThunk(
+    "api/getPricing",
+    async () => {
+        const {request} = useHttp();
+        return await request("http://localhost:3001/api")
+    }
+)
 
 const apiSlice = createSlice({
     name: 'api',
@@ -30,7 +46,13 @@ const apiSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-
+        builder
+            .addCase(FetchApiPricing.pending, state => {state.statusData = 'loading'})
+            .addCase(FetchApiPricing.fulfilled, (state, action) => {
+                state.pricing = action.payload.pricing
+                state.statusData = 'idle'
+            })
+            .addCase(FetchApiPricing.rejected, state => {state.statusData = 'error'})
     }
 })
 

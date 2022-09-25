@@ -1,0 +1,43 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "api": {
+    "pricing": [
+      {
+        "name": "Ada",
+        "addition": "Fastest",
+        "price": 0.0004
+      },
+      {
+        "name": "Babbage",
+        "addition": "",
+        "price": 0.0005
+      },
+      {
+        "name": "Curie",
+        "addition": "Fastest",
+        "price": 0.0020
+      },
+      {
+        "name": "Davinci",
+        "addition": "Most powerful",
+        "price": 0.0200
+      }
+    ]
+  }
+}

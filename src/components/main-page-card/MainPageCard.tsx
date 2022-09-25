@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Btn from '../buttons/Btn';
+import {Btn} from '../buttons/Btn';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 
