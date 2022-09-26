@@ -15,8 +15,11 @@ interface IBtn {
 }
 
 export const Btn = styled(Link)<IBtn>`
+    ${props => props.$nobg && css`
+        padding: 10px 5px;
+    `}
     background: rgb(${props => props.background});
-    color: rgb(${props => props.color});
+    color: rgba(${props => props.color});
     font-family: "ColfaxAI",sans-serif;
     font-weight: bold;
     padding: 10px ${props => props.after !== '' ? '33px' : '18px'} 10px 18px;
@@ -24,13 +27,10 @@ export const Btn = styled(Link)<IBtn>`
     border: none;
     text-transform: uppercase;
     font-size: 13.5px;
-    line-height: 13px;
+    line-height: 13.5px;
     position: relative;
     width: max-content;
     text-align: center;
-    ${props => props.$nobg && css`
-        padding: 10px 5px;
-    `}
     ${props => props.margin && css`
         margin: ${props.margin};
     `}

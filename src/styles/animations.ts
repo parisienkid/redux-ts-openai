@@ -8,3 +8,12 @@ export const typing = keyframes`
     width: 100%;
 }
 `
+
+export const opacity = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`

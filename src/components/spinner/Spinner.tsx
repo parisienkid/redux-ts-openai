@@ -8,11 +8,13 @@ const Svg = styled.svg`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    height: 30%;
+    width: auto;
 `
 
 const Spinner: React.FC = () => {
     return(
-        <Svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><g transform="translate(80,50)">
+        <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><g transform="translate(80,50)">
         <g transform="rotate(0)">
         <circle cx="0" cy="0" r="7" fill="#0a0a0a" fillOpacity="1">
         <animateTransform attributeName="transform" type="scale" begin="-1.2072434607645874s" values="1.44 1.44;1 1" keyTimes="0;1" dur="1.408450704225352s" repeatCount="indefinite"></animateTransform>

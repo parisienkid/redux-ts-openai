@@ -363,14 +363,14 @@ export const Benefits = styled.div`
     }
 `
 
-export const BenifitsItem = styled.div`
+export const BenefitsItem = styled.div`
     display: grid;
     grid-template-columns: 1fr 100fr;
     grid-template-rows: 1fr 2fr;
     grid-row-gap: 20px;
 `
 
-export const BenifitsIcon = styled.span`
+export const BenefitsIcon = styled.span`
     font-family: IconsAI;
     display: inline-block;
     font-size: 28px;
@@ -513,21 +513,21 @@ const ApiPage: FC = () => {
                         </TabsHeadWrapper>
                     </Tabs>
                     <Benefits>
-                        <BenifitsItem>
-                            <BenifitsIcon>lightning</BenifitsIcon>
+                        <BenefitsItem>
+                            <BenefitsIcon>lightning</BenefitsIcon>
                             <h3>Fast</h3>
                             <p>Our advanced inference infrastructure provides extremely short response times.</p>
-                        </BenifitsItem>
-                        <BenifitsItem>
-                            <BenifitsIcon>expand</BenifitsIcon>
+                        </BenefitsItem>
+                        <BenefitsItem>
+                            <BenefitsIcon>expand</BenefitsIcon>
                             <h3>Scalable</h3>
                             <p>We can handle high volume requests that scale with your needs.</p>
-                        </BenifitsItem>
-                        <BenifitsItem>
-                            <BenifitsIcon>fork</BenifitsIcon>
+                        </BenefitsItem>
+                        <BenefitsItem>
+                            <BenefitsIcon>fork</BenefitsIcon>
                             <h3>Flexible</h3>
                             <p>Easy to use and flexible enough to make machine learning teams more productive.</p>
-                        </BenifitsItem>
+                        </BenefitsItem>
                     </Benefits>
                </BuildingWrapper>
             </Container>

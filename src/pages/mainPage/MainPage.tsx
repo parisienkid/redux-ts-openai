@@ -11,6 +11,8 @@ import MainPageCard from '../../components/main-page-card/MainPageCard';
 const dalleImage = require('../../assets/images/outpainting-home-right-optimized.jpeg')
 const jellyfishImage = require('../../assets/images/jellyfish-some-overlay-optimized.jpeg')
 
+
+
 const MainPageWrapper = styled.div`
     height: calc(100vh - ${({theme}) => theme.sizes.default.header.height}px);
     background-color: rgb( ${({theme}) => theme.colors.header});
