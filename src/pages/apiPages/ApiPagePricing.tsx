@@ -13,7 +13,7 @@ import { IPricing } from '../../core/reducers/apiPageSlice';
 import ApiHeader from './components/ApiHeader';
 import Container from '../../components/container/Container';
 
-import { ApiPageWrapper, StyledLink, DocsBtns, BenefitsIcon, Benefits, BenefitsItem, ApiIntro } from './ApiPageMain';
+import { ApiPageWrapper, StyledLink, DocsBtns, BenefitsIcon, Benefits, BenefitsItem, ApiIntro, SilverComponent, SilverComponentContent } from './ApiPageMain';
 
 
 
@@ -70,6 +70,26 @@ const InfoBlock = styled.div`
     }
 `
 
+const InfoLink = styled.a`
+    margin-left: 0 !important;
+    color: rgb(0,0,0);
+    display: inline-block;
+    position: relative; 
+    &:hover {
+        color: rgba(0,0,0,.6);
+    }
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 1px;
+        left: 0;
+        bottom: 4px;
+        width: 100%;
+        background-color: rgba(0,0,0,.5);
+    }
+`
+
 interface IPricingTableProps {
     col?: string
     row?: string
@@ -82,18 +102,22 @@ const PricingTable = styled.div<IPricingTableProps>`
     grid-row-gap: 2px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: repeat(5, 35px);
+    ${props => props.col && css`
+        grid-template-columns: ${props.col};
+    `}
+    ${props => props.row && css`
+        grid-template-rows: ${props.row};
+    `}
 `
 
-const TableTitle = styled.div`
-    font-family: ColfaxAI,Helvetica,sans-serif;
-    font-weight: bold;
-    font-size: 12px;
-    padding: 3px 7px;
-`
 
-const TableDescr = styled.div`
+const InfoDescr = styled.div`
     width: 100%;
     margin-right: 200px;
+`
+
+const InfoMain = styled.div`
+    width: 100%;
 `
 
 interface ICellPricerops {
@@ -117,7 +141,54 @@ const Cell = styled.div<ICellPricerops>`
 `
 
 const CellPrice = styled.span`
+    display: inline-block;
+    position: relative;
+    &:after {
+        display: block;
+        content: '/  1K tokens';
+        font-size: 12px;
+        color: rgba(0,0,0,.6);
+        position: absolute;
+        right: -65px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+`
 
+const Questions = styled.div`
+    background-color: rgba(${({theme}) => theme.colors.constants.silver});
+    padding: 80px;
+`
+
+const QuestionWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    h2 {
+        width: 100%;
+        text-align: left;
+    }
+`
+
+const QuestionsTable = styled.div`
+    margin: 40px auto 0 auto;
+    width: 100%;
+`
+
+const Question = styled.div`
+    border-top: 1px solid rgba(0,0,0,.1);
+    position: relative;
+    font-family: ColfaxAI,Helvetica,sans-serif;
+    span {
+        font-weight: bold;
+        display: inline-block;
+        padding: 20px 0;
+        font-size: .8rem;
+        width: 100%;
+        position: relative;
+    }
 `
 
 
@@ -192,55 +263,82 @@ const ApiPagePricing: FC = () => {
                     </BenefitsItem>
                 </BenefitsPricing>
                 <InfoBlock>
-                    <TableDescr>
+                    <InfoDescr>
                         <h3>Fine-tuned models</h3>
-                        <p>Create your own custom models by fine-tuning our base models with your training data. Once you fine-tune a model, you’ll be billed only for the tokens you use in requests to that model.</p>
+                        <p>Create your own custom models by <InfoLink href="#">fine-tuning</InfoLink> our base models with your training data. Once you fine-tune a model, you’ll be billed only for the tokens you use in requests to that model.</p>
                         <Btn background='inherit' after='↓' color="0,0,0,.6" to="#" $nobg>LEARN MORE</Btn>
-                    </TableDescr>
-                    <PricingTable>
-                        <Cell bold>MODEL</Cell>
-                        <Cell bold>TRAINING</Cell>
-                        <Cell bold>USAGE</Cell>
-                        <Cell silver>Ada</Cell>
-                        <Cell silver>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[0].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
-                        <Cell silver></Cell>
-                        <Cell>Babbage</Cell>
-                        <Cell>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[1].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
-                        <Cell></Cell>
-                        <Cell silver>Curie</Cell>
-                        <Cell silver>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[2].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
-                        <Cell silver></Cell>
-                        <Cell>Davinci</Cell>
-                        <Cell>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[3].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
-                        <Cell></Cell>
-                    </PricingTable>
+                    </InfoDescr>
+                    <InfoMain>
+                        <PricingTable>
+                            <Cell bold>MODEL</Cell>
+                            <Cell bold>TRAINING</Cell>
+                            <Cell bold>USAGE</Cell>
+                            <Cell silver>Ada</Cell>
+                            <Cell silver>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[0].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
+                            <Cell silver>{setContent(statusData, <CellPrice>${pricing.length > 1 ? (+pricing[0].price * 4).toFixed(4) : '0'}</CellPrice>)}</Cell>
+                            <Cell>Babbage</Cell>
+                            <Cell>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[1].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
+                            <Cell>{setContent(statusData, <CellPrice>${pricing.length > 1 ? (+pricing[1].price * 4).toFixed(4) : '0'}</CellPrice>)}</Cell>
+                            <Cell silver>Curie</Cell>
+                            <Cell silver>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[2].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
+                            <Cell silver>{setContent(statusData, <CellPrice>${pricing.length > 1 ? (+pricing[2].price * 4).toFixed(4) : '0'}</CellPrice>)}</Cell>
+                            <Cell>Davinci</Cell>
+                            <Cell>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[3].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
+                            <Cell>{setContent(statusData, <CellPrice>${pricing.length > 1 ? (+pricing[3].price * 4).toFixed(4) : '0'}</CellPrice>)}</Cell>
+                        </PricingTable>
+                    </InfoMain>
                 </InfoBlock>
                 <InfoBlock>
-                    <TableDescr>
+                    <InfoDescr>
                         <h3>Embedding models</h3>
-                        <p>Build advanced search, clustering, topic modeling, and classification functionality with our embeddings offering.</p>
-                    </TableDescr>
-                    <PricingTable>
-                        <Cell bold>MODEL</Cell>
-                        <Cell bold>USAGE</Cell>
-                        <Cell silver>Ada</Cell>
-                        <Cell silver></Cell>
-                        <Cell>Babbage</Cell>
-                        <Cell></Cell>
-                        <Cell silver>Curie</Cell>
-                        <Cell silver></Cell>
-                        <Cell>Davinci</Cell>
-                        <Cell></Cell>
-                    </PricingTable>
+                        <p>Build advanced search, clustering, topic modeling, and classification functionality with our <InfoLink href="#">embeddings</InfoLink> offering.</p>
+                    </InfoDescr>
+                    <InfoMain>
+                        <PricingTable col="1fr 2fr">
+                            <Cell bold>MODEL</Cell>
+                            <Cell bold>USAGE</Cell>
+                            <Cell silver>Ada</Cell>
+                            <Cell silver>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[0].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
+                            <Cell>Babbage</Cell>
+                            <Cell>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[1].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
+                            <Cell silver>Curie</Cell>
+                            <Cell silver>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[2].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
+                            <Cell>Davinci</Cell>
+                            <Cell>{setContent(statusData, <CellPrice>${pricing.length > 1 ? pricing[3].price.toFixed(4) : '0'}</CellPrice>)}</Cell>
+                        </PricingTable>
+                    </InfoMain>
                 </InfoBlock>
                 <InfoBlock>
-                    <TableDescr>
+                    <InfoDescr>
                         <h3>Usage quotas</h3>
-                        <p>Build advanced search, clustering, topic modeling, and classification functionality with our embeddings offering.</p>
-                    </TableDescr>
+                    </InfoDescr>
+                    <InfoMain>
+                        <p>Because this technology is new, we also want to make sure that rollouts are done responsibly. When you sign up, you’ll be granted an initial spend limit, or quota, and we’ll increase that limit over time as you build a track record with your application.</p>
+                        <p>If you need more tokens, you can always request a quota increase. When you’re ready to go live, you’ll submit a <InfoLink href="#">Pre-launch Review Request</InfoLink> which will also cover any additional quota increase requests.</p>
+                    </InfoMain>
                 </InfoBlock>
-                
             </Container>
+            <Questions>
+                <Container>
+                    <QuestionWrapper>
+                        <h2>Frequently Asked Questions</h2>
+                        <QuestionsTable>
+                            <Question><span>What’s a token?</span></Question>
+                            <Question><span>What’s a token?</span></Question>
+                            <Question><span>What’s a token?</span></Question>
+                            <Question><span>What’s a token?</span></Question>
+                        </QuestionsTable>
+                    </QuestionWrapper>
+                </Container>
+            </Questions>
+            <SilverComponent inherit padding='120px 0'>
+                <Container>
+                    <SilverComponentContent center direction='column'>
+                        <h2>Get started with OpenAI’s powerful language and code generation models.</h2>
+                        <Btn margin="40px auto 0 auto" to="/" background='0,0,0' color='255,255,255' after=''>get started</Btn>
+                    </SilverComponentContent>
+                </Container>
+            </SilverComponent>
         </ApiPageWrapper>
     );
 };
@@ -271,6 +369,7 @@ const ModelCardTitle = styled.div`
 const ModelCardPrice = styled.div`
     font-size: 1.2rem;
     position: relative;
+    font-family: ColfaxAI,Helvetica,sans-serif;
     &:after {
         display: block;
         content: '/1K tokens';

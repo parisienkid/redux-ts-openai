@@ -108,11 +108,15 @@ const BuildingWrapper = styled.div`
 
 interface ISilverComponent {
     padding: string;
+    inherit?: boolean
 }
 
-const SilverComponent = styled.div<ISilverComponent>`
+export const SilverComponent = styled.div<ISilverComponent>`
     background-color: rgba(${({theme}) => theme.colors.constants.silver});
     padding: ${props => props.padding};
+    ${props => props.inherit && css`
+        background-color: inherit;
+    `}
     @media ${({theme}) => theme.media.extraLarge} {
         padding: 80px 0;
     }
@@ -123,7 +127,7 @@ interface ISilverComponentContent {
     center?: boolean
 }
 
-const SilverComponentContent = styled.div<ISilverComponentContent>`
+export const SilverComponentContent = styled.div<ISilverComponentContent>`
     display: flex;
     flex-direction: ${props => props.direction};
     width: 100%;
