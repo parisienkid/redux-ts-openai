@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import {Btn} from '../buttons/Btn';
 import styled from 'styled-components';
+import { RouterBtn } from '../buttons/Btn';
 import { Link } from 'react-router-dom'
 
 interface ICardWrapper {
@@ -88,7 +88,7 @@ const MainPageCard: FC<IMainPage> = ({img, date, title, to}) => {
             <CardContent>
                 <CardDate>{date}</CardDate>
                 <CardTitle to={to}>{title}</CardTitle>
-                <Btn after='▻' background='255, 255, 255' to={to} color='0, 0, 0'>Read now</Btn>
+                <RouterBtn after='▻' background='255, 255, 255' to={to} color='0, 0, 0'>Read now</RouterBtn>
             </CardContent>
         </CardWrapper>
     );

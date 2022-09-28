@@ -1,8 +1,7 @@
 import { FC, useRef } from "react"
 import styled from "styled-components"
 import Container from "../../../components/container/Container"
-import { StyledLink } from "../ApiPageMain"
-import {Btn} from "../../../components/buttons/Btn"
+import {RouterBtn, DefaultBtn, StyledRouterBtn, StyledDefaultBtn} from '../../../components/buttons/Btn';
 import ApiPage from "../ApiPageMain"
 import { Link } from "react-router-dom"
 import { useLocation } from 'react-router-dom';
@@ -178,14 +177,14 @@ const ApiHeader: FC = () => {
                             <span ref={secondSpan} ></span>
                         </NavMobileBurger>        
                         <NavLinks>
-                            <StyledLink className={`${pathname === "/api" ? "active" : ""}`} to="/api" background='inherit' color='0,0,0' after=''>overview</StyledLink>
-                            <StyledLink className={`${pathname === "/api/pricing" ? "active" : ""}`} to="/api/pricing" background='inherit' color='0,0,0' after=''>pricing</StyledLink>
-                            <StyledLink to="/" background='inherit' color='0,0,0' after='↗'>docs</StyledLink>
-                            <StyledLink to="/" background='inherit' color='0,0,0' after='↗'>examples</StyledLink>
+                            <StyledRouterBtn className={`${pathname === "/api" ? "active" : ""}`} to="/api" background='inherit' color='0,0,0' after=''>overview</StyledRouterBtn>
+                            <StyledRouterBtn className={`${pathname === "/api/pricing" ? "active" : ""}`} to="/api/pricing" background='inherit' color='0,0,0' after=''>pricing</StyledRouterBtn>
+                            <StyledDefaultBtn target="_blank" href="https://beta.openai.com/docs/" background='inherit' color='0,0,0' after='↗'>docs</StyledDefaultBtn>
+                            <StyledDefaultBtn target="_blank" href="https://beta.openai.com/examples/" background='inherit' color='0,0,0' after='↗'>examples</StyledDefaultBtn>
                         </NavLinks>
                         <NavLogin>
-                            <StyledLink to="/" background='inherit' color='0,0,0' after=''>log in</StyledLink>
-                            <Btn to="/" background='0,0,0' color='255,255,255' after=''>sign up</Btn>
+                            <StyledRouterBtn to="/" background='inherit' color='0,0,0' after=''>log in</StyledRouterBtn>
+                            <StyledRouterBtn to="/" background='0,0,0' color='255,255,255' after=''>sign up</StyledRouterBtn>
                         </NavLogin>
                     </NavContent>
                 </Container>
@@ -194,8 +193,8 @@ const ApiHeader: FC = () => {
                 <Container>
                     <MobileLink className={`${pathname === "/api" ? "active" : ""}`} to="/api">overview</MobileLink>
                     <MobileLink className={`${pathname === "/api/pricing" ? "active" : ""}`} to="/api/pricing">pricing</MobileLink>
-                    <MobileLink to="/">docs <span>↗</span></MobileLink>
-                    <MobileLink to="/">examples <span>↗</span></MobileLink>
+                    <MobileLink to="https://beta.openai.com/docs/introduction">docs <span>↗</span></MobileLink>
+                    <MobileLink to="https://beta.openai.com/docs/introduction">examples <span>↗</span></MobileLink>
                 </Container>
             </NavMobileMenu>
         </>

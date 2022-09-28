@@ -4,7 +4,8 @@ import { RootState } from '../../core/store';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { apiTheme } from '../../core/theme/theme';
 import styled, { css } from 'styled-components';
-import {Btn} from '../../components/buttons/Btn';
+import {RouterBtn, DefaultBtn, StyledRouterBtn, StyledDefaultBtn} from '../../components/buttons/Btn';
+
 import { FetchApiPricing } from '../../core/reducers/apiPageSlice';
 import { AppDispatch } from '../../core/store';
 import setContent from '../../core/utils/setSomeContent';
@@ -13,7 +14,7 @@ import { IPricing } from '../../core/reducers/apiPageSlice';
 import ApiHeader from './components/ApiHeader';
 import Container from '../../components/container/Container';
 
-import { ApiPageWrapper, StyledLink, DocsBtns, BenefitsIcon, Benefits, BenefitsItem, ApiIntro, SilverComponent, SilverComponentContent } from './ApiPageMain';
+import { ApiPageWrapper, DocsBtns, BenefitsIcon, Benefits, BenefitsItem, ApiIntro, SilverComponent, SilverComponentContent } from './ApiPageMain';
 
 
 
@@ -214,8 +215,11 @@ const QuestionTab = styled.div`
 const QuestionIcon = styled.div`
     font-family: IconsAI;
     position: absolute;
-    top: 50%;
+    top: 0;
     right: 0;
+    &.active {
+        transform: rotate(180deg);
+    }
 `
 
 
@@ -238,8 +242,10 @@ const ApiPagePricing: FC = () => {
         const el = e.target as HTMLSpanElement;
         if (el.getAttribute('data-question') && el) {
             const tab = el.nextElementSibling as HTMLElement;
-            if (tab) {
+            const arrow = el.querySelector(QuestionIcon);
+            if (tab && arrow) {
                 tab.classList.toggle('active');
+                arrow.classList.toggle('active');
             }
         }
     }
@@ -255,8 +261,8 @@ const ApiPagePricing: FC = () => {
                     <h1>Pricing</h1>
                     <h4>Simple and flexible. Only pay for what you use.</h4>
                     <DocsBtns margin="30px auto 0 auto">
-                        <Btn to="/" background="0,0,0" color="255,255,255" after="">get started</Btn>
-                        <StyledLink $nobg to="/" background='inherit' color='0,0,0' after=''>contact sales</StyledLink>
+                        <RouterBtn to="/" background="0,0,0" color="255,255,255" after="">get started</RouterBtn>
+                        <StyledRouterBtn $nobg to="/" background='inherit' color='0,0,0' after=''>contact sales</StyledRouterBtn>
                     </DocsBtns>
                 </Container>
             </ApiIntro>
@@ -279,7 +285,7 @@ const ApiPagePricing: FC = () => {
                     </ModelsCards>
                     <p>Multiple models, each with different capabilities and price points. <strong>Ada</strong> is the fastest model, while <strong>Davinci</strong> is the most powerful.</p>
                     <p>Prices are per 1,000 tokens. You can think of tokens as pieces of words, where 1,000 tokens is about 750 words. This paragraph is 35 tokens.</p>
-                    <Btn background='inherit' after='↓' color="0,0,0,.6" to="#" $nobg>LEARN MORE</Btn>
+                    <RouterBtn background='inherit' after='↓' color="0,0,0,.6" to="#" $nobg>LEARN MORE</RouterBtn>
                 </Container>
             </ModelsWrapper>
             <Container>
@@ -304,7 +310,7 @@ const ApiPagePricing: FC = () => {
                     <InfoDescr>
                         <h3>Fine-tuned models</h3>
                         <p>Create your own custom models by <InfoLink href="#">fine-tuning</InfoLink> our base models with your training data. Once you fine-tune a model, you’ll be billed only for the tokens you use in requests to that model.</p>
-                        <Btn background='inherit' after='↓' color="0,0,0,.6" to="#" $nobg>LEARN MORE</Btn>
+                        <RouterBtn background='inherit' after='↓' color="0,0,0,.6" to="#" $nobg>LEARN MORE</RouterBtn>
                     </InfoDescr>
                     <InfoMain>
                         <PricingTable>
@@ -363,7 +369,7 @@ const ApiPagePricing: FC = () => {
                         <QuestionsTable onClick={onQuestionClick}>
                             <Question >
                                 <span data-question>What’s a token?
-                                <QuestionIcon>navigateup</QuestionIcon>
+                                <QuestionIcon>navigatedown</QuestionIcon>
                                 </span>
                                 <QuestionTab>
                                     <p>You can think of tokens as pieces of words used for natural language processing. For English text, 1 token is approximately 4 characters or 0.75 words. As a point of reference, the collected works of Shakespeare are about 900,000 words or 1.2M tokens.</p>
@@ -371,44 +377,58 @@ const ApiPagePricing: FC = () => {
                                 </QuestionTab>
                             </Question>
                             <Question >
-                                <span data-question >Which model should I use?</span>
+                                <span data-question >Which model should I use?
+                                <QuestionIcon>navigatedown</QuestionIcon>
+                                </span>
                                 <QuestionTab>
                                     <p>While Davinci is generally the most capable model, the other models can perform certain tasks extremely well and, in some cases, significantly faster. They also have cost advantages. For example, Curie can perform many of the same tasks as Davinci, but faster and for 1/10th the cost. We encourage developers to experiment to find the model that’s most efficient for your application. Visit our documentation for a more detailed <InfoLink target="_blank" href="https://beta.openai.com/docs/models"> model comparison</InfoLink>.</p>
                                 </QuestionTab>
                             </Question>
                             <Question >
-                                <span data-question >How will I know how many tokens I’ve used each month?</span>
+                                <span data-question >How will I know how many tokens I’ve used each month?
+                                <QuestionIcon>navigatedown</QuestionIcon>
+                                </span>
                                 <QuestionTab>
                                     <p>Log in to your account to view your <InfoLink target="_blank" href="https://beta.openai.com/account/usage">usage tracking dashboard</InfoLink>. This page will show you how many tokens you’ve used during the current and past billing cycles.</p>
                                 </QuestionTab>
                             </Question>
                             <Question >
-                                <span data-question >How can I manage my spending?</span>
+                                <span data-question >How can I manage my spending?
+                                <QuestionIcon>navigatedown</QuestionIcon>
+                                </span>
                                 <QuestionTab>
                                     <p>You can configure a usage <strong>hard limit</strong> in your billing settings, after which we’ll stop serving your requests. You may also configure a <strong>soft limit</strong> to receive an email alert once you pass a certain usage threshold.</p>
                                 </QuestionTab>
                             </Question>
                             <Question >
-                                <span data-question >Does Playground usage count against my quota?</span>
+                                <span data-question >Does Playground usage count against my quota?
+                                <QuestionIcon>navigatedown</QuestionIcon>
+                                </span>
                                 <QuestionTab>
                                     <p>Yes, we treat Playground usage the same as regular API usage.</p>
                                 </QuestionTab>
                             </Question>
                             <Question >
-                                <span data-question >How is pricing calculated for Completions?</span>
+                                <span data-question >How is pricing calculated for Completions?
+                                <QuestionIcon>navigatedown</QuestionIcon>
+                                </span>
                                 <QuestionTab>
                                     <p><InfoLink target="_blank" href="https://beta.openai.com/docs/api-reference/completions">Completions</InfoLink> requests are billed based on the number of tokens sent in your prompt plus the number of tokens in the completion(s) returned by the API.</p>
                                 </QuestionTab>
                             </Question>
                             <Question >
-                                <span data-question >How is pricing calculated for Fine-tuning?</span>
+                                <span data-question >How is pricing calculated for Fine-tuning?
+                                <QuestionIcon>navigatedown</QuestionIcon>
+                                </span>
                                 <QuestionTab>
                                     <p>There are two components to fine-tuning pricing: training and usage.</p>
                                     <p>When training a fine-tuned model, the total tokens used will be billed according to our <InfoLink href="#training rates">training rates</InfoLink> (50% of our base model rates). Note that the number of training tokens depends on the number of tokens in your training dataset <strong>and</strong> your chosen number of <InfoLink>training epochs</InfoLink>. The default number of epochs is 4.</p>
                                 </QuestionTab>
                             </Question>
                             <Question >
-                                <span data-question >How is pricing calculated for Classifications?</span>
+                                <span data-question >How is pricing calculated for Classifications?
+                                <QuestionIcon>navigatedown</QuestionIcon>
+                                </span>
                                 <QuestionTab>
                                     <p><InfoLink target="_blank" href="https://beta.openai.com/docs/api-reference/classifications">Classifications</InfoLink> requests are billed based on the number of tokens in the inputs you provide. Internally this endpoint makes calls to the search and completions endpoints, so its costs are a function of the costs of those endpoints.</p>
                                     <p>The actual cost per token is based upon which <InfoLink target="_blank" href="https://beta.openai.com/docs/models/overview">models</InfoLink> you select to perform both the <InfoLink  target="_blank" href="https://beta.openai.com/docs/api-reference/searches">search</InfoLink> and the <InfoLink  target="_blank" href="https://beta.openai.com/docs/api-reference/completions">completion</InfoLink>, which are controlled by the search_model and model parameters respectively.</p>
@@ -418,7 +438,9 @@ const ApiPagePricing: FC = () => {
                                 </QuestionTab>
                             </Question>
                             <Question >
-                                <span data-question >How is pricing calculated for Search?</span>
+                                <span data-question >How is pricing calculated for Search?
+                                <QuestionIcon>navigatedown</QuestionIcon>
+                                </span>
                                 <QuestionTab>
                                     <p><InfoLink target="_blank" href="https://beta.openai.com/docs/api-reference/searches">Search</InfoLink> requests are billed based on the total number of tokens in the documents you provide, plus the tokens in the query and the tokens needed to instruct the model on how to perform the operation. The API also uses a reference document to generate a response, adding 1 to the total document count. These tokens are billed at the per-engine rates outlined at the top of this page.</p>
                                     <p>You may provide a file containing the documents to search over, or you can explicitly specify documents in your request. Providing a file makes search faster and more cost effective when the number of documents you’d like to search over is greater than max_rerank. In this scenario, costs are largely based on the number of documents reranked (controlled by max_rerank) and the total length of those documents. If you pass documents in your request instead, costs are based on the total length of all those documents.</p>
@@ -426,7 +448,9 @@ const ApiPagePricing: FC = () => {
                                 </QuestionTab>
                             </Question>
                             <Question >
-                                <span data-question >How is pricing calculated for Answers?</span>
+                                <span data-question >How is pricing calculated for Answers?
+                                <QuestionIcon>navigatedown</QuestionIcon>
+                                </span>
                                 <QuestionTab>
                                     <p><InfoLink target="_blank" href="https://beta.openai.com/docs/api-reference/answers">Answers</InfoLink> requests are billed based on the number of tokens in the inputs you provide and the answer that the model generates. Internally, this endpoint makes calls to the Search and <InfoLink target="_blank" href="https://openai.com/api/pricing/#faq-azure-availability">Completions</InfoLink> APIs, so its costs are a function of the costs of those endpoints.</p>
                                     <p>The actual cost per token is based upon which models you select to perform both the search and the completion, which are controlled by the search_model and model parameters respectively.</p>
@@ -434,13 +458,17 @@ const ApiPagePricing: FC = () => {
                                 </QuestionTab>
                             </Question>
                             <Question >
-                                <span data-question >Is there an SLA on the various models?</span>
+                                <span data-question >Is there an SLA on the various models?
+                                <QuestionIcon>navigatedown</QuestionIcon>
+                                </span>
                                 <QuestionTab>
                                     <p>We will be publishing an SLA soon. In the meantime you can visit our Status page to monitor service availability and view historical uptime. If your company or application has specific requirements, please contact our sales team.</p>
                                 </QuestionTab>
                             </Question>
                             <Question >
-                                <span data-question >Is the API available on Microsoft Azure?</span>
+                                <span data-question >Is the API available on Microsoft Azure?
+                                <QuestionIcon>navigatedown</QuestionIcon>
+                                </span>
                                 <QuestionTab>
                                     <p>Yes. Azure customers can access the OpenAI API on Azure with the compliance, regional support, and enterprise-grade security that Azure offers. <InfoLink target="_blank" href="https://azure.microsoft.com/en-us/products/cognitive-services/openai-service/#overview">Learn more</InfoLink> or contact <InfoLink href="sales@openai.com">sales@openai.com</InfoLink>.</p>
                                 </QuestionTab>
@@ -453,7 +481,7 @@ const ApiPagePricing: FC = () => {
                 <Container>
                     <SilverComponentContent center direction='column'>
                         <h2>Get started with OpenAI’s powerful language and code generation models.</h2>
-                        <Btn margin="40px auto 0 auto" to="/" background='0,0,0' color='255,255,255' after=''>get started</Btn>
+                        <RouterBtn margin="40px auto 0 auto" to="/" background='0,0,0' color='255,255,255' after=''>get started</RouterBtn>
                     </SilverComponentContent>
                 </Container>
             </SilverComponent>
