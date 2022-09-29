@@ -598,7 +598,7 @@ const ApiCard: FC<IApiCard> = ({data}) => {
     return (
         <>
             <ModelCardTitle>{data.name}{data.addition !== '' ? (<span>{data.addition}</span>) : ''}</ModelCardTitle>
-            <ModelCardPrice>${data.price}</ModelCardPrice>
+            <ModelCardPrice>${data.price.toFixed(4)}</ModelCardPrice>
         </>
     );
 };
