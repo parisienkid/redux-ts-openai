@@ -8,7 +8,7 @@ import {RouterBtn, DefaultBtn, StyledRouterBtn, StyledDefaultBtn} from '../../co
 import Container from '../../components/container/Container';
 import ApiTabs from './components/ApiTabsHeader';
 import ApiTabsContent from './components/ApiTabsContent';
-import ApiHeader from './components/ApiHeader';
+import ApiHeader from './components/api-header/ApiHeader';
 
 const copilot = require('../../assets/images/copilot.png');
 const keeper = require('../../assets/images/keeper.png');
@@ -179,12 +179,6 @@ const SilverInfo = styled.div`
     }
 `
 
-const GroupBtns = styled.div`
-    display: flex;
-    width: auto;
-`
-
-
 interface ICodeBlock {
     padding: string
     margin: string
@@ -339,6 +333,15 @@ export const Benefits = styled.div`
         line-height: 27.5px;
         transform: translateY(2px);
         padding-left: 15px;
+        @media ${({theme}) => theme.media.large} {
+            font-size: 24px;
+        }
+        @media ${({theme}) => theme.media.medium} {
+            font-size: 20px;
+        }
+        @media ${({theme}) => theme.media.small} {
+            font-size: 17px;
+        }
     }
     p {
         grid-column-start: 1;

@@ -11,7 +11,7 @@ import { AppDispatch } from '../../core/store';
 import setContent from '../../core/utils/setSomeContent';
 import { IPricing } from '../../core/reducers/apiPageSlice';
 
-import ApiHeader from './components/ApiHeader';
+import ApiHeader from './components/api-header/ApiHeader';
 import Container from '../../components/container/Container';
 
 import { ApiPageWrapper, DocsBtns, BenefitsIcon, Benefits, BenefitsItem, ApiIntro, SilverComponent, SilverComponentContent } from './ApiPageMain';
@@ -27,6 +27,9 @@ const ModelsWrapper = styled.div`
     }
     a {
         margin-left: -18px;
+        @media ${({theme}) => theme.media.medium} {
+            margin-left: -16px;
+        }
     }
 `
 
@@ -52,14 +55,22 @@ const ModelsCards = styled.div`
 const BenefitsPricing = styled(Benefits)`
     margin-top: 100px;
     margin-bottom: 100px;
+    @media ${({theme}) => theme.media.large} {
+        margin: 60px 0;
+    }
+    @media ${({theme}) => theme.media.medium} {
+        margin: 40px 0;
+    }
 `
 
 
 
 const InfoBlock = styled.div`
     border-top: 1px solid rgba(0,0,0,.1);
-    display: flex;
     padding: 75px 0 100px 0;
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    grid-column-gap: 150px;
     h3 {
         margin-bottom: 30px;
     }
@@ -68,6 +79,24 @@ const InfoBlock = styled.div`
     }
     a {
         margin-left: -18px;
+        @media ${({theme}) => theme.media.medium} {
+            margin-left: -16px;
+        }
+    }
+    @media ${({theme}) => theme.media.extraLarge} {
+        grid-column-gap: 100px;
+    }
+    @media ${({theme}) => theme.media.large} {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        grid-row-gap: 50px;
+        padding: 70px 0;
+    }
+    @media ${({theme}) => theme.media.medium} {
+        padding: 60px 0;
+    }
+    @media ${({theme}) => theme.media.medium} {
+        padding: 40px 0;
     }
 `
 
@@ -109,12 +138,14 @@ const PricingTable = styled.div<IPricingTableProps>`
     ${props => props.row && css`
         grid-template-rows: ${props.row};
     `}
+    @media ${({theme}) => theme.media.small} {
+        grid-template-rows: repeat(5, 50px);
+    }
 `
 
 
 const InfoDescr = styled.div`
     width: 100%;
-    margin-right: 200px;
 `
 
 const InfoMain = styled.div`
@@ -153,12 +184,16 @@ const CellPrice = styled.span`
         right: -65px;
         top: 50%;
         transform: translateY(-50%);
+        @media ${({theme}) => theme.media.small} {
+            left: 0;
+            transform: none;
+        }
     }
 `
 
 const Questions = styled.div`
     background-color: rgba(${({theme}) => theme.colors.constants.silver});
-    padding: 80px;
+    padding: 80px 0;
 `
 
 const QuestionWrapper = styled.div`
@@ -170,6 +205,9 @@ const QuestionWrapper = styled.div`
     h2 {
         width: 100%;
         text-align: left;
+    }
+    @media ${({theme}) => theme.media.medium} {
+        max-width: 90%;
     }
 `
 
@@ -196,6 +234,12 @@ const Question = styled.div`
         position: relative;
         line-height: 60px;
         cursor: pointer;
+        @media ${({theme}) => theme.media.medium} {
+            font-size: .7rem;
+        }
+        @media ${({theme}) => theme.media.small} {
+            font-size: .65rem;
+        }
     }
 `
 
@@ -206,6 +250,12 @@ const QuestionTab = styled.div`
     p {
         margin-bottom: 30px;
         font-size: .8rem;
+        @media ${({theme}) => theme.media.medium} {
+            font-size: .7rem;
+        }
+        @media ${({theme}) => theme.media.small} {
+            font-size: .65rem;
+        }
     }
     &.active {
         display: block;
@@ -500,6 +550,9 @@ const ModelCard = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     height: 215px;
+    @media ${({theme}) => theme.media.small} {
+        height: 170px;
+    }
 `
 
 const ModelCardTitle = styled.div`
@@ -509,6 +562,12 @@ const ModelCardTitle = styled.div`
         display: inline-block;
         margin-left: 10px;
         color: rgba(0,0,0,.6);
+        @media ${({theme}) => theme.media.medium} {
+            font-size: .5rem;
+        }
+    }
+    @media ${({theme}) => theme.media.small} {
+        font-size: .7rem;
     }
 `
 
@@ -525,6 +584,9 @@ const ModelCardPrice = styled.div`
         right: -75px;
         top: 50%;
         transform: translateY(-50%);
+    }
+    @media ${({theme}) => theme.media.medium} {
+        font-size: .8rem;
     }
 `
 

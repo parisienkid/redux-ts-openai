@@ -1,11 +1,11 @@
 import { FC } from "react";
 
-import MainPage from "../pages/mainPage/MainPage";
-import ApiPage from "../pages/apiPages/ApiPageMain";
-import ApiPagePricing from "../pages/apiPages/ApiPagePricing";
-import ResearchPage from "../pages/researchPage/ResearchPage";
-import BlogPage from "../pages/blogPage/BlogPage";
-import AboutPage from "../pages/aboutPage/AboutPage";
+import MainPage from "../pages/main-page/MainPage";
+import ApiPage from "../pages/api-pages/ApiPageMain";
+import ApiPagePricing from "../pages/api-pages/ApiPagePricing";
+import ResearchPage from "../pages/research-page/ResearchPage";
+import BlogPage from "../pages/blog-page/BlogPage";
+import AboutPage from "../pages/about-page/AboutPage";
 
 import {
     Routes,

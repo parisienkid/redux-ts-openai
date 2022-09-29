@@ -1,8 +1,8 @@
 import { FC, useRef } from "react"
 import styled from "styled-components"
-import Container from "../../../components/container/Container"
-import {RouterBtn, DefaultBtn, StyledRouterBtn, StyledDefaultBtn} from '../../../components/buttons/Btn';
-import ApiPage from "../ApiPageMain"
+import Container from "../../../../components/container/Container"
+import {RouterBtn, DefaultBtn, StyledRouterBtn, StyledDefaultBtn} from '../../../../components/buttons/Btn';
+import ApiPage from "../../ApiPageMain"
 import { Link } from "react-router-dom"
 import { useLocation } from 'react-router-dom';
 
