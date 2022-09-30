@@ -28,6 +28,7 @@ const OpenaiIcon = styled.svg`
 const IconLink = styled(NavLink)`
     height: 22px;
     width: 22px;
+    fill: rgba(${({theme}) => theme.colors.headerColor});
 `
 
 const HeaderLinks = styled.div`
@@ -41,7 +42,7 @@ const HeaderLink = styled(NavLink)`
     margin-right: 44px;
     font-weight: bold;
     font-size: 13.5px;
-    color: black;
+    color: rgba(${({theme}) => theme.colors.headerColor});
     &:nth-child(4) {
         margin-right: 0;
     }

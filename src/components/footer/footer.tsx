@@ -156,7 +156,7 @@ const FooterIconLink = styled(FooterLink)`
 
 const Footer: FC = () => {
     return (
-        <FooterWrapper>
+        <FooterWrapper >
             <Container>
                 <FooterContent>
                     <FooterLogo xmlns="http://www.w3.org/2000/svg" viewBox="0 0 936 232">

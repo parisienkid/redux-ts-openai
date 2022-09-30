@@ -9,12 +9,20 @@ interface ISizes {
 }
 
 export interface ITheme {
+
+    fonts: {
+      charter: string,
+      colfax: string,
+      icons: string,
+    }
+
     colors: {
       constants: {
         silver: string
       }
       bg: string,
       header: string,
+      headerColor: string,
       footer: string,
       footerColor: string
     }

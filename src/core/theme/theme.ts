@@ -7,16 +7,25 @@ export enum ThemeEnum {
     dalle = "dalle",
     research = "research",
     blog = "blog",
-    about = "about"
+    about = "about",
+    error = "404",
   }
 
 export const baseTheme: ITheme = {
+
+    fonts: {
+        charter: 'Charter,Georgia,serif',
+        colfax: '"ColfaxAI",sans-serif',
+        icons: '"IconsAI"',
+    },
+    
     colors: {
         constants: {
             silver: '0,0,0, 0.03'
         },
         bg: '255, 255, 255',
         header: '255, 255, 255',
+        headerColor: '0,0,0',
         footer: '255, 255, 255',
         footerColor: '255, 255, 255',
     },
@@ -156,5 +165,19 @@ export const aboutTheme: DefaultTheme = {
     colors: {
         ...baseTheme.colors,
         footerColor: '0, 0, 0'
+    },
+}
+
+export const errorTheme: DefaultTheme = {
+    ...baseTheme,
+    type: ThemeEnum.error,
+
+    colors: {
+        ...baseTheme.colors,
+        bg: '0,0,0',
+        header: '0,0,0',
+        headerColor: '80, 222,102',
+        footer: '0, 0, 0',
+        footerColor: '80, 222,102',
     },
 }
