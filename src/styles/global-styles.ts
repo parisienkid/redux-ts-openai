@@ -16,6 +16,7 @@ body, html {
     font-size: 20px;
 }
 
+
 h1 {
     font-size: 2.2rem;
     font-weight: 400;
@@ -35,17 +36,17 @@ h1 {
 }
 
 h2 {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     font-weight: 400;
     line-height: 1.15;
     @media ${({theme}) => theme.media.extraLarge} {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     @media ${({theme}) => theme.media.large} {
-        font-size: 1.35rem;
+        font-size: 1.4rem;
     }
     @media ${({theme}) => theme.media.medium} {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
     }
     @media ${({theme}) => theme.media.small} {
         font-size: 1.20rem;

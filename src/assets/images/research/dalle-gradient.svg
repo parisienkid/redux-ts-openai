@@ -1,0 +1,20 @@
+<svg width="3000" height="3000" viewBox="0 0 3000 3000" style="width:100%;max-width:3000px;height:auto;filter:saturate(100%);-webkit-filter:saturate(100%)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs><style>
+    #bg {fill:#272332}
+    .rect0 {fill:url(#rg0)}.rect1 {fill:url(#rg1)}
+  </style>
+  <radialGradient id="rg0" fx="0.3630170761536413" fy="0.5">
+          <stop offset="0%" stop-color="#272332"/>
+          <stop offset="100%" stop-color="#272332" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg0" fx="0.3030153512586366" fy="0.5">
+          <stop offset="0%" stop-color="#272332"/>
+          <stop offset="100%" stop-color="#272332" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg1" fx="0.3994717996712046" fy="0.5">
+          <stop offset="0%" stop-color="#3B3B52"/>
+          <stop offset="100%" stop-color="#3B3B52" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg1" fx="0.30034377546922003" fy="0.5">
+          <stop offset="0%" stop-color="#3B3B52"/>
+          <stop offset="100%" stop-color="#3B3B52" stop-opacity="0"/>
+        </radialGradient></defs>
+  <rect id="bg" x="0" y="0" width="100%" height="100%"/><rect class="rect rect1" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.4422323925242835 1.5934694461092913) skewX(-3.498192359299801) rotate(112.20230223697533) translate(-815.4975383908403 889.5939652266959) translate(-1500 -1500)"/><rect class="rect rect0" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.5213692908480814 1.8584240208012508) skewX(-9.07732216048236) rotate(48.92904543065755) translate(-1189.2671898702542 535.1957983315812) translate(-1500 -1500)"/><rect class="rect rect1" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.520836898426546 1.3510741346544524) skewX(4.794544928322239) rotate(256.0286030851185) translate(-1070.359250043745 345.8104837484353) translate(-1500 -1500)"/><rect class="rect rect0" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.8547896390475485 1.7695523483330802) skewX(2.4599967025935108) rotate(110.61735345249349) translate(-1196.799059071655 917.9368672281272) translate(-1500 -1500)"/>
+</svg>
