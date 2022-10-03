@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { changeActiveTabCodex, changeActiveTabGPT } from '../../../core/reducers/apiPageSlice';
+import { changeActiveTabCodex, changeActiveTabGPT } from '../../../../core/reducers/apiPageSlice';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../core/store';
+import { AppDispatch } from '../../../../core/store';
 
 const TabsHeaderWrapper = styled.div`
     padding: 10px 0;

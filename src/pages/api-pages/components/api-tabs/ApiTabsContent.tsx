@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../core/store';
+import { RootState } from '../../../../core/store';
 import styled, {css} from 'styled-components';
-import { Sword, String } from '../ApiPageMain';
-import { CodeBlock } from '../ApiPageMain';
+import { Sword, String } from '../../ApiPageMain';
+import { CodeBlock } from '../../ApiPageMain';
 
 
 

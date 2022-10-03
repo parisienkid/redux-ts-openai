@@ -6,8 +6,8 @@ import styled, { css, keyframes } from 'styled-components';
 import {RouterBtn, DefaultBtn, StyledRouterBtn, StyledDefaultBtn} from '../../components/buttons/Btn';
 
 import Container from '../../components/container/Container';
-import ApiTabs from './components/ApiTabsHeader';
-import ApiTabsContent from './components/ApiTabsContent';
+import ApiTabs from './components/api-tabs/ApiTabsHeader';
+import ApiTabsContent from './components/api-tabs/ApiTabsContent';
 import ApiHeader from './components/api-header/ApiHeader';
 
 const copilot = require('../../assets/images/copilot.png');
