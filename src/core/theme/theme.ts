@@ -21,7 +21,8 @@ export const baseTheme: ITheme = {
     
     colors: {
         constants: {
-            silver: '0,0,0, 0.03'
+            silver: '0,0,0, 0.03',
+            ivory: '246, 246, 244',
         },
         bg: '255, 255, 255',
         header: '255, 255, 255',

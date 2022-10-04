@@ -1,7 +1,5 @@
 import { FC, lazy, Suspense } from "react";
 
-import Spinner from "../components/spinner/Spinner";
-
 import {
     Routes,
     Route,

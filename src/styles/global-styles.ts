@@ -130,4 +130,13 @@ a {
     }
 }
 
+.LazyLoad {
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.is-visible {
+  opacity: 1;
+}
+
 `

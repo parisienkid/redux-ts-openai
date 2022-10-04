@@ -18,7 +18,8 @@ export interface ITheme {
 
     colors: {
       constants: {
-        silver: string
+        silver: string,
+        ivory: string,
       }
       bg: string,
       header: string,
