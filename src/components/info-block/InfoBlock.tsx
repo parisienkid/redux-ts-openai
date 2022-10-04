@@ -46,25 +46,6 @@ export const InfoMain = styled.div`
     width: 100%;
 `
 
-export const InfoTitleLink = styled(Link)`
-    color: rgb(0,0,0);
-    font-size: .85rem;
-    display: block;
-    font-family: ${({theme}) => theme.fonts.colfax};
-    letter-spacing: .3px;
-    margin-left: 0 !important;
-    &:hover {
-        color: rgba(0,0,0);
-    }
-`
-
-export const InfoSubtitleLink = styled(InfoTitleLink)`
-    color: rgba(0,0,0, .5);
-    margin-top: 2px;
-    &:hover {
-        color: rgba(0,0,0, .5);
-    }
-`
 
 export const InfoLinksWrapper = styled(Link)`
     margin-bottom: 40px;

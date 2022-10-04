@@ -10,6 +10,7 @@ const Svg = styled.svg`
     transform: translate(-50%, -50%);
     height: 30%;
     width: auto;
+    max-height: 120px;
 `
 
 const Spinner: React.FC = () => {

@@ -5,6 +5,7 @@ import { researchTheme } from '../../core/theme/theme';
 import styled from 'styled-components';
 
 import Container from '../../components/container/Container';
+import { opacity } from '../../styles/animations';
 
 // const dalleGrad = require('../../assets/images/dalle-gradient.svg');
 import multimodalGrad from '../../assets/images/research/multimodal-gradient.svg';
@@ -56,11 +57,25 @@ const MItem = styled.a`
             color: rgba(0,0,0,.8)
         }
     }
+    animation: ${opacity} .5s forwards;
 `
+
+
 
 const MPicture = styled.figure`
     width: 100%;
     position: relative;
+    background-color: rgba(${({theme}) => theme.colors.constants.silver});
+    min-height: 480px;
+    @media ${({theme}) => theme.media.large} {
+        min-height: 356px;
+    }
+    @media ${({theme}) => theme.media.medium} {
+        min-height: 500px;
+    }
+    @media ${({theme}) => theme.media.small} {
+        min-height: 296px;
+    }
 `
 
 interface IMBgProps {
@@ -71,6 +86,7 @@ const MBg = styled.img<IMBgProps>`
     width: 100%;
     object-fit: cover;
     max-height: 480px;
+    background-color: rgba(${({theme}) => theme.colors.constants.silver});
 `
 
 const MVideo = styled.video`
@@ -81,6 +97,7 @@ const MVideo = styled.video`
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     box-shadow: 0 0 25px rgb(0 0 0 / 15%);
+    background-color: rgba(${({theme}) => theme.colors.constants.silver});
     @media ${({theme}) => theme.media.large} {
         max-width: 65%;
     }
@@ -93,6 +110,7 @@ const MVideo = styled.video`
 `
 
 const MImg = styled.img`
+    background-color: rgba(${({theme}) => theme.colors.constants.silver});
     max-width: 300px;
     display: block;
     position: absolute;
