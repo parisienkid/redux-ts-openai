@@ -58,7 +58,6 @@ const MItem = styled.a`
             color: rgba(0,0,0,.8)
         }
     }
-    /* animation: ${opacity} .5s forwards; */
 `
 
 
@@ -67,7 +66,7 @@ const MPicture = styled.figure`
     width: 100%;
     position: relative;
     background-color: rgba(${({theme}) => theme.colors.constants.silver});
-    min-height: 480px;
+    height: 480px;
     @media ${({theme}) => theme.media.large} {
         height: 356px;
     }
@@ -104,6 +103,10 @@ const MBg = styled.img<IMBgProps>`
     object-fit: cover;
     max-height: 480px;
     background-color: rgba(${({theme}) => theme.colors.constants.silver});
+    @media ${({theme}) => theme.media.large} {
+        height: 100%;
+        max-height: 100%;
+    }
 `
 
 const MVideo = styled.video`
@@ -115,6 +118,7 @@ const MVideo = styled.video`
     transform: translateY(-50%) translateX(-50%);
     box-shadow: 0 0 25px rgb(0 0 0 / 15%);
     background-color: rgba(${({theme}) => theme.colors.constants.silver});
+    max-height: 70%;
     @media ${({theme}) => theme.media.large} {
         max-width: 65%;
     }
@@ -135,6 +139,7 @@ const MImg = styled.img`
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     box-shadow: 0 0 25px rgb(0 0 0 / 15%);
+    max-height: 70%;
     @media ${({theme}) => theme.media.large} {
         max-width: 65%;
     }
@@ -147,21 +152,27 @@ const MImg = styled.img`
 `
 
 
-const MDescr = styled.h4`
+export const MDescr = styled.h4`
     margin-top: 10px;
     font-size: .8rem;
     line-height: 1rem;
     color: rgba(0,0,0);
     font-family: ${({theme}) => theme.fonts.colfax};
+    @media ${({theme}) => theme.media.small} {
+        font-size: .72rem;
+    }
 `
 
-const MTime = styled.time`
+export const MTime = styled.time`
     display: block;
     margin-top: 7px;
     font-size: .8rem;
     line-height: .8rem;
     color: rgba(0,0,0,.5);
     font-family: ${({theme}) => theme.fonts.colfax};
+    @media ${({theme}) => theme.media.small} {
+        font-size: .72rem;
+    }
 `
 
 

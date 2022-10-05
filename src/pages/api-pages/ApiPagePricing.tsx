@@ -68,11 +68,10 @@ const BenefitsPricing = styled(Benefits)`
 
 const InfoLink = styled.a`
     margin-left: 0 !important;
-    color: rgb(0,0,0);
     display: inline-block;
     position: relative; 
     &:hover {
-        color: rgba(0,0,0,.6);
+        opacity: .6;
     }
     &:after {
         content: '';

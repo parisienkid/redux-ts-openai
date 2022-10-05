@@ -122,9 +122,9 @@ p {
 }
 
 a {
-    color: white;
+    color: rgb(0,0,0);
     &:hover {
-        color: white;
+        color: rgb(0,0,0);
         cursor: pointer;
         text-decoration: none;
     }
@@ -132,7 +132,7 @@ a {
 
 .LazyLoad {
   opacity: 0;
-  transition: all 1s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 
 .is-visible {
