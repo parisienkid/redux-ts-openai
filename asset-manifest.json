@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/redux-ts-openai/static/css/main.273612d7.css",
-    "main.js": "/redux-ts-openai/static/js/main.37b49457.js",
+    "main.js": "/redux-ts-openai/static/js/main.be562e5d.js",
     "static/js/176.3d1e33c1.chunk.js": "/redux-ts-openai/static/js/176.3d1e33c1.chunk.js",
     "static/js/951.39b48ad4.chunk.js": "/redux-ts-openai/static/js/951.39b48ad4.chunk.js",
     "static/js/161.782167d0.chunk.js": "/redux-ts-openai/static/js/161.782167d0.chunk.js",
@@ -27,7 +27,7 @@
     "static/media/image-gradient.svg": "/redux-ts-openai/static/media/image-gradient.d7e07bcb7da541e72f3737f7a54ea5a7.svg",
     "static/media/solving-gradient.svg": "/redux-ts-openai/static/media/solving-gradient.64b809a50aff5f18ccf0dd798844fae9.svg",
     "main.273612d7.css.map": "/redux-ts-openai/static/css/main.273612d7.css.map",
-    "main.37b49457.js.map": "/redux-ts-openai/static/js/main.37b49457.js.map",
+    "main.be562e5d.js.map": "/redux-ts-openai/static/js/main.be562e5d.js.map",
     "176.3d1e33c1.chunk.js.map": "/redux-ts-openai/static/js/176.3d1e33c1.chunk.js.map",
     "951.39b48ad4.chunk.js.map": "/redux-ts-openai/static/js/951.39b48ad4.chunk.js.map",
     "161.782167d0.chunk.js.map": "/redux-ts-openai/static/js/161.782167d0.chunk.js.map",
@@ -37,6 +37,6 @@
   },
   "entrypoints": [
     "static/css/main.273612d7.css",
-    "static/js/main.37b49457.js"
+    "static/js/main.be562e5d.js"
   ]
 }
