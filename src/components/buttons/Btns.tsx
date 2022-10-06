@@ -1,12 +1,13 @@
-import React, { FC } from 'react';
+import { ReactElement } from 'react';
 import styled, {css} from 'styled-components';
 import { Link } from 'react-router-dom';
 
+// styled components
 
 interface IBtn {
     background: string
     color: string
-    children?: React.ReactElement | string
+    children?: ReactElement | string
     after: string
     to?: string
     className?: string
@@ -119,3 +120,5 @@ export const StyledDefaultBtn = styled(DefaultBtn)<IBtn>`
         opacity: .5;
     }
 `
+
+//

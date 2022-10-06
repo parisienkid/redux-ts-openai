@@ -1,7 +1,14 @@
-import React, { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import styled from 'styled-components';
-import { RouterBtn } from '../buttons/Btn';
+import { useDispatch } from 'react-redux';
+
+import { RouterBtn } from '../buttons/Btns';
 import { Link } from 'react-router-dom'
+import { dalleTheme, mainTheme } from '../../core/theme/theme';
+import { changeTheme } from '../../core/reducers/themeSlice';
+
+
+// styled components
 
 interface ICardWrapper {
     background: string;
@@ -81,13 +88,30 @@ interface IMainPage {
     to: string,
 }
 
+//
+
 const MainPageCard: FC<IMainPage> = ({img, date, title, to}) => {
+
+    const dispatch = useDispatch();
+
+    const onClickLink = (e: any) => {
+        const target = e.target as HTMLElement;
+        const attr = target.getAttribute("href");
+        switch(attr) {
+            case ('/redux-ts-openai/dall-e-2'):
+                return dispatch(changeTheme(dalleTheme));
+            default:
+                return dispatch(changeTheme(mainTheme));
+        }
+        
+    }
+
     return (
         <CardWrapper background={img}>
             <CardShadow/>
             <CardContent>
                 <CardDate>{date}</CardDate>
-                <CardTitle to={to}>{title}</CardTitle>
+                <CardTitle to={to} onClick={onClickLink} >{title}</CardTitle>
                 <RouterBtn after='▻' background='255, 255, 255' to={to} color='0, 0, 0'>Read now</RouterBtn>
             </CardContent>
         </CardWrapper>

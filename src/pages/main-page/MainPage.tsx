@@ -1,8 +1,7 @@
-import React, { FC, useEffect, Dispatch } from 'react';
+import { FC, useEffect } from 'react';
+import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
-import styled from 'styled-components';
-
 import { mainTheme } from '../../core/theme/theme';
 
 import Container from '../../components/container/Container';
@@ -11,7 +10,7 @@ import MainPageCard from '../../components/main-page-card/MainPageCard';
 const dalleImage = require('../../assets/images/outpainting-home-right-optimized.jpeg')
 const jellyfishImage = require('../../assets/images/jellyfish-some-overlay-optimized.jpeg')
 
-
+// styled components
 
 const MainPageWrapper = styled.div`
     height: calc(100vh - ${({theme}) => theme.sizes.default.header.height}px);
@@ -64,6 +63,8 @@ const MainPageContent = styled.div`
     }
 `
 
+//
+
 const MainPage: FC = () => {
 
     const dispatch = useDispatch();
@@ -80,12 +81,12 @@ const MainPage: FC = () => {
                         img={dalleImage} 
                         date={'AUGUST 31, 2022'} 
                         title={'DALL·E: Introducing Outpainting'}
-                        to="/"/>
+                        to="/redux-ts-openai/dall-e-2"/>
                     <MainPageCard 
                         img={jellyfishImage}
                         date={'AUGUST 24, 2022'}
                         title={'Our approach to alignment research.'}
-                        to="/"/>
+                        to="/redux-ts-openai/"/>
                 </MainPageContent>
             </Container>
         </MainPageWrapper>

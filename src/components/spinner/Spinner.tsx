@@ -1,7 +1,7 @@
-import * as React from 'react';
+import { FC } from 'react';
 import styled from 'styled-components';
 
-
+// styled components
 
 const Svg = styled.svg`
     position: absolute;
@@ -11,9 +11,14 @@ const Svg = styled.svg`
     height: 30%;
     width: auto;
     max-height: 120px;
+    circle {
+        fill: ${({theme}) => theme.colors.spinner};
+    }
 `
 
-const Spinner: React.FC = () => {
+//
+
+const Spinner: FC = () => {
     return(
         <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><g transform="translate(80,50)">
         <g transform="rotate(0)">

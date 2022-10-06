@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
@@ -10,8 +10,9 @@ import LazyLoad from 'react-lazy-load';
 
 import { InfoBlock, InfoDescr, InfoMain, InfoLinksWrapper } from '../../components/info-block/InfoBlock';
 import { MDescr, MTime } from '../research-page/ResearchPage';
-import { StyledRouterBtn } from '../../components/buttons/Btn';
+import { StyledRouterBtn } from '../../components/buttons/Btns';
 
+// styled components
 
 const AboutPageWrapper = styled.div`
     padding: 70px 0;
@@ -152,6 +153,8 @@ const GreyLink = styled(Link)`
     }
 `
 
+//
+
 const AboutPage: FC = () => {
 
     const dispatch = useDispatch();
@@ -179,26 +182,26 @@ const AboutPage: FC = () => {
                     <MainText>
                         <MainP>OpenAI’s mission is to ensure that artificial general intelligence (AGI)—by which we mean highly autonomous systems that outperform humans at most economically valuable work—benefits all of humanity.</MainP>
                         <MainP>We will attempt to directly build safe and beneficial AGI, but will also consider our mission fulfilled if our work aids others to achieve this outcome.</MainP>
-                        <StyledRouterBtn $nobg color='0,0,0' background='inherit' to='/' after='▻'>Read our Charter</StyledRouterBtn>
+                        <StyledRouterBtn $nobg color='0,0,0' background='inherit' to='/redux-ts-openai/' after='▻'>Read our Charter</StyledRouterBtn>
                     </MainText>
                     <InfoBlock>
                         <InfoDescr>
                             <h3>Highlights</h3>
                         </InfoDescr>
                         <InfoMain>
-                            <InfoLinksWrapper to='/'>
+                            <InfoLinksWrapper to='/redux-ts-openai/'>
                                 <MDescr>DALL·E 2</MDescr>
                                 <MTime>April 6, 2022 — Research, Multimodal</MTime>
                             </InfoLinksWrapper>
-                            <InfoLinksWrapper to='/'>
+                            <InfoLinksWrapper to='/redux-ts-openai/'>
                                 <MDescr>OpenAI Codex</MDescr>
                                 <MTime>August 10, 2021 — API, Announcements</MTime>
                             </InfoLinksWrapper>
-                            <InfoLinksWrapper to='/'>
+                            <InfoLinksWrapper to='/redux-ts-openai/'>
                                 <MDescr>Multimodal Neurons in Artificial Neural Networks</MDescr>
                                 <MTime>March 4, 2021 — Research, Milestones, Multimodal</MTime>
                             </InfoLinksWrapper>
-                            <StyledRouterBtn $nobg color='0,0,0' to="" after='▻' background=''>VIEW ALL HIGHLIGHTS</StyledRouterBtn>
+                            <StyledRouterBtn $nobg color='0,0,0' to="/redux-ts-openai/" after='▻' background=''>VIEW ALL HIGHLIGHTS</StyledRouterBtn>
                         </InfoMain>
                     </InfoBlock>
                     <InfoBlock>
@@ -206,9 +209,9 @@ const AboutPage: FC = () => {
                             <h3>Who’s Involved</h3>
                         </InfoDescr>
                         <InfoMain>
-                            <MainP>OpenAI LP is governed by the board of the OpenAI nonprofit, comprised of OpenAI LP employees Greg Brockman (Chairman & President), Ilya Sutskever (Chief Scientist), and Sam Altman (CEO), and non-employees Adam D’Angelo, Reid Hoffman, Will Hurd, Tasha McCauley, Helen Toner, and Shivon Zilis.</MainP>
-                            <MainP>Our investors include Microsoft, Reid Hoffman’s charitable foundation, and Khosla Ventures.</MainP>
-                            <StyledRouterBtn $nobg color='0,0,0' to="" after='▻' background=''>VISIT NEWSROOM</StyledRouterBtn>
+                            <p>OpenAI LP is governed by the board of the OpenAI nonprofit, comprised of OpenAI LP employees Greg Brockman (Chairman & President), Ilya Sutskever (Chief Scientist), and Sam Altman (CEO), and non-employees Adam D’Angelo, Reid Hoffman, Will Hurd, Tasha McCauley, Helen Toner, and Shivon Zilis.</p>
+                            <p>Our investors include Microsoft, Reid Hoffman’s charitable foundation, and Khosla Ventures.</p>
+                            <StyledRouterBtn $nobg color='0,0,0' to="/redux-ts-openai/" after='▻' background=''>VISIT NEWSROOM</StyledRouterBtn>
                         </InfoMain>
                     </InfoBlock>
                 </Container>
@@ -217,7 +220,7 @@ const AboutPage: FC = () => {
                 <Container>
                     <ColoredBgWrapper>
                         <h2>Our first-of-its-kind API can be applied to any language task, and serves millions of production requests each day.</h2>
-                        <StyledRouterBtn $nobg color='0,0,0' to="" after='▻' background=''>EXPLORE API</StyledRouterBtn>
+                        <StyledRouterBtn $nobg color='0,0,0' to="/redux-ts-openai/" after='▻' background=''>EXPLORE API</StyledRouterBtn>
                     </ColoredBgWrapper>
                 </Container>
             </ColoredBacground>
@@ -227,7 +230,7 @@ const AboutPage: FC = () => {
                         <JoinText>
                             <h2>Join OpenAI</h2>
                             <p>We’re hiring talented people in a variety of roles across research, engineering, operations, people, finance, and policy to join our team in San Francisco.</p>
-                            <StyledRouterBtn $nobg color='0,0,0' to="" after='▻' background=''>VIEW OPEN POSITIONS</StyledRouterBtn>
+                            <StyledRouterBtn $nobg color='0,0,0' to="/redux-ts-openai/" after='▻' background=''>VIEW OPEN POSITIONS</StyledRouterBtn>
                         </JoinText>
                         <LazyLoad>
                             <JoinImg src="https://cdn.openai.com/miscellaneous/photos/openai-2018-robotics.jpg"/>

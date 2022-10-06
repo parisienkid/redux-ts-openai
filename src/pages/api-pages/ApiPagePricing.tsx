@@ -4,7 +4,7 @@ import { RootState } from '../../core/store';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { apiTheme } from '../../core/theme/theme';
 import styled, { css } from 'styled-components';
-import {RouterBtn, DefaultBtn, StyledRouterBtn, StyledDefaultBtn} from '../../components/buttons/Btn';
+import {RouterBtn, DefaultBtn, StyledRouterBtn, StyledDefaultBtn} from '../../components/buttons/Btns';
 import { InfoBlock, InfoDescr, InfoMain } from '../../components/info-block/InfoBlock';
 
 import { FetchApiPricing } from '../../core/reducers/apiPageSlice';
@@ -17,7 +17,7 @@ import Container from '../../components/container/Container';
 
 import { ApiPageWrapper, DocsBtns, BenefitsIcon, Benefits, BenefitsItem, ApiIntro, SilverComponent, SilverComponentContent } from './ApiPageMain';
 
-
+// styled components
 
 const ModelsWrapper = styled.div`
     padding: 100px 0 0 0;
@@ -64,8 +64,6 @@ const BenefitsPricing = styled(Benefits)`
     }
 `
 
-
-
 const InfoLink = styled.a`
     margin-left: 0 !important;
     display: inline-block;
@@ -107,8 +105,6 @@ const PricingTable = styled.div<IPricingTableProps>`
         grid-template-rows: repeat(5, 50px);
     }
 `
-
-
 
 interface ICellPricerops {
     silver?: boolean
@@ -230,8 +226,7 @@ const QuestionIcon = styled.div`
     }
 `
 
-
-
+//
 
 const ApiPagePricing: FC = () => {
 
@@ -239,13 +234,11 @@ const ApiPagePricing: FC = () => {
 
     const {statusData, pricing} = useSelector((state: RootState) => state.api);
 
-
     useEffect(() => {
         dispatch(changeTheme(apiTheme));
         dispatch(FetchApiPricing());
     }, []);
     
-
     const onQuestionClick = (e: React.MouseEvent<HTMLElement>) => {
         const el = e.target as HTMLSpanElement;
         if (el.getAttribute('data-question') && el) {
@@ -258,9 +251,6 @@ const ApiPagePricing: FC = () => {
         }
     }
 
-
-
-
     return (
         <ApiPageWrapper>
             <ApiHeader/>
@@ -269,8 +259,8 @@ const ApiPagePricing: FC = () => {
                     <h1>Pricing</h1>
                     <h4>Simple and flexible. Only pay for what you use.</h4>
                     <DocsBtns margin="30px auto 0 auto">
-                        <RouterBtn to="/" background="0,0,0" color="255,255,255" after="">get started</RouterBtn>
-                        <StyledRouterBtn $nobg to="/" background='inherit' color='0,0,0' after=''>contact sales</StyledRouterBtn>
+                        <RouterBtn to="/redux-ts-openai/" background="0,0,0" color="255,255,255" after="">get started</RouterBtn>
+                        <StyledRouterBtn $nobg to="/redux-ts-openai/" background='inherit' color='0,0,0' after=''>contact sales</StyledRouterBtn>
                     </DocsBtns>
                 </Container>
             </ApiIntro>
@@ -293,7 +283,7 @@ const ApiPagePricing: FC = () => {
                     </ModelsCards>
                     <p>Multiple models, each with different capabilities and price points. <strong>Ada</strong> is the fastest model, while <strong>Davinci</strong> is the most powerful.</p>
                     <p>Prices are per 1,000 tokens. You can think of tokens as pieces of words, where 1,000 tokens is about 750 words. This paragraph is 35 tokens.</p>
-                    <RouterBtn background='inherit' after='↓' color="0,0,0,.6" to="#" $nobg>LEARN MORE</RouterBtn>
+                    <RouterBtn background='inherit' after='↓' color="0,0,0,.6" to="/redux-ts-openai/" $nobg>LEARN MORE</RouterBtn>
                 </Container>
             </ModelsWrapper>
             <Container>
@@ -318,7 +308,7 @@ const ApiPagePricing: FC = () => {
                     <InfoDescr>
                         <h3>Fine-tuned models</h3>
                         <p>Create your own custom models by <InfoLink href="#">fine-tuning</InfoLink> our base models with your training data. Once you fine-tune a model, you’ll be billed only for the tokens you use in requests to that model.</p>
-                        <RouterBtn background='inherit' after='↓' color="0,0,0,.6" to="#" $nobg>LEARN MORE</RouterBtn>
+                        <RouterBtn background='inherit' after='↓' color="0,0,0,.6" to="/redux-ts-openai/" $nobg>LEARN MORE</RouterBtn>
                     </InfoDescr>
                     <InfoMain>
                         <PricingTable>
@@ -489,7 +479,7 @@ const ApiPagePricing: FC = () => {
                 <Container>
                     <SilverComponentContent center direction='column'>
                         <h2>Get started with OpenAI’s powerful language and code generation models.</h2>
-                        <RouterBtn margin="40px auto 0 auto" to="/" background='0,0,0' color='255,255,255' after=''>get started</RouterBtn>
+                        <RouterBtn margin="40px auto 0 auto" to="/redux-ts-openai/" background='0,0,0' color='255,255,255' after=''>get started</RouterBtn>
                     </SilverComponentContent>
                 </Container>
             </SilverComponent>
@@ -497,7 +487,7 @@ const ApiPagePricing: FC = () => {
     );
 };
 
-
+// styled components
 
 const ModelCard = styled.div`
     padding: 20px;
@@ -547,6 +537,8 @@ const ModelCardPrice = styled.div`
         font-size: .8rem;
     }
 `
+
+//
 
 interface IApiCard {
     data: IPricing,

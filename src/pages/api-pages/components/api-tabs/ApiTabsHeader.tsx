@@ -65,8 +65,6 @@ const ApiTabs: FC<IApiTabs> = ({tabs, actionName}) => {
         }
     }
 
-
-
     const onClickTab = (e: React.MouseEvent<HTMLButtonElement>) => {
 
         const current = e.currentTarget;
@@ -82,7 +80,6 @@ const ApiTabs: FC<IApiTabs> = ({tabs, actionName}) => {
             current.classList.add('active');
 
             changeActiveTab(actionName, current.getAttribute('data-tab-id'))
-
 
             const offsetLeft = current.offsetLeft - translate;
             const offsetRight = parent.offsetWidth - offsetLeftsPlusWidth + translate;
@@ -112,8 +109,6 @@ const ApiTabs: FC<IApiTabs> = ({tabs, actionName}) => {
             }
         }
     }
-
-
 
     return (
         <TabsHeaderWrapper>

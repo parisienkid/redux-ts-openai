@@ -1,10 +1,12 @@
-import React, { FC, useEffect, Dispatch } from 'react';
+import { FC, useEffect, Dispatch } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { errorTheme } from '../../core/theme/theme';
 import Container from '../../components/container/Container';
-import { RouterBtn } from '../../components/buttons/Btn';
+import { RouterBtn } from '../../components/buttons/Btns';
+
+// styled components
 
 const ErrorWrapper = styled.div`
     padding: 40px 0;
@@ -27,6 +29,8 @@ const ErrorSubtitle = styled.h2`
     margin-bottom: 20px;
 `
 
+//
+
 const Page404: FC = () => {
 
     const dispatch = useDispatch();
@@ -40,7 +44,7 @@ const Page404: FC = () => {
             <Container>
                 <ErrorTitle>Error 404</ErrorTitle>
                 <ErrorSubtitle>Page not found</ErrorSubtitle>
-                <RouterBtn background='inherit' after='↓' color={''} to="/" $nobg>GO HOME</RouterBtn>
+                <RouterBtn background='inherit' after='↓' color={''} to="/redux-ts-openai/" $nobg>GO HOME</RouterBtn>
             </Container>
         </ErrorWrapper>
     );

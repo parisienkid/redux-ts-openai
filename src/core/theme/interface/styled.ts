@@ -25,7 +25,8 @@ export interface ITheme {
       header: string,
       headerColor: string,
       footer: string,
-      footerColor: string
+      footerColor: string,
+      spinner: string
     }
   
     media: {

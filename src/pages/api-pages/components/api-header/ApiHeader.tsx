@@ -1,8 +1,7 @@
 import { FC, useRef } from "react"
 import styled from "styled-components"
 import Container from "../../../../components/container/Container"
-import {RouterBtn, DefaultBtn, StyledRouterBtn, StyledDefaultBtn} from '../../../../components/buttons/Btn';
-import ApiPage from "../../ApiPageMain"
+import { StyledRouterBtn, StyledDefaultBtn} from '../../../../components/buttons/Btns';
 import { Link } from "react-router-dom"
 import { useLocation } from 'react-router-dom';
 
@@ -139,11 +138,14 @@ const ApiHeader: FC = () => {
     const secondSpan = useRef<HTMLElement>(null);
     const burger = useRef<HTMLButtonElement>(null);
 
+    function toggleActive(item: HTMLElement) {
+        item.classList.toggle('active');
+    }
     const onToggleBurger = (e: React.MouseEvent | React.TouchEvent | React.KeyboardEvent) => {
         if (firstSpan.current && secondSpan.current && burger.current && navbar.current && mobileMenu.current) {
-            burger.current.classList.toggle('active');
-            navbar.current.classList.toggle('active');
-            mobileMenu.current.classList.toggle('active');
+            toggleActive(burger.current);
+            toggleActive(navbar.current);
+            toggleActive(mobileMenu.current);
             if (burger.current.classList.contains('active')) {
                 firstSpan.current.style.marginTop = "2px";
                 secondSpan.current.style.marginTop = "-2px";
@@ -177,22 +179,22 @@ const ApiHeader: FC = () => {
                             <span ref={secondSpan} ></span>
                         </NavMobileBurger>        
                         <NavLinks>
-                            <StyledRouterBtn className={`${pathname === "/api" ? "active" : ""}`} to="/api" background='inherit' color='0,0,0' after=''>overview</StyledRouterBtn>
-                            <StyledRouterBtn className={`${pathname === "/api/pricing" ? "active" : ""}`} to="/api/pricing" background='inherit' color='0,0,0' after=''>pricing</StyledRouterBtn>
+                            <StyledRouterBtn className={`${pathname === "/redux-ts-openai/api" ? "active" : ""}`} to="/redux-ts-openai/api" background='inherit' color='0,0,0' after=''>overview</StyledRouterBtn>
+                            <StyledRouterBtn className={`${pathname === "/redux-ts-openai/api/pricing" ? "active" : ""}`} to="/redux-ts-openai/api/pricing" background='inherit' color='0,0,0' after=''>pricing</StyledRouterBtn>
                             <StyledDefaultBtn target="_blank" href="https://beta.openai.com/docs/" background='inherit' color='0,0,0' after='↗'>docs</StyledDefaultBtn>
                             <StyledDefaultBtn target="_blank" href="https://beta.openai.com/examples/" background='inherit' color='0,0,0' after='↗'>examples</StyledDefaultBtn>
                         </NavLinks>
                         <NavLogin>
-                            <StyledRouterBtn to="/" background='inherit' color='0,0,0' after=''>log in</StyledRouterBtn>
-                            <StyledRouterBtn to="/" background='0,0,0' color='255,255,255' after=''>sign up</StyledRouterBtn>
+                            <StyledRouterBtn to="/redux-ts-openai/" background='inherit' color='0,0,0' after=''>log in</StyledRouterBtn>
+                            <StyledRouterBtn to="/redux-ts-openai/" background='0,0,0' color='255,255,255' after=''>sign up</StyledRouterBtn>
                         </NavLogin>
                     </NavContent>
                 </Container>
             </Navbar>
             <NavMobileMenu ref={mobileMenu}>
                 <Container>
-                    <MobileLink className={`${pathname === "/api" ? "active" : ""}`} to="/api">overview</MobileLink>
-                    <MobileLink className={`${pathname === "/api/pricing" ? "active" : ""}`} to="/api/pricing">pricing</MobileLink>
+                    <MobileLink className={`${pathname === "/redux-ts-openai/api" ? "active" : ""}`} to="/redux-ts-openai/api">overview</MobileLink>
+                    <MobileLink className={`${pathname === "/redux-ts-openai/api/pricing" ? "active" : ""}`} to="/redux-ts-openai/api/pricing">pricing</MobileLink>
                     <MobileLink to="https://beta.openai.com/docs/introduction">docs <span>↗</span></MobileLink>
                     <MobileLink to="https://beta.openai.com/docs/introduction">examples <span>↗</span></MobileLink>
                 </Container>

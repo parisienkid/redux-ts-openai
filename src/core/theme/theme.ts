@@ -1,4 +1,4 @@
-import { ITheme } from "../interfaces/styled"
+import { ITheme } from "./interface/styled"
 import { DefaultTheme } from 'styled-components';
 
 export enum ThemeEnum {
@@ -29,6 +29,7 @@ export const baseTheme: ITheme = {
         headerColor: '0,0,0',
         footer: '255, 255, 255',
         footerColor: '255, 255, 255',
+        spinner: '#0a0a0a',
     },
 
     media: {
@@ -132,7 +133,10 @@ export const dalleTheme: DefaultTheme = {
         ...baseTheme.colors,
         bg: '0, 0, 0',
         header: '0, 0, 0',
-        footer: '0, 0, 0'
+        headerColor: '255,255,255',
+        footer: '0, 0, 0',
+        footerColor: '255,255,255',
+        spinner: 'rgb(255,255,255)',
     },
 }
 

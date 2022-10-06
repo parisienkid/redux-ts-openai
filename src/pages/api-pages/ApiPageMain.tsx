@@ -3,21 +3,21 @@ import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { apiTheme } from '../../core/theme/theme';
 import styled, { css, keyframes } from 'styled-components';
-import {RouterBtn, DefaultBtn, StyledRouterBtn, StyledDefaultBtn} from '../../components/buttons/Btn';
+import {RouterBtn, DefaultBtn, StyledRouterBtn, StyledDefaultBtn} from '../../components/buttons/Btns';
 
 import Container from '../../components/container/Container';
 import ApiTabs from './components/api-tabs/ApiTabsHeader';
 import ApiTabsContent from './components/api-tabs/ApiTabsContent';
 import ApiHeader from './components/api-header/ApiHeader';
 
-const copilot = require('../../assets/images/copilot.png');
-const keeper = require('../../assets/images/keeper.png');
-const viable = require('../../assets/images/viable.png');
-const duolingo = require('../../assets/images/duolingo.png');
+const copilot = require('../../assets/images/price/copilot.png');
+const keeper = require('../../assets/images/price/keeper.png');
+const viable = require('../../assets/images/price/viable.png');
+const duolingo = require('../../assets/images/price/duolingo.png');
 
 
 
-
+// styled components
 
 export const ApiPageWrapper = styled.div`
     h1 {
@@ -42,8 +42,6 @@ export const ApiIntro = styled.div`
         margin: 20px auto 0 auto;
     }
 `
-
-
 
 interface IDocsBtns {
     margin: string
@@ -377,8 +375,6 @@ export const BenefitsIcon = styled.span`
     line-height: 28px;
 `
 
-//
-
 const OpenaiApps = styled.div`
     padding: 170px 0;
     @media ${({theme}) => theme.media.extraLarge} {
@@ -428,6 +424,7 @@ const OpenaiAppItem = styled.div`
     }
 `
 
+//
 
 const ApiPage: FC = () => {
 
@@ -445,7 +442,7 @@ const ApiPage: FC = () => {
                     <h1>Build next-gen apps with OpenAI’s powerful models.</h1>
                     <h4>OpenAI’s API provides access to GPT-3, which performs a wide variety of natural language tasks, and Codex, which translates natural language to code.</h4>
                     <DocsBtns margin="40px auto 0 auto">
-                        <RouterBtn to="/" background="0,0,0" color="255,255,255" after="">get started</RouterBtn>
+                        <RouterBtn to="/redux-ts-openai/" background="0,0,0" color="255,255,255" after="">get started</RouterBtn>
                         <StyledRouterBtn $nobg to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledRouterBtn>
                     </DocsBtns>
                     <CompaniesTitle>COMPANIES DEVELOPING WITH OPENAI’S API</CompaniesTitle>
@@ -464,8 +461,8 @@ const ApiPage: FC = () => {
                         <SilverInfo>
                             <p>GPT-3 can now be customized via our API. With a single command, developers can fine-tune powerful AI models tailored to their needs.</p>
                             <DocsBtns margin='40px 0 0 0'>
-                                <DefaultBtn to="/" background='0,0,0' color='255,255,255' after=''>get started</DefaultBtn>
-                                <StyledDefaultBtn $nobg to="/" background='inherit' color='0,0,0' after=''>learn more</StyledDefaultBtn>
+                                <DefaultBtn to="/redux-ts-openai/" background='0,0,0' color='255,255,255' after=''>get started</DefaultBtn>
+                                <StyledDefaultBtn $nobg to="/redux-ts-openai/" background='inherit' color='0,0,0' after=''>learn more</StyledDefaultBtn>
                             </DocsBtns>
                         </SilverInfo>
                     </SilverComponentContent>
@@ -475,8 +472,8 @@ const ApiPage: FC = () => {
                <BuildingWrapper>
                 <h2 className='center'>Start building with a simple API call.</h2>
                     <DocsBtns margin="30px auto 0 auto">
-                        <RouterBtn to="/" background="0,0,0" color="255,255,255" after="">get started</RouterBtn>
-                        <StyledRouterBtn $nobg to="/" background='inherit' color='0,0,0' after=''>read documentation</StyledRouterBtn>
+                        <RouterBtn to="/redux-ts-openai/" background="0,0,0" color="255,255,255" after="">get started</RouterBtn>
+                        <StyledRouterBtn $nobg to="/redux-ts-openai/" background='inherit' color='0,0,0' after=''>read documentation</StyledRouterBtn>
                     </DocsBtns>
                     <CodeBlock width="650px" padding="30px" margin="40px auto 0 auto">
                         <String width='100%'><Sword red>import</Sword><Sword> openai</Sword></String>
@@ -494,8 +491,8 @@ const ApiPage: FC = () => {
                         <TabsContentWrapper>
                             <h2>Perform a wide variety of natural language tasks with GPT-3.</h2>
                             <DocsBtns margin="30px auto 0 0">
-                                <RouterBtn to="/" background="0,0,0" color="255,255,255" after="">get started</RouterBtn>
-                                <StyledRouterBtn $nobg to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledRouterBtn>
+                                <RouterBtn to="/redux-ts-openai/" background="0,0,0" color="255,255,255" after="">get started</RouterBtn>
+                                <StyledRouterBtn $nobg to="/redux-ts-openai/" background='inherit' color='0,0,0' after=''>see more examples</StyledRouterBtn>
                             </DocsBtns>
                         </TabsContentWrapper>
                     </Tabs>
@@ -503,8 +500,8 @@ const ApiPage: FC = () => {
                         <TabsContentWrapper>
                             <h2>Translate natural language to code with Codex.</h2>
                             <DocsBtns margin="30px auto 0 0">
-                                <RouterBtn to="/" background="0,0,0" color="255,255,255" after="">get started</RouterBtn>
-                                <StyledRouterBtn $nobg to="/" background='inherit' color='0,0,0' after=''>see more examples</StyledRouterBtn>
+                                <RouterBtn to="/redux-ts-openai/" background="0,0,0" color="255,255,255" after="">get started</RouterBtn>
+                                <StyledRouterBtn $nobg to="/redux-ts-openai/" background='inherit' color='0,0,0' after=''>see more examples</StyledRouterBtn>
                             </DocsBtns>
                         </TabsContentWrapper>
                         <TabsHeadWrapper>
@@ -538,7 +535,7 @@ const ApiPage: FC = () => {
                         <SilverInfo>
                             <p>We help developers use best practices and provide tools, including:</p>
                             <p>Our API allows us to review applications before they go live, continually improve our safety tools, help developers scale over time, and better understand the effects of our technology.</p>
-                            <DefaultBtn to="/" background='0,0,0' color='255,255,255' after=''>get started</DefaultBtn>
+                            <DefaultBtn to="/redux-ts-openai/" background='0,0,0' color='255,255,255' after=''>get started</DefaultBtn>
                         </SilverInfo>
                     </SilverComponentContent>
                 </Container>
@@ -577,7 +574,7 @@ const ApiPage: FC = () => {
                 <Container>
                     <SilverComponentContent center direction='column'>
                         <h2>Get started with OpenAI’s powerful language and code generation models.</h2>
-                        <DefaultBtn margin="40px auto 0 auto" to="/" background='0,0,0' color='255,255,255' after=''>get started</DefaultBtn>
+                        <DefaultBtn margin="40px auto 0 auto" to="/redux-ts-openai/" background='0,0,0' color='255,255,255' after=''>get started</DefaultBtn>
                     </SilverComponentContent>
                 </Container>
             </SilverComponent>

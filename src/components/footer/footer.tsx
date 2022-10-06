@@ -1,6 +1,9 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import styled from 'styled-components';
+
 import Container from '../container/Container';
+
+// styled components
 
 const FooterWrapper = styled.footer`
     background-color: rgb(${({theme}) => theme.colors.footer});
@@ -153,6 +156,7 @@ const FooterIconLink = styled(FooterLink)`
     }
 `
 
+//
 
 const Footer: FC = () => {
     return (

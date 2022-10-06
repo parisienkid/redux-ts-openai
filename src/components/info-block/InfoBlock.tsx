@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
+// styled components
+
 export const InfoBlock = styled.div`
     border-top: 1px solid rgba(0,0,0,.1);
     padding: 75px 0 100px 0;
@@ -52,3 +54,5 @@ export const InfoLinksWrapper = styled(Link)`
     display: block;
     margin-left: 0 !important;
 `
+
+//

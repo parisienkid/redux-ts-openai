@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
+import { ReactNode, FC } from 'react';
 import styled from 'styled-components';
 
+// styled components
 
 const ContainerWrapper = styled.div`
     width: ${({theme}) => theme.sizes.default.container.width}%;
@@ -23,8 +24,10 @@ const ContainerWrapper = styled.div`
 `
 
 interface IContainer {
-    children: React.ReactNode
+    children: ReactNode
 }
+
+//
 
 const Container: FC<IContainer> = ({children}) => {
     return (
