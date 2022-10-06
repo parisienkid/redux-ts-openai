@@ -1,0 +1,26 @@
+<svg width="3000" height="3000" viewBox="0 0 3000 3000" style="width:100%;max-width:3000px;height:auto;filter:saturate(100%);-webkit-filter:saturate(100%)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs><style>
+    #bg {fill:#291336}
+    .rect0 {fill:url(#rg0)}.rect1 {fill:url(#rg1)}.rect2 {fill:url(#rg2)}.rect3 {fill:url(#rg3)}.rect4 {fill:url(#rg4)}.rect5 {fill:url(#rg5)}
+  </style>
+  <radialGradient id="rg0" fx="0.3420145462206835" fy="0.5">
+          <stop offset="0%" stop-color="#291336"/>
+          <stop offset="100%" stop-color="#291336" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg1" fx="0.3946100639242959" fy="0.5">
+          <stop offset="0%" stop-color="#2E0519"/>
+          <stop offset="100%" stop-color="#2E0519" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg2" fx="0.338247108102373" fy="0.5">
+          <stop offset="0%" stop-color="#271623"/>
+          <stop offset="100%" stop-color="#271623" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg3" fx="0.3317391653607597" fy="0.5">
+          <stop offset="0%" stop-color="undefined"/>
+          <stop offset="100%" stop-color="undefined" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg4" fx="0.3955795542671501" fy="0.5">
+          <stop offset="0%" stop-color="undefined"/>
+          <stop offset="100%" stop-color="undefined" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg5" fx="0.33177412695817965" fy="0.5">
+          <stop offset="0%" stop-color="undefined"/>
+          <stop offset="100%" stop-color="undefined" stop-opacity="0"/>
+        </radialGradient></defs>
+  <rect id="bg" x="0" y="0" width="100%" height="100%"/><rect class="rect rect0" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.2431476108846353 1.5548915542702486) skewX(-5.8640852744506455) rotate(301.050299875752) translate(1193.2673414767125 -725.1263052151855) translate(-1500 -1500)"/><rect class="rect rect5" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.0148880820856139 1.9907180553983543) skewX(1.697859899651064) rotate(84.48877074342207) translate(1185.5113803260025 -1014.8323607118486) translate(-1500 -1500)"/><rect class="rect rect3" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.646577288291949 1.3791277520826972) skewX(7.780876899252668) rotate(143.75616076094292) translate(975.5280448324712 -1192.0724202236525) translate(-1500 -1500)"/><rect class="rect rect4" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.8240490064419004 1.6013071732986184) skewX(-0.5720054815092688) rotate(122.02433885567541) translate(583.242010841456 -1140.5097290870836) translate(-1500 -1500)"/><rect class="rect rect2" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.065695848718254 1.8615940838948453) skewX(-8.111110702105467) rotate(43.16128760596762) translate(598.76144598746585 -637.3734534425348) translate(-1500 -1500)"/><rect class="rect rect1" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.3834962631210819 1.7895622430390188) skewX(4.129707182004783) rotate(64.60006865157229) translate(1147.7565599806958 493.8957515521266) translate(-1500 -1500)"/>
+</svg>

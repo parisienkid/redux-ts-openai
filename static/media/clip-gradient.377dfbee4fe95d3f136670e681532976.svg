@@ -1,0 +1,26 @@
+<svg width="3000" height="3000" viewBox="0 0 3000 3000" style="width:100%;max-width:3000px;height:auto;filter:saturate(100%);-webkit-filter:saturate(100%)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs><style>
+    #bg {fill:#5135FF}
+    .rect0 {fill:url(#rg0)}.rect1 {fill:url(#rg1)}.rect2 {fill:url(#rg2)}
+  </style>
+  <radialGradient id="rg0" fx="0.33111527884091996" fy="0.5">
+          <stop offset="0%" stop-color="#5135FF"/>
+          <stop offset="100%" stop-color="#5135FF" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg0" fx="0.33796633837436085" fy="0.5">
+          <stop offset="0%" stop-color="#5135FF"/>
+          <stop offset="100%" stop-color="#5135FF" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg1" fx="0.33703272865895473" fy="0.5">
+          <stop offset="0%" stop-color="#4315C5"/>
+          <stop offset="100%" stop-color="#4315C5" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg1" fx="0.36180887975630527" fy="0.5">
+          <stop offset="0%" stop-color="#4315C5"/>
+          <stop offset="100%" stop-color="#4315C5" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg2" fx="0.3933857224837891" fy="0.5">
+          <stop offset="0%" stop-color="#7180FF"/>
+          <stop offset="100%" stop-color="#7180FF" stop-opacity="0"/>
+        </radialGradient><radialGradient id="rg2" fx="0.3011341864150618" fy="0.5">
+          <stop offset="0%" stop-color="#7180FF"/>
+          <stop offset="100%" stop-color="#7180FF" stop-opacity="0"/>
+        </radialGradient></defs>
+  <rect id="bg" x="0" y="0" width="100%" height="100%"/><rect class="rect rect2" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.7590959528396377 1.0826118738310926) skewX(8.42294804531847) rotate(119.62512802213281) translate(346.7859844289753 412.12422969750793) translate(-1500 -1500)"/><rect class="rect rect1" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.3785720828783388 1.642066713672445) skewX(9.865866274420686) rotate(150.37640033871747) translate(371.94772711450315 579.6217869744492) translate(-1500 -1500)"/><rect class="rect rect2" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.9073461588517109 1.3857925681566636) skewX(7.954226549322719) rotate(185.7621324207208) translate(807.9764885116696 -1147.416673849026) translate(-1500 -1500)"/><rect class="rect rect1" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.831857927261156 1.4662566222077638) skewX(-2.3157077002289927) rotate(264.07492438811784) translate(614.5945652607697 692.9282643657493) translate(-1500 -1500)"/><rect class="rect rect0" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.5674656774942606 1.2353086130152582) skewX(-3.197786149582935) rotate(149.62463114567944) translate(1005.8229765161983 862.5796044001862) translate(-1500 -1500)"/><rect class="rect rect0" x="0" y="0" width="100%" height="100%" transform="translate(1500 1500) scale(1.5846327925841033 1.1087500718230594) skewX(1.6977888783313144) rotate(34.13803029027931) translate(-1116.777480810284 -848.2025400222734) translate(-1500 -1500)"/>
+</svg>

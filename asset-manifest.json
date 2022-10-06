@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/redux-ts-openai/static/css/main.273612d7.css",
+    "main.js": "/redux-ts-openai/static/js/main.c14bd091.js",
+    "static/js/176.64ecbe84.chunk.js": "/redux-ts-openai/static/js/176.64ecbe84.chunk.js",
+    "static/js/951.38ac3464.chunk.js": "/redux-ts-openai/static/js/951.38ac3464.chunk.js",
+    "static/js/161.1c57dc84.chunk.js": "/redux-ts-openai/static/js/161.1c57dc84.chunk.js",
+    "static/js/612.3ea0dc0c.chunk.js": "/redux-ts-openai/static/js/612.3ea0dc0c.chunk.js",
+    "static/js/695.b3e81e22.chunk.js": "/redux-ts-openai/static/js/695.b3e81e22.chunk.js",
+    "static/js/69.0012502f.chunk.js": "/redux-ts-openai/static/js/69.0012502f.chunk.js",
+    "static/media/outpainting-home-right-optimized.jpeg": "/redux-ts-openai/static/media/outpainting-home-right-optimized.05acf1b94b3bf55f975f.jpeg",
+    "static/media/jellyfish-some-overlay-optimized.jpeg": "/redux-ts-openai/static/media/jellyfish-some-overlay-optimized.18482ed08e2f1e101818.jpeg",
+    "static/media/copilot.png": "/redux-ts-openai/static/media/copilot.4a2aac92b593490597e6.png",
+    "static/media/viable.png": "/redux-ts-openai/static/media/viable.b94d3deb2b63e9cf8c40.png",
+    "static/media/keeper.png": "/redux-ts-openai/static/media/keeper.e43a1edaab84d2e6f734.png",
+    "static/media/duolingo.png": "/redux-ts-openai/static/media/duolingo.1403bf51ab1709947422.png",
+    "static/media/Charter-Bold.woff2": "/redux-ts-openai/static/media/Charter-Bold.3cb9b73082f5d1fc51e2.woff2",
+    "static/media/Charter-Regular.woff2": "/redux-ts-openai/static/media/Charter-Regular.5c25332deb40115025ed.woff2",
+    "static/media/ColfaxAIRegular.woff2": "/redux-ts-openai/static/media/ColfaxAIRegular.ea6107b65558c7d4512a.woff2",
+    "static/media/ColfaxAIBold.woff2": "/redux-ts-openai/static/media/ColfaxAIBold.e3cb5042f928a8f2ac65.woff2",
+    "static/media/IconsAI.woff2": "/redux-ts-openai/static/media/IconsAI.a2ec6316c1f94848be97.woff2",
+    "static/media/jukebox-gradient.svg": "/redux-ts-openai/static/media/jukebox-gradient.7edfde96113072ec27e63862bdd862f7.svg",
+    "static/media/clip-gradient.svg": "/redux-ts-openai/static/media/clip-gradient.377dfbee4fe95d3f136670e681532976.svg",
+    "static/media/dalle-gradient.svg": "/redux-ts-openai/static/media/dalle-gradient.f81a79bb7455dc915983782f7d922ec9.svg",
+    "index.html": "/redux-ts-openai/index.html",
+    "static/media/multimodal-gradient.svg": "/redux-ts-openai/static/media/multimodal-gradient.8905e82473824c6b4a17ec64bb302211.svg",
+    "static/media/image-gradient.svg": "/redux-ts-openai/static/media/image-gradient.d7e07bcb7da541e72f3737f7a54ea5a7.svg",
+    "static/media/solving-gradient.svg": "/redux-ts-openai/static/media/solving-gradient.64b809a50aff5f18ccf0dd798844fae9.svg",
+    "main.273612d7.css.map": "/redux-ts-openai/static/css/main.273612d7.css.map",
+    "main.c14bd091.js.map": "/redux-ts-openai/static/js/main.c14bd091.js.map",
+    "176.64ecbe84.chunk.js.map": "/redux-ts-openai/static/js/176.64ecbe84.chunk.js.map",
+    "951.38ac3464.chunk.js.map": "/redux-ts-openai/static/js/951.38ac3464.chunk.js.map",
+    "161.1c57dc84.chunk.js.map": "/redux-ts-openai/static/js/161.1c57dc84.chunk.js.map",
+    "612.3ea0dc0c.chunk.js.map": "/redux-ts-openai/static/js/612.3ea0dc0c.chunk.js.map",
+    "695.b3e81e22.chunk.js.map": "/redux-ts-openai/static/js/695.b3e81e22.chunk.js.map",
+    "69.0012502f.chunk.js.map": "/redux-ts-openai/static/js/69.0012502f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.273612d7.css",
+    "static/js/main.c14bd091.js"
+  ]
+}
