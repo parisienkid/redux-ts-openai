@@ -95,7 +95,7 @@ export const baseTheme: ITheme = {
 
     // z-index
     order: {
-        header: 50,
+        header: 150,
         modal: 100,
     },
 }

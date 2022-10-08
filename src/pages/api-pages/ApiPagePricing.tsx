@@ -235,6 +235,7 @@ const ApiPagePricing: FC = () => {
     const {statusData, pricing} = useSelector((state: RootState) => state.api);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         dispatch(changeTheme(apiTheme));
         dispatch(FetchApiPricing());
     }, []);

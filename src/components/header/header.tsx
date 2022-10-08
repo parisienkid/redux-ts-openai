@@ -14,6 +14,7 @@ const HeaderWrapper = styled.header`
         height: ${({theme}) => theme.sizes.m.header.height}px;
     }
     background-color: rgb(${({theme}) => theme.colors.header});
+    z-index: ${({theme}) => theme.order.header};
 `
 
 const NavWrapper = styled.nav`
