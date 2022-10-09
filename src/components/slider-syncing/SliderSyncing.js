@@ -26,9 +26,9 @@ export default class SliderSyncing extends Component {
           ref={slider => (this.slider1 = slider)}
           dots = {true}
         >
-        {this.props.content.map(item => {
+        {this.props.content.map((item, i)=> {
           return (
-            <MainImg src={item}></MainImg>
+            <MainImg key={i} src={item}></MainImg>
           )
         })}
         </Slider>
@@ -39,9 +39,9 @@ export default class SliderSyncing extends Component {
           swipeToSlide={true}
           focusOnSelect={true}
         >
-        {this.props.content.map(item => {
+        {this.props.content.map((item, i) => {
           return (
-            <MainImg src={item}></MainImg>
+            <MainImg key={i} src={item}></MainImg>
           )
         })}
         </Slider>

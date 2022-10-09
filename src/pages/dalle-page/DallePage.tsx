@@ -1,4 +1,4 @@
-import { FC, RefObject, useEffect, useRef, useState } from 'react';
+import { FC, RefObject, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
@@ -67,23 +67,8 @@ import animaIMG47 from '../../assets/images/dalle/intro-images/47.jpg';
 import animaIMG48 from '../../assets/images/dalle/intro-images/48.jpg';
 import animaIMG49 from '../../assets/images/dalle/intro-images/49.jpg';
 import animaIMG50 from '../../assets/images/dalle/intro-images/50.jpg';
-import { JsxElement } from 'typescript';
-import { opacity } from '../../styles/animations';
 
-
-// astronaut
-
-import astro110 from '../../assets/images/dalle/astronaut/first/1.jpg';
-import astro111 from '../../assets/images/dalle/astronaut/first/1.jpg';
-import astro112 from '../../assets/images/dalle/astronaut/first/2.jpg';
-import astro113 from '../../assets/images/dalle/astronaut/first/3.jpg';
-import astro114 from '../../assets/images/dalle/astronaut/first/4.jpg';
-import astro115 from '../../assets/images/dalle/astronaut/first/5.jpg';
-import astro116 from '../../assets/images/dalle/astronaut/first/6.jpg';
-import astro117 from '../../assets/images/dalle/astronaut/first/7.jpg';
-import astro118 from '../../assets/images/dalle/astronaut/first/8.jpg';
-import astro119 from '../../assets/images/dalle/astronaut/first/9.jpg';
-
+import FirstExample from './components/first-example/FirstExample';
 
 
 
@@ -234,7 +219,7 @@ const WhiteWrapper = styled.div`
     }
 `
 
-const ExampleWrapper = styled.div`
+export const ExampleWrapper = styled.div`
     display: grid;
     grid-template-columns: 40% 40%;
     grid-column-gap: 20%;
@@ -252,10 +237,10 @@ const ExampleWrapper = styled.div`
     }
 `
 
-const Tabs = styled.div`
+export const Tabs = styled.div`
     p {
         margin-top: 30px;
-        font-size: 1.6rem;
+        font-size: 1.45rem;
         color: rgba(0,0,0,.4);
         white-space: pre-wrap;
         span {
@@ -270,20 +255,22 @@ const Tabs = styled.div`
     }
 `
 
-const Descr = styled.div`
+export const Descr = styled.div`
     font-family: ${({theme}) => theme.fonts.colfax};
     letter-spacing: 1px;
     font-size: .7rem;
 `
 
-const Carousel = styled.div`
+export const Carousel = styled.div`
     width: 100%;
     .slick-slider {
         max-width: 100%;
         width: 100%;
         /* overflow: hidden; */
-        cursor: grab;
         margin-bottom: 30px;
+    }
+    .slick-list {
+        cursor: grab;
     }
 `
 
@@ -305,7 +292,6 @@ const DallePage: FC = () => {
         fadeForImages(topImageWrapper);
     }, []);
 
-    const [variationOfFirstTab, setVariationOfFirstTab]= useState([1,1,1]);
 
     const dispatch = useDispatch();
 
@@ -325,47 +311,6 @@ const DallePage: FC = () => {
                 images[index].style.opacity = '0';
             }, 3000);
         }, 1000);
-    }
-
-    const variationOfFirstSlider: any[][] = [
-        [astro110, astro111, astro112, astro113, astro114, astro115, astro116, astro117, astro118, astro119],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-    ]
-
-    // let variationOfFirstTab: number[] = [1,1,1];
-
-
-    let firstSliderContent: any[] = [astro111, astro112, astro113, astro114, astro115, astro116, astro117];
-
-
-    const changeVariation = (e: React.MouseEvent<Element, MouseEvent>, variation: number[]) => {
-        const target = e.target as HTMLSpanElement;
-        const attr = target.getAttribute('data-index')
-        if (target) {
-            const newVariation = [...variation];
-            newVariation[2] = +attr!;
-            setVariationOfFirstTab(newVariation);
-        }
-    }
-
-    console.log('render');
-
-    const renderP = (prop: any) => {
-        console.log('f')
-        if (prop[2] === 1) {
-            return <p><span className='active'>in a photorealistic style</span><span>   in the style of Andy Warhol</span><span>   as a pencil drawing</span></p>
-        } else if ( prop[2] === 2) {
-            return  <p><span className='active'>in a vaporwave style</span><span>   as pixel art</span><span>   in a photorealistic style</span></p>
-        } else {
-            return  <p><span className='active'>as a children's book illustration</span><span>   in a minimalist style</span><span>   in a watercolor style</span></p>
-        }
     }
 
 
@@ -456,18 +401,7 @@ const DallePage: FC = () => {
             <WhiteWrapper>
                 <Container>
                     <h3>DALL·E 2 can create original, realistic images and art from a text description. It can combine concepts, attributes, and styles.</h3>
-                    <ExampleWrapper>
-                        <Tabs>
-                            <Descr>TEXT DESCRIPTION</Descr>
-                            <p><span className='active'>An astronaut</span><span>   Teddy bears</span><span>   A bowl of soup</span></p>
-                            <p onClick={(e) => changeVariation(e,variationOfFirstTab)}><span data-index='1' className='active'>riding a horse</span><span data-index='2'>   lounging in a tropical resort in space</span><span data-index='3'>   playing basketball with cats in space</span></p>
-                            {renderP(variationOfFirstTab)}
-                        </Tabs>
-                        <Carousel>
-                            <Descr>DALL·E 2</Descr>
-                            <SliderSyncing content={firstSliderContent}></SliderSyncing>
-                        </Carousel>
-                    </ExampleWrapper>
+                    <FirstExample/>
                 </Container>
             </WhiteWrapper>
         </>
