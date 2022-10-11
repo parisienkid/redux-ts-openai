@@ -198,20 +198,22 @@ const FirstExample: FC = () => {
     const changeVariation = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>, indexOfTab: number) => {
         const target = e.target as HTMLSpanElement;
         const attr = target.getAttribute('data-index');
-        const parent = target!.parentNode as HTMLElement;
-        const parentNextSibling = parent.nextElementSibling as HTMLElement
-        if (target && parent.tagName === 'P') {
+        const targetParent = target!.parentNode as HTMLElement;
+        const parentNextSibling = targetParent.nextElementSibling as HTMLElement
+        if (target && targetParent.tagName === 'P') {
             const newVariation = [...variation];
             newVariation[indexOfTab] = +attr!;
             if (indexOfTab !== 2) {
                 newVariation[indexOfTab + 1] = 1;
                 newVariation[2] = 1;
             }
+            
             setVariation(newVariation);
-            parent?.querySelectorAll('span').forEach(item => {
+            targetParent?.querySelectorAll('span').forEach(item => {
                 item.classList.remove('active');
             });
             target.classList.add('active');
+
             if (parentNextSibling) {
                 parentNextSibling.querySelectorAll('span').forEach((item,i) => {
                     if (i === 0) {
@@ -220,6 +222,16 @@ const FirstExample: FC = () => {
                         item.classList.remove('active');
                     }
                 });
+                const parentOfParentNextSibling = parentNextSibling.nextElementSibling as HTMLElement;
+                if (parentOfParentNextSibling) {
+                    parentOfParentNextSibling.querySelectorAll('span').forEach((item,i) => {
+                        if (i === 0) {
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
             }
         }
     }
