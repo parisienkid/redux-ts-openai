@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { mainTheme } from '../../core/theme/theme';
+import { motion } from 'framer-motion';
 
 import Container from '../../components/container/Container';
 import MainPageCard from '../../components/main-page-card/MainPageCard';
@@ -14,7 +15,7 @@ const jellyfishImage = require('../../assets/images/jellyfish-some-overlay-optim
 
 const MainPageWrapper = styled.div`
     height: calc(100vh - ${({theme}) => theme.sizes.default.header.height}px);
-    background-color: rgb( ${({theme}) => theme.colors.header});
+    background-color: #fff;
     padding-bottom: ${({theme}) => theme.sizes.default.header.height}px;
     @media ${({theme}) => theme.media.extraLarge} {
         height: calc(100vh - ${({theme}) => theme.sizes.xl.header.height}px);
@@ -77,16 +78,39 @@ const MainPage: FC = () => {
         <MainPageWrapper>
             <Container>
                 <MainPageContent>
-                    <MainPageCard 
-                        img={dalleImage} 
-                        date={'AUGUST 31, 2022'} 
-                        title={'DALL·E: Introducing Outpainting'}
-                        to="/redux-ts-openai/dall-e-2"/>
-                    <MainPageCard 
-                        img={jellyfishImage}
-                        date={'AUGUST 24, 2022'}
-                        title={'Our approach to alignment research.'}
-                        to="/redux-ts-openai/"/>
+                        <motion.div
+                            initial={{ opacity: .0, scale: .95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: .0, scale: .95 }}
+                            transition={{
+                                duration: .2,
+                                ease: 'easeIn'
+                            }}
+                        >
+                            <MainPageCard 
+                                img={dalleImage} 
+                                date={'AUGUST 31, 2022'} 
+                                title={'DALL·E: Introducing Outpainting'}
+                                to="/redux-ts-openai/dall-e-2"
+                            />
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: .0, scale: .95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: .0, scale: .95 }}
+                            transition={{
+                                delay: .2,
+                                duration: .2,
+                                ease: 'easeIn'
+                            }}
+                        >
+                            <MainPageCard 
+                                img={jellyfishImage}
+                                date={'AUGUST 24, 2022'}
+                                title={'Our approach to alignment research.'}
+                                to="/redux-ts-openai/"
+                            />
+                        </motion.div>
                 </MainPageContent>
             </Container>
         </MainPageWrapper>

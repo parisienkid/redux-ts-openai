@@ -4,6 +4,8 @@ import SliderSyncing from '../../../../components/slider-syncing/SliderSyncing';
 
 
 
+
+
 import astro111var1 from '../../../../assets/images/dalle/astronaut/first/1/1.jpg';
 import astro111var2 from '../../../../assets/images/dalle/astronaut/first/1/1.jpg';
 import astro111var3 from '../../../../assets/images/dalle/astronaut/first/1/2.jpg';

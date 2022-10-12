@@ -6,10 +6,8 @@ import { dalleTheme } from '../../core/theme/theme';
 import Container from '../../components/container/Container';
 import { RouterBtn } from '../../components/buttons/Btns';
 
-import Slider from "react-slick";
-import SliderSyncing from '../../components/slider-syncing/SliderSyncing';
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+import { AnimatePresence, motion } from 'framer-motion';
+
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -226,6 +224,7 @@ export const ExampleWrapper = styled.div`
     width: 100%;
     margin-top: 80px;
     position: relative;
+    margin-bottom: 150px;
     &:after {
         content: 'right';
         font-family: ${({theme}) => theme.fonts.icons};
@@ -259,6 +258,7 @@ export const Descr = styled.div`
     font-family: ${({theme}) => theme.fonts.colfax};
     letter-spacing: 1px;
     font-size: .7rem;
+    margin-bottom: 20px;
 `
 
 export const Carousel = styled.div`
@@ -310,7 +310,7 @@ const DallePage: FC = () => {
             setTimeout(() => {
                 images[index].style.opacity = '0';
             }, 3000);
-        }, 1000);
+        }, 1500);
     }
 
 
@@ -377,8 +377,26 @@ const DallePage: FC = () => {
                     <AnimaImage src={animaIMG50} top="78%" left="98%"></AnimaImage>
                 </ImagesWrapper>
                 <Container>
-                    <h1>DALL·E <span>2</span></h1>
-                    <h2>DALL·E 2 is a new AI system that can create realistic images and art from a description in natural language.</h2>
+                    <motion.h1
+                        initial={{ opacity: .0, x: 20}}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: .0, x: 20 }}
+                        transition={{
+                            delay: .2,
+                            duration: .6,
+                            ease: 'easeIn'
+                        }}
+                    >DALL·E <span>2</span></motion.h1>
+                    <motion.h2
+                        initial={{ opacity: .0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: .0, x: 20 }}
+                        transition={{
+                            delay: .8,
+                            duration: .6,
+                            ease: 'easeIn'
+                        }}
+                    >DALL·E 2 is a new AI system that can create realistic images and art from a description in natural language.</motion.h2>
                     <NavList>
                         <li>
                             <NavLink before="#ff6" after='↗'>SIGN UP</NavLink>
@@ -400,11 +418,52 @@ const DallePage: FC = () => {
             </IntroWrapper>
             <WhiteWrapper>
                 <Container>
-                    <h3>DALL·E 2 can create original, realistic images and art from a text description. It can combine concepts, attributes, and styles.</h3>
-                    <FirstExample/>
+                    <motion.h3
+                        initial={{ opacity: .0, x: 20}}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            delay: .2,
+                            duration: .6,
+                            ease: 'easeIn'
+                        }}
+                    >DALL·E 2 can create original, realistic images and art from a text description. It can combine concepts, attributes, and styles.</motion.h3>
+                    <motion.div
+                        initial={{ opacity: .0, y: 20}}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            delay: .2,
+                            duration: .6,
+                            ease: 'easeIn'
+                        }}
+                    >
+                        <FirstExample/>
+                    </motion.div>
+                    <motion.h3
+                        initial={{ opacity: .0, x: 20, marginBottom: '150px'}}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            delay: .2,
+                            duration: .6,
+                            ease: 'easeIn'
+                        }}
+                    >DALL·E 2 can can expand images beyond what’s in the original canvas, creating expansive new compositions.</motion.h3>
+                    <motion.h3
+                        initial={{ opacity: .0, x: 20}}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            delay: .2,
+                            duration: .6,
+                            ease: 'easeIn'
+                        }}
+                    >DALL·E 2 can make realistic edits to existing images from a natural language caption. It can add and remove elements while taking shadows, reflections, and textures into account.</motion.h3>
+
                 </Container>
             </WhiteWrapper>
-        </>
+        </>         
     );
 };
 

@@ -107,7 +107,7 @@ export const mainTheme: DefaultTheme = {
     colors: {
         ...baseTheme.colors,
         bg: '0, 0, 0',
-        header: '255, 255, 255',
+        header: 'rgb(255, 255, 255)',
         footer: '0, 0, 0'
     },
 }
@@ -119,7 +119,7 @@ export const apiTheme: DefaultTheme = {
     colors: {
         ...baseTheme.colors,
         bg: '247, 247, 248',
-        header: '255, 255, 255',
+        header: 'rgb(255, 255, 255)',
         footer: '247, 247, 248',
         footerColor: '0, 0, 0',
     },
@@ -132,7 +132,7 @@ export const dalleTheme: DefaultTheme = {
     colors: {
         ...baseTheme.colors,
         bg: '0, 0, 0',
-        header: '0, 0, 0',
+        header: 'inherit',
         headerColor: '255,255,255',
         footer: '0, 0, 0',
         footerColor: '255,255,255',
@@ -147,7 +147,7 @@ export const researchTheme: DefaultTheme = {
     colors: {
         ...baseTheme.colors,
         bg: '246, 246, 244',
-        header: '246, 246, 244',
+        header: 'inherit',
         footer: '246, 246, 244',
         footerColor: '0, 0, 0'
     },
@@ -180,7 +180,7 @@ export const errorTheme: DefaultTheme = {
     colors: {
         ...baseTheme.colors,
         bg: '0,0,0',
-        header: '0,0,0',
+        header: 'inherit',
         headerColor: '80, 222,102',
         footer: '0, 0, 0',
         footerColor: '80, 222,102',
