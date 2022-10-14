@@ -1,9 +1,9 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { mainTheme } from '../../core/theme/theme';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import Container from '../../components/container/Container';
 import MainPageCard from '../../components/main-page-card/MainPageCard';
@@ -113,7 +113,7 @@ const MainPage: FC = () => {
                         </motion.div>
                 </MainPageContent>
             </Container>
-        </MainPageWrapper>
+    </MainPageWrapper>
     );
 };
 

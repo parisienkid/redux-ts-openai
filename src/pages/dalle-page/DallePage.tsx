@@ -67,6 +67,7 @@ import animaIMG49 from '../../assets/images/dalle/intro-images/49.jpg';
 import animaIMG50 from '../../assets/images/dalle/intro-images/50.jpg';
 
 import FirstExample from './components/first-example/FirstExample';
+import SecondExample from './components/second-example/SecondExample';
 
 
 
@@ -234,6 +235,29 @@ export const ExampleWrapper = styled.div`
         transform: translateX(-50%) translateY(-50%);
         font-size: 40px;
     }
+    .slick-slider {
+        max-width: 100%;
+        width: 100%;
+        /* overflow: hidden; */
+        margin-bottom: 30px;
+        &.mini {
+            .slick-slide {
+                max-width: 120px;
+            }
+
+        }
+    }
+    .slick-list {
+        cursor: grab;
+    }
+`
+
+interface BigMarginH3Props {
+    color: string
+}
+
+const BigMarginH3 = styled.h3<BigMarginH3Props>`
+    margin-top: 150px;
 `
 
 export const Tabs = styled.div`
@@ -263,15 +287,6 @@ export const Descr = styled.div`
 
 export const Carousel = styled.div`
     width: 100%;
-    .slick-slider {
-        max-width: 100%;
-        width: 100%;
-        /* overflow: hidden; */
-        margin-bottom: 30px;
-    }
-    .slick-list {
-        cursor: grab;
-    }
 `
 
 
@@ -304,13 +319,32 @@ const DallePage: FC = () => {
         const rndImageIndex = () => {
             return +(Math.random() * (50 - 0) + 0).toFixed();
         }
-        setInterval(() => {
-            const index = rndImageIndex();
-            images[index].style.opacity = '1';
-            setTimeout(() => {
-                images[index].style.opacity = '0';
-            }, 3000);
+        setTimeout(() => {
+            setInterval(() => {
+                const index = rndImageIndex();
+                images[index].style.opacity = '1';
+                setTimeout(() => {
+                    images[index].style.opacity = '0';
+                }, 3000);
+            }, 1000);
         }, 1500);
+    }
+
+    const navListVariants = {
+        visible: (i: number) => ({
+            opacity: 1,
+            x: 0,
+            y: 0,
+            transition: {
+                delay: 1.4 + i * 0.15,
+                duration: .1
+            }
+        }),
+        hidden: { 
+            opacity: 0,
+            x: 10,
+            y: 10,
+        }
     }
 
 
@@ -378,9 +412,8 @@ const DallePage: FC = () => {
                 </ImagesWrapper>
                 <Container>
                     <motion.h1
-                        initial={{ opacity: .0, x: 20}}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: .0, x: 20 }}
+                        initial={{ opacity: .0, y: 20, scale: .99}}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{
                             delay: .2,
                             duration: .6,
@@ -388,9 +421,8 @@ const DallePage: FC = () => {
                         }}
                     >DALL·E <span>2</span></motion.h1>
                     <motion.h2
-                        initial={{ opacity: .0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: .0, x: 20 }}
+                        initial={{ opacity: .0, y: 20, scale: .99 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{
                             delay: .8,
                             duration: .6,
@@ -398,29 +430,54 @@ const DallePage: FC = () => {
                         }}
                     >DALL·E 2 is a new AI system that can create realistic images and art from a description in natural language.</motion.h2>
                     <NavList>
-                        <li>
-                            <NavLink before="#ff6" after='↗'>SIGN UP</NavLink>
-                        </li>
-                        <li>
-                            <NavLink before="#42ffff" after='↓'>EXPLORE</NavLink>
-                        </li>
-                        <li>
-                            <NavLink before="#51da4c" after='▶'>WATCH VIDEO</NavLink>
-                        </li>
-                        <li>
-                            <NavLink before="#ff6e3c" after='📄'>VIEW RESEARCH</NavLink>
-                        </li>
-                        <li>
-                            <NavLink before="#3c46ff" after=''>FOLLOW ON INSTAGRAM</NavLink>
-                        </li>
-                    </NavList>
+                            <motion.li
+                                variants={navListVariants}
+                                initial='hidden'
+                                animate='visible'
+                                custom={1}
+                            >
+                                <NavLink before="#ff6" after='↗'>SIGN UP</NavLink>
+                            </motion.li>
+                            <motion.li
+                                variants={navListVariants}
+                                initial='hidden'
+                                animate='visible'
+                                custom={2}
+                            >
+                                <NavLink before="#42ffff" after='↓'>EXPLORE</NavLink>
+                            </motion.li>
+                            <motion.li
+                                variants={navListVariants}
+                                initial='hidden'
+                                animate='visible'
+                                custom={3}
+                            >
+                                <NavLink before="#51da4c" after='▶'>WATCH VIDEO</NavLink>
+                            </motion.li>
+                            <motion.li
+                                variants={navListVariants}
+                                initial='hidden'
+                                animate='visible'
+                                custom={4}
+                            >
+                                <NavLink before="#ff6e3c" after='📄'>VIEW RESEARCH</NavLink>
+                            </motion.li>
+                            <motion.li
+                                variants={navListVariants}
+                                initial='hidden'
+                                animate='visible'
+                                custom={5}
+                            >
+                                <NavLink before="#3c46ff" after=''>FOLLOW ON INSTAGRAM</NavLink>
+                            </motion.li>
+                        </NavList>
                 </Container>
             </IntroWrapper>
             <WhiteWrapper>
                 <Container>
                     <motion.h3
-                        initial={{ opacity: .0, x: 20}}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: .0, y: 20}}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{
                             delay: .2,
@@ -441,16 +498,6 @@ const DallePage: FC = () => {
                         <FirstExample/>
                     </motion.div>
                     <motion.h3
-                        initial={{ opacity: .0, x: 20, marginBottom: '150px'}}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            delay: .2,
-                            duration: .6,
-                            ease: 'easeIn'
-                        }}
-                    >DALL·E 2 can can expand images beyond what’s in the original canvas, creating expansive new compositions.</motion.h3>
-                    <motion.h3
                         initial={{ opacity: .0, x: 20}}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -459,8 +506,33 @@ const DallePage: FC = () => {
                             duration: .6,
                             ease: 'easeIn'
                         }}
-                    >DALL·E 2 can make realistic edits to existing images from a natural language caption. It can add and remove elements while taking shadows, reflections, and textures into account.</motion.h3>
+                    >DALL·E 2 can can expand images beyond what’s in the original canvas, creating expansive new compositions.</motion.h3>
+                    <motion.div
 
+                        initial={{ opacity: .0, x: 20}}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            delay: .2,
+                            duration: .6,
+                            ease: 'easeIn'
+                        }}
+                    >
+                        <BigMarginH3 color='black'>DALL·E 2 can make realistic edits to existing images from a natural language caption. It can add and remove elements while taking shadows, reflections, and textures into account.</BigMarginH3>
+                    </motion.div>
+                    <SecondExample></SecondExample>
+                    <motion.div
+                        initial={{ opacity: .0, x: 20}}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            delay: .2,
+                            duration: .6,
+                            ease: 'easeIn'
+                        }}
+                        >
+                        <BigMarginH3 color='black'>DALL·E 2 can take an image and create different variations of it inspired by the original.</BigMarginH3>
+                    </motion.div>
                 </Container>
             </WhiteWrapper>
         </>         

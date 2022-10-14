@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { aboutTheme } from '../../core/theme/theme';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import Container from '../../components/container/Container';
 import LazyLoad from 'react-lazy-load';
@@ -167,14 +168,32 @@ const AboutPage: FC = () => {
        <>
             <AboutPageWrapper>
                 <Container>
-                    <h2>OpenAI is an AI research and deployment company. Our mission is to ensure that artificial general intelligence benefits all of humanity.</h2>
+                    <motion.h2
+                        initial={{ opacity: .0, x: 10}}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                            delay: .2,
+                            duration: .4,
+                            ease: 'easeIn'
+                        }}
+                    >OpenAI is an AI research and deployment company. Our mission is to ensure that artificial general intelligence benefits all of humanity.</motion.h2>
                 </Container>
             </AboutPageWrapper>
             <ColoredBacground>
                 <MainFigure>
-                    <LazyLoad>
-                        <MainImg src='https://cdn.openai.com/research-covers/openai-charter/2x-no-mark.jpg'/>
-                    </LazyLoad>
+                    <motion.div
+                        initial={{ opacity: .0, scale: .95}}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{
+                            delay: .6,
+                            duration: .4,
+                            ease: 'easeIn'
+                        }}
+                    >
+                        <LazyLoad>
+                            <MainImg src='https://cdn.openai.com/research-covers/openai-charter/2x-no-mark.jpg'/>
+                        </LazyLoad>
+                    </motion.div>
                 </MainFigure>
             </ColoredBacground>
             <AboutPageWrapper>

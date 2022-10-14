@@ -18,6 +18,26 @@ export default class SliderSyncing extends Component {
     });
   }
 
+  renderItems() {
+    if (typeof this.props.content[0] == "string") {
+        return (
+          this.props.content.map((item, i) => {
+            return (
+              <MainImg key={i} src={item}></MainImg>
+            )
+          })
+        )
+    } else {
+      return (
+        this.props.content.map((item, i) => {
+          return (
+            item
+          )
+        })
+      )
+    }
+  }
+
   render() {
     return (
       <>
@@ -26,24 +46,22 @@ export default class SliderSyncing extends Component {
           ref={slider => (this.slider1 = slider)}
           dots = {true}
         >
-        {this.props.content.map((item, i)=> {
-          return (
-            <MainImg key={i} src={item}></MainImg>
-          )
-        })}
+        {this.renderItems()}
         </Slider>
         <Slider
+          className="mini"
           asNavFor={this.state.nav1}
           ref={slider => (this.slider2 = slider)}
-          slidesToShow={5}
+          style={{
+            height: '100px'
+          }}
+          slidesToShow={
+            this.props.content.length > 5 ? 5 : this.props.content.length
+          }
           swipeToSlide={true}
           focusOnSelect={true}
         >
-        {this.props.content.map((item, i) => {
-          return (
-            <MainImg key={i} src={item}></MainImg>
-          )
-        })}
+        {this.renderItems()}
         </Slider>
       </>
     );

@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { researchTheme } from '../../core/theme/theme';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+
 
 import Container from '../../components/container/Container';
 import LazyLoad from 'react-lazy-load';
@@ -182,74 +184,115 @@ const ResearchPage: FC = () => {
         <ResearchPageWrapper>
             <ResearchPageWrapper>
                 <Container>
-                    <h2>OpenAI conducts fundamental, long-term research toward the creation of safe AGI.</h2>
-                    <MaintTitle>Milestones</MaintTitle>
-                    <MilestonesWrapper>
-                        <MItem>
-                            <LazyMilestone>
-                                <MPicture>
-                                    <MBg src={`${multimodalGrad}`}></MBg>
-                                    <MVideo poster="https://cdn.openai.com/research-covers/multimodal-neurons/2x-no-mark-animated-poster.jpg" autoPlay muted loop playsInline>
-                                        <source src="https://cdn.openai.com/research-covers/multimodal-neurons/2x-no-mark-animated.mp4"/>
-                                    </MVideo>
-                                </MPicture>
-                            </LazyMilestone>
-                            <MDescr>Multimodal Neurons in Artificial Neural Networks</MDescr>
-                            <MTime>March 4, 2021</MTime>
-                        </MItem>
-                        <MItem>
-                            <LazyMilestone>
-                                <MPicture>
-                                    <MBg src={`${dalleGrag}`}></MBg>   
-                                    <MImg src="https://cdn.openai.com/research-covers/dall-e/2x-no-mark.jpg"/> 
-                                </MPicture>
-                            </LazyMilestone>
-                            <MDescr>DALL·E: Creating Images from Text</MDescr>
-                            <MTime>January 5, 2021</MTime>
-                        </MItem>
-                        <MItem>
-                            <LazyMilestone>
-                                <MPicture>
-                                    <MBg src={`${clipGrad}`}></MBg>
-                                    <MImg src="https://cdn.openai.com/research-covers/clip/2x-no-mark.jpg"/> 
-                                </MPicture>
-                            </LazyMilestone>
-                            <MDescr>CLIP: Connecting Text and Images</MDescr>
-                            <MTime>January 5, 2021</MTime>
-                        </MItem>
-                        <MItem>
-                            <LazyMilestone>
-                                <MPicture>
-                                    <MBg src={`${imageGrad}`}></MBg>   
-                                    <MVideo poster="https://cdn.openai.com/research-covers/image-gpt/2x-no-mark-animated-poster.jpg" autoPlay muted loop playsInline>
-                                        <source src="https://cdn.openai.com/research-covers/image-gpt/2x-no-mark-animated.mp4"/>
-                                    </MVideo> 
-                                </MPicture>
-                            </LazyMilestone>
-                            <MDescr>Image GPT</MDescr>
-                            <MTime>June 17, 2020</MTime>
-                        </MItem>
-                        <MItem>
-                            <LazyMilestone>
-                                <MPicture>
-                                    <MBg src={`${jukeboxGrad}`}></MBg> 
-                                    <MImg src="https://cdn.openai.com/research-covers/jukebox/2x-no-mark.jpg"/> 
-                                </MPicture>
-                            </LazyMilestone>
-                            <MDescr>Jukebox</MDescr>
-                            <MTime>April 30, 2020</MTime>
-                        </MItem>
-                        <MItem>
-                            <LazyMilestone>
-                                <MPicture>
-                                    <MBg src={`${solvingGrad}`}></MBg> 
-                                    <MImg src="https://cdn.openai.com/research-covers/solving-rubiks-cube/2x-no-mark.jpg"/> 
-                                </MPicture>
-                            </LazyMilestone>
-                            <MDescr>Solving Rubik’s Cube with a Robot Hand</MDescr>
-                            <MTime>October 15, 2019</MTime>
-                        </MItem>
-                    </MilestonesWrapper>
+                    <motion.h2
+                        initial={{
+                            opacity: 0,
+                            x: -10,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            x: 0,
+                        }}
+                        transition = {{
+                            delay: .5
+                        }}
+                    >OpenAI conducts fundamental, long-term research toward the creation of safe AGI.</motion.h2>
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            x: -10,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            x: 0,
+                        }}
+                        transition = {{
+                            delay: .7
+                        }}
+                    >
+                        <MaintTitle>Milestones</MaintTitle>
+                    </motion.div>
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            y: 20
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                        }}
+                        transition = {{
+                            delay: 1,
+                            duration: 1
+                        }}
+                    >
+                        <MilestonesWrapper>
+                            <MItem>
+                                <LazyMilestone>
+                                    <MPicture>
+                                        <MBg src={`${multimodalGrad}`}></MBg>
+                                        <MVideo poster="https://cdn.openai.com/research-covers/multimodal-neurons/2x-no-mark-animated-poster.jpg" autoPlay muted loop playsInline>
+                                            <source src="https://cdn.openai.com/research-covers/multimodal-neurons/2x-no-mark-animated.mp4"/>
+                                        </MVideo>
+                                    </MPicture>
+                                </LazyMilestone>
+                                <MDescr>Multimodal Neurons in Artificial Neural Networks</MDescr>
+                                <MTime>March 4, 2021</MTime>
+                            </MItem>
+                            <MItem>
+                                <LazyMilestone>
+                                    <MPicture>
+                                        <MBg src={`${dalleGrag}`}></MBg>   
+                                        <MImg src="https://cdn.openai.com/research-covers/dall-e/2x-no-mark.jpg"/> 
+                                    </MPicture>
+                                </LazyMilestone>
+                                <MDescr>DALL·E: Creating Images from Text</MDescr>
+                                <MTime>January 5, 2021</MTime>
+                            </MItem>
+                            <MItem>
+                                <LazyMilestone>
+                                    <MPicture>
+                                        <MBg src={`${clipGrad}`}></MBg>
+                                        <MImg src="https://cdn.openai.com/research-covers/clip/2x-no-mark.jpg"/> 
+                                    </MPicture>
+                                </LazyMilestone>
+                                <MDescr>CLIP: Connecting Text and Images</MDescr>
+                                <MTime>January 5, 2021</MTime>
+                            </MItem>
+                            <MItem>
+                                <LazyMilestone>
+                                    <MPicture>
+                                        <MBg src={`${imageGrad}`}></MBg>   
+                                        <MVideo poster="https://cdn.openai.com/research-covers/image-gpt/2x-no-mark-animated-poster.jpg" autoPlay muted loop playsInline>
+                                            <source src="https://cdn.openai.com/research-covers/image-gpt/2x-no-mark-animated.mp4"/>
+                                        </MVideo> 
+                                    </MPicture>
+                                </LazyMilestone>
+                                <MDescr>Image GPT</MDescr>
+                                <MTime>June 17, 2020</MTime>
+                            </MItem>
+                            <MItem>
+                                <LazyMilestone>
+                                    <MPicture>
+                                        <MBg src={`${jukeboxGrad}`}></MBg> 
+                                        <MImg src="https://cdn.openai.com/research-covers/jukebox/2x-no-mark.jpg"/> 
+                                    </MPicture>
+                                </LazyMilestone>
+                                <MDescr>Jukebox</MDescr>
+                                <MTime>April 30, 2020</MTime>
+                            </MItem>
+                            <MItem>
+                                <LazyMilestone>
+                                    <MPicture>
+                                        <MBg src={`${solvingGrad}`}></MBg> 
+                                        <MImg src="https://cdn.openai.com/research-covers/solving-rubiks-cube/2x-no-mark.jpg"/> 
+                                    </MPicture>
+                                </LazyMilestone>
+                                <MDescr>Solving Rubik’s Cube with a Robot Hand</MDescr>
+                                <MTime>October 15, 2019</MTime>
+                            </MItem>
+                        </MilestonesWrapper>
+                    </motion.div>
                     <InfoBlock>
                         <InfoDescr>
                             <h3>Blog</h3>

@@ -108,7 +108,8 @@ export const mainTheme: DefaultTheme = {
         ...baseTheme.colors,
         bg: '0, 0, 0',
         header: 'rgb(255, 255, 255)',
-        footer: '0, 0, 0'
+        footer: '0, 0, 0',
+        spinner: 'rgb(255,255,255)',
     },
 }
 
