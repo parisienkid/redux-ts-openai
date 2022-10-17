@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { mainTheme } from '../../core/theme/theme';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import Container from '../../components/container/Container';
 import MainPageCard from '../../components/main-page-card/MainPageCard';
@@ -84,7 +84,8 @@ const MainPage: FC = () => {
                             exit={{ opacity: .0, scale: .95 }}
                             transition={{
                                 duration: .2,
-                                ease: 'easeIn'
+                                ease: 'easeIn',
+                                delay: .1
                             }}
                         >
                             <MainPageCard 
@@ -100,7 +101,7 @@ const MainPage: FC = () => {
                             exit={{ opacity: .0, scale: .95 }}
                             transition={{
                                 delay: .2,
-                                duration: .2,
+                                duration: .3,
                                 ease: 'easeIn'
                             }}
                         >

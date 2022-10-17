@@ -30,7 +30,7 @@ const FirstExample: FC = () => {
     }, [variation]);
 
 
-    const changeSlider = async () => {
+    const changeSlider = () => {
         switch(variation.toString()) {
             case ('1,1,1'): 
                 import('./slider/111')
@@ -297,7 +297,7 @@ const FirstExample: FC = () => {
             </Tabs>
             <Carousel>
                 <Descr>DALL·E 2</Descr>
-                <SliderSyncing content={sliderContent}></SliderSyncing>
+                <SliderSyncing content={sliderContent} miniContent={sliderContent}></SliderSyncing>
             </Carousel>
         </ExampleWrapper>
     );

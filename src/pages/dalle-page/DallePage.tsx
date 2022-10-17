@@ -68,6 +68,7 @@ import animaIMG50 from '../../assets/images/dalle/intro-images/50.jpg';
 
 import FirstExample from './components/first-example/FirstExample';
 import SecondExample from './components/second-example/SecondExample';
+import ThirdExample from './components/third-example/ThirdExample';
 
 
 
@@ -212,7 +213,7 @@ const AnimaImage = styled.img<AnimaImageProps>`
 
 const WhiteWrapper = styled.div`
     background-color: #fff;
-    padding: 150px 0;
+    padding: 150px 0 0 0;
     h3 {
         max-width: 800px;
     }
@@ -241,8 +242,14 @@ export const ExampleWrapper = styled.div`
         /* overflow: hidden; */
         margin-bottom: 30px;
         &.mini {
+            margin-top: 40px;
             .slick-slide {
+                /* min-width: 120px; */
                 max-width: 120px;
+                img {
+                    padding: 0 5px;
+                    max-height: 108px;
+                }
             }
 
         }
@@ -292,7 +299,16 @@ export const Carousel = styled.div`
 
 
 export const MainImg = styled.img`
-    padding: 0 5px;
+    display: block !important;
+`
+
+const ResearchWrapper = styled.div`
+    background-color: #111;
+    padding: 150px 0;
+    h3 {
+        color: #fff;
+        max-width: 750px;
+    }
 `
 
 
@@ -319,15 +335,32 @@ const DallePage: FC = () => {
         const rndImageIndex = () => {
             return +(Math.random() * (50 - 0) + 0).toFixed();
         }
-        setTimeout(() => {
+        // setTimeout(() => {
             setInterval(() => {
                 const index = rndImageIndex();
-                images[index].style.opacity = '1';
+                const secondIndex = rndImageIndex();
+                const thirdIndex = rndImageIndex();
+
                 setTimeout(() => {
-                    images[index].style.opacity = '0';
-                }, 3000);
-            }, 1000);
-        }, 1500);
+                    images[index].style.opacity = '1';
+                    setTimeout(() => {
+                        images[index].style.opacity = '0';
+                    }, 1500);
+                }, 0);
+                setTimeout(() => {
+                    images[secondIndex].style.opacity = '1';
+                    setTimeout(() => {
+                        images[secondIndex].style.opacity = '0';
+                    }, 1500);
+                }, 500);
+                setTimeout(() => {
+                    images[thirdIndex].style.opacity = '1';
+                    setTimeout(() => {
+                        images[thirdIndex].style.opacity = '0';
+                    }, 2000);
+                }, 1000);
+            }, 2000);
+        // }, 1500);
     }
 
     const navListVariants = {
@@ -475,66 +508,28 @@ const DallePage: FC = () => {
             </IntroWrapper>
             <WhiteWrapper>
                 <Container>
-                    <motion.h3
-                        initial={{ opacity: .0, y: 20}}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            delay: .2,
-                            duration: .6,
-                            ease: 'easeIn'
-                        }}
-                    >DALL·E 2 can create original, realistic images and art from a text description. It can combine concepts, attributes, and styles.</motion.h3>
-                    <motion.div
-                        initial={{ opacity: .0, y: 20}}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            delay: .2,
-                            duration: .6,
-                            ease: 'easeIn'
-                        }}
-                    >
-                        <FirstExample/>
-                    </motion.div>
-                    <motion.h3
-                        initial={{ opacity: .0, x: 20}}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            delay: .2,
-                            duration: .6,
-                            ease: 'easeIn'
-                        }}
-                    >DALL·E 2 can can expand images beyond what’s in the original canvas, creating expansive new compositions.</motion.h3>
-                    <motion.div
-
-                        initial={{ opacity: .0, x: 20}}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            delay: .2,
-                            duration: .6,
-                            ease: 'easeIn'
-                        }}
-                    >
-                        <BigMarginH3 color='black'>DALL·E 2 can make realistic edits to existing images from a natural language caption. It can add and remove elements while taking shadows, reflections, and textures into account.</BigMarginH3>
-                    </motion.div>
+                    <h3 >DALL·E 2 can create original, realistic images and art from a text description. It can combine concepts, attributes, and styles.</h3>
+                    <FirstExample/>
+                    <h3>DALL·E 2 can can expand images beyond what’s in the original canvas, creating expansive new compositions.</h3>
+                    <BigMarginH3 color='black'>DALL·E 2 can make realistic edits to existing images from a natural language caption. It can add and remove elements while taking shadows, reflections, and textures into account.</BigMarginH3>
                     <SecondExample></SecondExample>
-                    <motion.div
-                        initial={{ opacity: .0, x: 20}}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            delay: .2,
-                            duration: .6,
-                            ease: 'easeIn'
-                        }}
-                        >
-                        <BigMarginH3 color='black'>DALL·E 2 can take an image and create different variations of it inspired by the original.</BigMarginH3>
-                    </motion.div>
+                    <BigMarginH3 color='black'>DALL·E 2 can take an image and create different variations of it inspired by the original.</BigMarginH3>
+                    <ThirdExample/>
                 </Container>
             </WhiteWrapper>
+            <ResearchWrapper>
+                <Container>
+                    <motion.h3
+                        initial={{ opacity: .0, y: 20}}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            duration: .6,
+                            ease: 'easeIn'
+                        }}
+                    >DALL·E 2 has learned the relationship between images and the text used to describe them. It uses a process called “diffusion,” which starts with a pattern of random dots and gradually alters that pattern towards an image when it recognizes specific aspects of that image.</motion.h3>
+                </Container>
+            </ResearchWrapper>
         </>         
     );
 };

@@ -18,23 +18,29 @@ export default class SliderSyncing extends Component {
     });
   }
 
-  renderItems() {
-    if (typeof this.props.content[0] == "string") {
-        return (
-          this.props.content.map((item, i) => {
-            return (
-              <MainImg key={i} src={item}></MainImg>
-            )
-          })
-        )
-    } else {
-      return (
-        this.props.content.map((item, i) => {
+  onUpdate(i) {
+    if (this.props.changeVariant) {
+      this.props.changeVariant(i);
+    } 
+  }
+
+
+  renderItems(mode) {
+    switch (mode) {
+      case 'original': 
+        if (typeof this.props.content[0] == "string") { // If props == images
           return (
-            item
+            this.props.content.map((item, i) => {return <MainImg key={i} src={item}></MainImg>})
           )
-        })
-      )
+        } else {
+          return (
+            this.props.content.map((item) => {return item}) // If props == components (need to add 'key')
+          )
+        }
+      case 'mini':
+        return this.props.miniContent.map((item, i) => {return <MainImg key={i} src={item}></MainImg>}) // For mini-slider
+      default:
+        this.props.content.map((item, i) => {return <MainImg key={i} src={item}></MainImg>})
     }
   }
 
@@ -42,26 +48,30 @@ export default class SliderSyncing extends Component {
     return (
       <>
         <Slider
+          beforeChange={(oldI, newI) => this.onUpdate(newI)}
           asNavFor={this.state.nav2}
           ref={slider => (this.slider1 = slider)}
           dots = {true}
+          arrows = {false}
+          infinite = {false}
         >
-        {this.renderItems()}
+          {this.renderItems('original')}
         </Slider>
         <Slider
+          // afterChange={this.onClick}
           className="mini"
           asNavFor={this.state.nav1}
           ref={slider => (this.slider2 = slider)}
-          style={{
-            height: '100px'
-          }}
           slidesToShow={
             this.props.content.length > 5 ? 5 : this.props.content.length
           }
           swipeToSlide={true}
           focusOnSelect={true}
+          arrows = {false}
+          infinite = {false}
+          // centerMode = {true}
         >
-        {this.renderItems()}
+          {this.renderItems('mini')}
         </Slider>
       </>
     );
