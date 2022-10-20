@@ -79,16 +79,17 @@ const IntroWrapper = styled.div`
     position: relative;
     margin-top: -${({theme}) => theme.sizes.default.header.height}px;
     @media ${({theme}) => theme.media.extraLarge} {
-        margin--top: ${({theme}) => theme.sizes.xl.header.height}px;
+        margin-top: ${({theme}) => theme.sizes.xl.header.height}px;
     }
     @media ${({theme}) => theme.media.large} {
-        margin--top: ${({theme}) => theme.sizes.l.header.height}px;
+        margin-top: ${({theme}) => theme.sizes.l.header.height}px;
     }
     @media ${({theme}) => theme.media.medium} {
-        margin--top: ${({theme}) => theme.sizes.m.header.height}px;
+        margin-top: ${({theme}) => theme.sizes.m.header.height}px;
     }
     @media ${({theme}) => theme.media.small} {
-        margin--top: ${({theme}) => theme.sizes.s.header.height}px;
+        margin-top: ${({theme}) => theme.sizes.s.header.height}px;
+        padding: 15vh 0 100px 0;
     }
     h1 {
         /* font-size: 17.3rem; */
@@ -217,7 +218,7 @@ const ImagesWrapper = styled.div`
     left: 0;
     height: calc(100% - 100px);
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
     @media ${({theme}) => theme.media.extraLarge} {
         padding-top: ${({theme}) => theme.sizes.xl.header.height}px;
     }
@@ -246,6 +247,12 @@ const AnimaImage = styled.img<AnimaImageProps>`
     transform: translateY(-50%) translateX(-50%);
     transition: 1s;
     opacity: 0;
+    @media ${({theme}) => theme.media.medium} {
+        max-width: 130px;
+    }
+    @media ${({theme}) => theme.media.small} {
+        max-width: 110px;
+    }
 `
 
 const WhiteWrapper = styled.div`
@@ -264,6 +271,14 @@ export const ExampleWrapper = styled.div`
     margin-top: 80px;
     position: relative;
     margin-bottom: 150px;
+    @media ${({theme}) => theme.media.large} {
+        grid-column-gap: 10%;
+        grid-template-columns: 45% 45%;
+    }
+    @media ${({theme}) => theme.media.medium} {
+        grid-template-columns: 100%;
+        grid-row-gap: 30px;
+    }
     &:after {
         content: 'right';
         font-family: ${({theme}) => theme.fonts.icons};
@@ -272,6 +287,9 @@ export const ExampleWrapper = styled.div`
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         font-size: 40px;
+        @media ${({theme}) => theme.media.medium} {
+            display: none;
+        }
     }
     .slick-slider {
         max-width: 100%;
@@ -281,11 +299,10 @@ export const ExampleWrapper = styled.div`
         &.mini {
             margin-top: 40px;
             .slick-slide {
-                /* min-width: 120px; */
-                max-width: 120px;
+                /* max-width: 120px;
+                min-width: 120px; */
                 img {
                     padding: 0 5px;
-                    max-height: 108px;
                 }
             }
 
@@ -318,6 +335,15 @@ export const Tabs = styled.div`
             &:hover {
                 color: rgba(0,0,0,1);
             }
+        }
+        @media ${({theme}) => theme.media.large} {
+            font-size: 1.2rem;
+        }
+        @media ${({theme}) => theme.media.medium} {
+            
+        }
+        @media ${({theme}) => theme.media.small} {
+            font-size: .8rem;
         }
     }
 `
@@ -357,7 +383,7 @@ const DallePage: FC = () => {
     useEffect(() => {
         // window.scrollTo(0, 0);
         dispatch(changeTheme(dalleTheme));
-        // fadeForImages(topImageWrapper);
+        fadeForImages(topImageWrapper);
     }, []);
 
 
@@ -369,26 +395,44 @@ const DallePage: FC = () => {
 
     const fadeForImages = (wrapper: RefObject<HTMLDivElement>) => {
         const images = wrapper.current!.querySelectorAll(AnimaImage) as NodeListOf<HTMLElement>;
+
         const rndImageIndex = () => {
             return +(Math.random() * (50 - 0) + 0).toFixed();
         }
 
-        const fade = (interval: number) => {
+        let firstPrev = 0;
+        let secondPrev = 0;
+        let thirdPrev = 0;
+
+        const fade = (interval: number, i: number) => {
             setTimeout(() => {
                 let animation = setTimeout(function fade() {
-                    const index = rndImageIndex();
+                    let index = rndImageIndex();
+                    while (index === firstPrev || index === secondPrev || index === thirdPrev) {
+                        index = rndImageIndex();
+                    }
                     images[index].style.opacity = '1';
                     setTimeout(() => {
                         images[index].style.opacity = '0';
                     }, 3000);
                     animation = setTimeout(fade, 3300);
+                    switch (i) {
+                        case (1):
+                            return firstPrev = index
+                        case (2):
+                            return secondPrev = index
+                        case (3):
+                            return thirdPrev = index
+                        default: 
+                            return new Error('Error in animation')
+                    }
                 });
             }, interval);
         };
 
-        fade(1500);
-        fade(2600); 
-        fade(3700); 
+        fade(1500, 1);
+        fade(2600, 2); 
+        fade(3700, 3); 
     }
 
     const navListVariants = {

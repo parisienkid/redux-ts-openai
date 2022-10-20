@@ -45,9 +45,39 @@ export default class SliderSyncing extends Component {
   }
 
   render() {
+
+    const bigSettings = {
+      responsive: [
+        {
+          breakpoint: 540,
+          settings: {
+            dots: false
+          }
+        }
+      ]
+    }
+
+    const miniSettings = {
+      responsive: [
+        {
+          breakpoint: 1025,
+          settings: {
+            slidesToShow: 4,
+          }
+        },
+        {
+          breakpoint: 540,
+          settings: {
+            slidesToShow: 3,
+          }
+        }
+      ]
+    }
+
     return (
       <>
         <Slider
+          {...bigSettings}
           beforeChange={(oldI, newI) => this.onUpdate(newI)}
           asNavFor={this.state.nav2}
           ref={slider => (this.slider1 = slider)}
@@ -57,19 +87,17 @@ export default class SliderSyncing extends Component {
         >
           {this.renderItems('original')}
         </Slider>
-        <Slider
-          // afterChange={this.onClick}
+        <Slider 
+          {...miniSettings}
           className="mini"
           asNavFor={this.state.nav1}
           ref={slider => (this.slider2 = slider)}
-          slidesToShow={
-            this.props.content.length > 5 ? 5 : this.props.content.length
-          }
+          slidesToShow = {5}
           swipeToSlide={true}
           focusOnSelect={true}
           arrows = {false}
           infinite = {false}
-          // centerMode = {true}
+          
         >
           {this.renderItems('mini')}
         </Slider>

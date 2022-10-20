@@ -6,7 +6,7 @@ import SliderSyncing from '../../../../components/slider-syncing/SliderSyncing';
 
 
 
-import astro111var1 from '../../../../assets/images/dalle/astronaut/first/1/1.jpg';
+import astro111var1 from '../../../../assets/images/dalle/astronaut/first/1/0.jpg';
 import astro111var2 from '../../../../assets/images/dalle/astronaut/first/1/1.jpg';
 import astro111var3 from '../../../../assets/images/dalle/astronaut/first/1/2.jpg';
 import astro111var4 from '../../../../assets/images/dalle/astronaut/first/1/3.jpg';
@@ -33,10 +33,7 @@ const FirstExample: FC = () => {
     const changeSlider = () => {
         switch(variation.toString()) {
             case ('1,1,1'): 
-                import('./slider/111')
-                    .then(obj => {
-                        setSliderContent(obj.default);
-                    })
+                setSliderContent([astro111var1, astro111var2, astro111var3, astro111var4, astro111var5, astro111var6, astro111var7, astro111var8, astro111var9, astro111var10]);
                 break
             case ('1,1,2'):
                 import('./slider/112')
