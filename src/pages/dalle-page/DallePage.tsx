@@ -92,22 +92,52 @@ const IntroWrapper = styled.div`
     }
     h1 {
         /* font-size: 17.3rem; */
-        font-size: 17.3rem;
-        line-height: 17.3rem;
+        font-size: 17rem;
+        line-height: 17rem;
         text-align: center;
         color: white;
         word-wrap: break-word;
         pointer-events: none;
         text-align: justify;
-        span {
-            display: inline-block;
-            margin-left: 90px;
+        white-space: pre;
+        @media (max-width: 1520px) {
+            font-size: 15rem;
+            line-height: 15rem;
+        }
+        @media (max-width: 1340px) {
+            font-size: 13.5rem;
+            line-height: 13.5rem;
+        }
+        @media ${({theme}) => theme.media.extraLarge} {
+            font-size: 11rem;
+            line-height: 11rem;
+        }
+        @media ${({theme}) => theme.media.large} {
+            font-size: 8.4rem;
+            line-height: 8.4rem;
+        }
+        @media ${({theme}) => theme.media.medium} {
+            font-size: 6rem;
+            line-height: 6rem;
+        }
+        @media ${({theme}) => theme.media.small} {
+            font-size: 3.5rem;
+            line-height: 3.5rem;
         }
     }
     h2 {
         font-size: 2.4rem;
         margin-top: 40px;
         color: white;
+        @media ${({theme}) => theme.media.large} {
+            font-size: 2rem;
+        }
+        @media ${({theme}) => theme.media.medium} {
+            font-size: 1.6rem;
+        }
+        @media ${({theme}) => theme.media.small} {
+            font-size: 1.1rem;
+        }
     }
 `
 
@@ -124,9 +154,6 @@ const NavList = styled.ul`
     flex-direction: column;
     margin-top: 80px;
     padding-left: 53px;
-    li {
-
-    }
 `
 
 interface NavLinkProps {
@@ -143,6 +170,16 @@ const NavLink = styled.a<NavLinkProps>`
     font-weight: bold;
     font-size: .85rem;
     line-height: .85rem;
+    @media ${({theme}) => theme.media.medium} {
+        font-size: .75rem;
+        line-height: .75rem;
+        padding: 14px 5px;
+    }
+    @media ${({theme}) => theme.media.small} {
+        font-size: .55rem;
+        line-height: .55rem;
+        padding: 12px 5px;
+    }
     &:after {
         content: '${props => props.after}';
         display: block;
@@ -320,7 +357,7 @@ const DallePage: FC = () => {
     useEffect(() => {
         // window.scrollTo(0, 0);
         dispatch(changeTheme(dalleTheme));
-        fadeForImages(topImageWrapper);
+        // fadeForImages(topImageWrapper);
     }, []);
 
 
@@ -335,32 +372,23 @@ const DallePage: FC = () => {
         const rndImageIndex = () => {
             return +(Math.random() * (50 - 0) + 0).toFixed();
         }
-        // setTimeout(() => {
-            setInterval(() => {
-                const index = rndImageIndex();
-                const secondIndex = rndImageIndex();
-                const thirdIndex = rndImageIndex();
 
-                setTimeout(() => {
+        const fade = (interval: number) => {
+            setTimeout(() => {
+                let animation = setTimeout(function fade() {
+                    const index = rndImageIndex();
                     images[index].style.opacity = '1';
                     setTimeout(() => {
                         images[index].style.opacity = '0';
-                    }, 1500);
-                }, 0);
-                setTimeout(() => {
-                    images[secondIndex].style.opacity = '1';
-                    setTimeout(() => {
-                        images[secondIndex].style.opacity = '0';
-                    }, 1500);
-                }, 500);
-                setTimeout(() => {
-                    images[thirdIndex].style.opacity = '1';
-                    setTimeout(() => {
-                        images[thirdIndex].style.opacity = '0';
-                    }, 2000);
-                }, 1000);
-            }, 2000);
-        // }, 1500);
+                    }, 3000);
+                    animation = setTimeout(fade, 3300);
+                });
+            }, interval);
+        };
+
+        fade(1500);
+        fade(2600); 
+        fade(3700); 
     }
 
     const navListVariants = {
@@ -452,7 +480,7 @@ const DallePage: FC = () => {
                             duration: .6,
                             ease: 'easeIn'
                         }}
-                    >DALL·E <span>2</span></motion.h1>
+                    >DALL·E  2</motion.h1>
                     <motion.h2
                         initial={{ opacity: .0, y: 20, scale: .99 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
