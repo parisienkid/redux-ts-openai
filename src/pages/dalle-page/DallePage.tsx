@@ -4,7 +4,9 @@ import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
 import { dalleTheme } from '../../core/theme/theme';
 import Container from '../../components/container/Container';
-import { RouterBtn } from '../../components/buttons/Btns';
+import { RouterBtn, DefaultBtn } from '../../components/buttons/Btns';
+import Vimeo from '@u-wave/react-vimeo';
+import LazyLoad from 'react-lazy-load';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -359,8 +361,6 @@ export const Carousel = styled.div`
     width: 100%;
 `
 
-
-
 export const MainImg = styled.img`
     display: block !important;
 `
@@ -374,6 +374,126 @@ const ResearchWrapper = styled.div`
     }
 `
 
+const VimeoWrapper = styled.div`
+    margin-top: 100px;
+    width: 100%;
+    background-size: cover;
+    margin-bottom: 150px;
+    iframe {
+        width: 100%;
+        height: 850px;
+    }
+    p {
+        color: #fff;
+    }
+`
+
+const FoxesWrapper = styled.div`
+    display: grid;
+    grid-template-columns: 40fr 40fr 20fr;
+    grid-column-gap: 25px;
+    margin-top: 100px;
+`
+
+const FoxExample = styled.div`
+    width: 100%;
+    p {
+        margin-bottom: 15px;
+        color: #fff;
+        font-size: 18px;
+        line-height: 18px;
+    }
+    img {
+        width: 100%;
+    }
+    margin-bottom: 150px;
+`
+
+const FoxDescr = styled.div`
+    white-space: pre-wrap;
+    color: #fff;
+    margin-top: 27px;
+    font-family: ${({theme}) => theme.fonts.colfax};
+`
+
+const Percents = styled.div`
+    display: grid;
+    margin-top: 100px;
+    grid-template-columns: 200px 200px;
+    grid-column-gap: 150px;
+    margin-bottom: 100px;
+`
+
+const Percent = styled.div`
+    font-size: 70px;
+    color: #fff;
+    line-height: 75px;
+`
+const PersentDescr = styled.div`
+    color: #fff;
+    font-family: ${({theme}) => theme.fonts.colfax};
+`
+
+const MitigationsWrapper = styled.div`
+    display: grid;
+    margin-top: 60px;
+    grid-column-gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 150px;
+    img {
+        width: 100%;
+    }
+`
+
+const MitigationsTitle = styled.div`
+    margin-top: 20px;
+    font-weight: bold;
+`
+
+const MitigationsDescr = styled.div`
+    margin-top: 10px;
+`
+
+const Btns = styled.div`
+    display: flex;
+    margin-bottom: 200px;
+`
+
+const BottomImages = styled.div`
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: black;
+    padding: 200px 0;
+    h3 {
+        max-width: 800px;
+        color: #fff;
+    }
+`
+
+const DalleColors = styled.svg`
+    margin-top: 50px;
+    width: 120px;
+    margin-bottom: 100px;
+`
+
+const Team = styled.div`
+    margin-top: 30px;
+    max-width: 900px;
+    p {
+        color: #fff;
+        font-size: .7rem;
+        line-height: .95rem;
+        margin-top: 7px;
+    }
+`
+
+const TeamName = styled.div`
+    font-weight: bold;
+    font-size: .85rem;
+    color: #fff;
+    font-family: ${({theme}) => theme.fonts.colfax};
+`
 
 
 //
@@ -384,6 +504,7 @@ const DallePage: FC = () => {
         // window.scrollTo(0, 0);
         dispatch(changeTheme(dalleTheme));
         fadeForImages(topImageWrapper);
+        fadeForImages(botImageWrapper)
     }, []);
 
 
@@ -600,8 +721,151 @@ const DallePage: FC = () => {
                             ease: 'easeIn'
                         }}
                     >DALL·E 2 has learned the relationship between images and the text used to describe them. It uses a process called “diffusion,” which starts with a pattern of random dots and gradually alters that pattern towards an image when it recognizes specific aspects of that image.</motion.h3>
+                    <VimeoWrapper>
+                        <Vimeo video={'https://player.vimeo.com/video/692375454'}/>
+                        <p>DALL·E 2 Explained 2:47</p>
+                    </VimeoWrapper>
+                    <h3>In January 2021, OpenAI introduced DALL·E. One year later, our newest system, DALL·E 2, generates more realistic and accurate images with 4x greater resolution.</h3>
+                    <FoxesWrapper>
+                        <FoxExample>
+                            <p>DALL·E 1</p>
+                            <LazyLoad>
+                                <img src="https://cdn.openai.com/dall-e-2/assets/dall-e-1.jpg" alt="Fox from dalle 1" />
+                            </LazyLoad>
+                        </FoxExample>
+                        <FoxExample>
+                            <p>DALL·E 2</p>
+                            <LazyLoad>
+                                <img src="https://cdn.openai.com/dall-e-2/assets/dall-e-2.jpg" alt="Fox from dalle 2" />
+                            </LazyLoad>
+                        </FoxExample>
+                        <FoxDescr>
+                        ”a painting of a fox sitting
+                        in a field at sunrise in the
+                        style of Claude Monet”</FoxDescr>
+                    </FoxesWrapper>
+                    <h3>DALL·E 2 is preferred over DALL·E 1 for its caption matching and photorealism when evaluators were asked to compare 1,000 image generations from each model.</h3>
+                    <Percents>
+                        <div>
+                            <Percent>71.7%</Percent>
+                            <PersentDescr>preferred forcaption matching</PersentDescr>
+                        </div>
+                        <div>
+                            <Percent>88.8%</Percent>
+                            <PersentDescr>preferred for photorealism</PersentDescr>
+                        </div>
+                    </Percents>
+                    <DefaultBtn href='#' background='255,255,255' color='0,0,0' after=''>view research wrapper</DefaultBtn>
                 </Container>
             </ResearchWrapper>
+            <WhiteWrapper>
+                <Container>
+                    <h3>DALL·E 2 began as a research project and is now available in beta. Safety mitigations we have developed and continue to improve upon include:</h3>
+                    <MitigationsWrapper>
+                        <div>
+                            <LazyLoad><img src="https://cdn.openai.com/dall-e-2/assets/safety-1.jpg" alt="Mitigation"/></LazyLoad>
+                            <MitigationsTitle>Preventing Harmful Generations</MitigationsTitle>
+                            <MitigationsDescr>
+                                We’ve limited the ability for DALL·E 2 to generate violent, hate, or adult images. By removing the most explicit content from the training data, we minimized DALL·E 2’s exposure to these concepts. We also used advanced techniques to prevent photorealistic generations of real individuals’ faces, including those of public figures.
+                            </MitigationsDescr>
+                        </div>
+                        <div>
+                            <LazyLoad><img src="https://cdn.openai.com/dall-e-2/assets/safety-2.jpg" alt="Mitigation"/></LazyLoad>
+                            <MitigationsTitle>Curbing Misuse</MitigationsTitle>
+                            <MitigationsDescr>
+                                Our content policy does not allow users to generate violent, adult, or political content, among other categories. We won’t generate images if our filters identify text prompts and image uploads that may violate our policies. We also have automated and human monitoring systems to guard against misuse.
+                            </MitigationsDescr>
+                        </div>
+                        <div>
+                            <LazyLoad><img src="https://cdn.openai.com/dall-e-2/assets/safety-3.jpg" alt="Mitigation"/></LazyLoad>
+                            <MitigationsTitle>Phased Deployment Based on Learning</MitigationsTitle>
+                            <MitigationsDescr>
+                                Learning from real-world use is an important part of developing and deploying AI responsibly. We began by previewing DALL·E 2 to a limited number of trusted users. As we learned more about the technology’s capabilities and limitations, and gained confidence in our safety systems, we slowly added more users and made DALL·E available in beta in July 2022.
+                            </MitigationsDescr>
+                        </div>
+                    </MitigationsWrapper>
+                    <Btns>
+                        <RouterBtn margin='0 20px 0 0' background='0,0,0' color='255,255,255' to='/' after=''>sign up</RouterBtn>
+                        <RouterBtn margin='0 20px 0 0' background='0,0,0,.05' color='0,0,0' to='/' after=''>content policy</RouterBtn>
+                        <RouterBtn background='0,0,0,.05' color='0,0,0' to='/' after=''>risks and limitations</RouterBtn>
+                    </Btns>
+                </Container>
+            </WhiteWrapper>
+            <BottomImages ref={botImageWrapper}>
+            <AnimaImage src={animaIMG0} top="10%" left="10%"></AnimaImage>
+                    <AnimaImage src={animaIMG1} top="13%" left="22%"></AnimaImage>
+                    <AnimaImage src={animaIMG2} top="17%" left="29%"></AnimaImage>
+                    <AnimaImage src={animaIMG3} top="15%" left="37%"></AnimaImage>
+                    <AnimaImage src={animaIMG4} top="11%" left="52%"></AnimaImage>
+                    <AnimaImage src={animaIMG5} top="13%" left="60%"></AnimaImage>
+                    <AnimaImage src={animaIMG6} top="10%" left="69%"></AnimaImage>
+                    <AnimaImage src={animaIMG7} top="23%" left="77%"></AnimaImage>
+                    <AnimaImage src={animaIMG8} top="20%" left="97%"></AnimaImage>
+                    <AnimaImage src={animaIMG9} top="24%" left="8%"></AnimaImage>
+                    <AnimaImage src={animaIMG10} top="27%" left="15%"></AnimaImage>
+                    <AnimaImage src={animaIMG11} top="29%" left="26%"></AnimaImage>
+                    <AnimaImage src={animaIMG12} top="25%" left="37%"></AnimaImage>
+                    <AnimaImage src={animaIMG13} top="33%" left="44%"></AnimaImage>
+                    <AnimaImage src={animaIMG14} top="25%" left="58%"></AnimaImage>
+                    <AnimaImage src={animaIMG15} top="33%" left="66%"></AnimaImage>
+                    <AnimaImage src={animaIMG16} top="36%" left="79%"></AnimaImage>
+                    <AnimaImage src={animaIMG17} top="33%" left="90%"></AnimaImage>
+                    <AnimaImage src={animaIMG18} top="41%" left="6%"></AnimaImage>
+                    <AnimaImage src={animaIMG19} top="51%" left="14%"></AnimaImage>
+                    <AnimaImage src={animaIMG20} top="53%" left="20%"></AnimaImage>
+                    <AnimaImage src={animaIMG21} top="57%" left="27%"></AnimaImage>
+                    <AnimaImage src={animaIMG22} top="45%" left="35%"></AnimaImage>
+                    <AnimaImage src={animaIMG23} top="52%" left="46%"></AnimaImage>
+                    <AnimaImage src={animaIMG24} top="44%" left="55%"></AnimaImage>
+                    <AnimaImage src={animaIMG25} top="49%" left="66%"></AnimaImage>
+                    <AnimaImage src={animaIMG26} top="60%" left="73%"></AnimaImage>
+                    <AnimaImage src={animaIMG27} top="59%" left="84%"></AnimaImage>
+                    <AnimaImage src={animaIMG28} top="49%" left="97%"></AnimaImage>
+                    <AnimaImage src={animaIMG29} top="61%" left="6%"></AnimaImage>
+                    <AnimaImage src={animaIMG30} top="67%" left="14%"></AnimaImage>
+                    <AnimaImage src={animaIMG31} top="70%" left="20%"></AnimaImage>
+                    <AnimaImage src={animaIMG32} top="57%" left="27%"></AnimaImage>
+                    <AnimaImage src={animaIMG33} top="68%" left="35%"></AnimaImage>
+                    <AnimaImage src={animaIMG34} top="63%" left="46%"></AnimaImage>
+                    <AnimaImage src={animaIMG35} top="66%" left="55%"></AnimaImage>
+                    <AnimaImage src={animaIMG36} top="69%" left="66%"></AnimaImage>
+                    <AnimaImage src={animaIMG37} top="71%" left="73%"></AnimaImage>
+                    <AnimaImage src={animaIMG38} top="58%" left="84%"></AnimaImage>
+                    <AnimaImage src={animaIMG39} top="65%" left="97%"></AnimaImage>
+                    <AnimaImage src={animaIMG40} top="68%" left="97%"></AnimaImage>
+                    <AnimaImage src={animaIMG41} top="86%" left="6%"></AnimaImage>
+                    <AnimaImage src={animaIMG42} top="89%" left="14%"></AnimaImage>
+                    <AnimaImage src={animaIMG43} top="79%" left="23%"></AnimaImage>
+                    <AnimaImage src={animaIMG44} top="88%" left="33%"></AnimaImage>
+                    <AnimaImage src={animaIMG45} top="89%" left="45%"></AnimaImage>
+                    <AnimaImage src={animaIMG46} top="90%" left="59%"></AnimaImage>
+                    <AnimaImage src={animaIMG47} top="79%" left="67%"></AnimaImage>
+                    <AnimaImage src={animaIMG48} top="89%" left="75%"></AnimaImage>
+                    <AnimaImage src={animaIMG49} top="86%" left="84%"></AnimaImage>
+                    <AnimaImage src={animaIMG50} top="78%" left="98%"></AnimaImage>
+                <Container>
+                    <h3>Our hope is that DALL·E 2 will empower people to express themselves creatively. DALL·E 2 also helps us understand how advanced AI systems see and understand our world, which is critical to our mission of creating AI that benefits humanity.</h3>
+                    <DalleColors viewBox="0 0 80 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m0 0h16v16h-16z" fill="#ff6"></path><path d="m16 0h16v16h-16z" fill="#42ffff"></path><path d="m32 0h16v16h-16z" fill="#51da4c"></path><path d="m48 0h16v16h-16z" fill="#ff6e3c"></path><path d="m64 0h16v16h-16z" fill="#3c46ff"></path>
+                    </DalleColors>
+                    <Team>
+                        <TeamName>Research Advancements</TeamName>
+                        <p>Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, Mark Chen</p>
+                    </Team>
+                    <Team>
+                        <TeamName>Engineering, Design, Product, and Prototyping</TeamName>
+                        <p>Jeff Belgum, Dave Cummings, Jonathan Gordon, Chris Hallacy, Shawn Jain, Joanne Jang, Fraser Kelton, Vishal Kuo, Joel Lehman, Rachel Lim, Bianca Martin, Evan Morikawa, Rajeev Nayak, Glenn Powell, Krijn Rijshouwer, David Schnurr, Maddie Simens, Kenneth Stanley, Felipe Such, Chelsea Voss, Justin Jay Wang</p>
+                    </Team>
+                    <Team>
+                        <TeamName>Comms, Policy, Legal, Ops, Safety, and Security</TeamName>
+                        <p>Steven Adler, Lama Ahmad, Miles Brundage, Kevin Button, Che Chang, Fotis Chantzis, Derek Chen, Frances Choi, Steve Dowling, Elie Georges, Shino Jomoto, Aris Konstantinidis, Gretchen Krueger, Andrew Mayne, Pamela Mishkin, Bob Rotsted, Natalie Summers, Dave Willner, Hannah Wong</p>
+                    </Team>
+                    <Team>
+                        <TeamName>Acknowledgments</TeamName>
+                        <p>Thanks to those who helped with and provided feedback on this release: Sandhini Agarwal, Sam Altman, Chester Cho, Peter Hoeschele, Jacob Jackson, Jong Wook Kim, Matt Knight, Jason Kwon, Anna Makanju, Katie Mayer, Bob McGrew, Luke Miller, Mira Murati, Adam Nace, Hyeonwoo Noh, Cullen O’Keefe, Long Ouyang, Michael Petrov, Henrique Ponde de Oliveira Pinto, Alec Radford, Girish Sastry, Pranav Shyam, Aravind Srinivas, Ilya Sutskever, Preston Tuggle, Arun Vijayvergiya, Peter Welinder</p>
+                    </Team>
+                </Container>
+            </BottomImages>
         </>         
     );
 };
