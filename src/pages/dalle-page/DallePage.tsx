@@ -1,4 +1,4 @@
-import { FC, RefObject, useEffect, useRef } from 'react';
+import { FC, RefObject, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../core/reducers/themeSlice';
@@ -14,59 +14,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
-
-import animaIMG0 from '../../assets/images/dalle/intro-images/0.jpg';
-import animaIMG1 from '../../assets/images/dalle/intro-images/1.jpeg';
-import animaIMG2 from '../../assets/images/dalle/intro-images/2.jpg';
-import animaIMG3 from '../../assets/images/dalle/intro-images/3.jpg';
-import animaIMG4 from '../../assets/images/dalle/intro-images/4.jpg';
-import animaIMG5 from '../../assets/images/dalle/intro-images/5.jpg';
-import animaIMG6 from '../../assets/images/dalle/intro-images/6.jpg';
-import animaIMG7 from '../../assets/images/dalle/intro-images/7.jpg';
-import animaIMG8 from '../../assets/images/dalle/intro-images/8.jpg';
-import animaIMG9 from '../../assets/images/dalle/intro-images/9.jpg';
-import animaIMG10 from '../../assets/images/dalle/intro-images/10.jpg';
-import animaIMG11 from '../../assets/images/dalle/intro-images/11.jpg';
-import animaIMG12 from '../../assets/images/dalle/intro-images/12.jpg';
-import animaIMG13 from '../../assets/images/dalle/intro-images/13.jpg';
-import animaIMG14 from '../../assets/images/dalle/intro-images/14.jpg';
-import animaIMG15 from '../../assets/images/dalle/intro-images/15.jpg';
-import animaIMG16 from '../../assets/images/dalle/intro-images/16.jpg';
-import animaIMG17 from '../../assets/images/dalle/intro-images/17.jpg';
-import animaIMG18 from '../../assets/images/dalle/intro-images/18.jpg';
-import animaIMG19 from '../../assets/images/dalle/intro-images/19.jpg';
-import animaIMG20 from '../../assets/images/dalle/intro-images/20.jpg';
-import animaIMG21 from '../../assets/images/dalle/intro-images/21.jpg';
-import animaIMG22 from '../../assets/images/dalle/intro-images/22.jpg';
-import animaIMG23 from '../../assets/images/dalle/intro-images/23.jpg';
-import animaIMG24 from '../../assets/images/dalle/intro-images/24.jpg';
-import animaIMG25 from '../../assets/images/dalle/intro-images/25.jpg';
-import animaIMG26 from '../../assets/images/dalle/intro-images/26.jpg';
-import animaIMG27 from '../../assets/images/dalle/intro-images/27.jpg';
-import animaIMG28 from '../../assets/images/dalle/intro-images/28.jpg';
-import animaIMG29 from '../../assets/images/dalle/intro-images/29.jpg';
-import animaIMG30 from '../../assets/images/dalle/intro-images/30.jpg';
-import animaIMG31 from '../../assets/images/dalle/intro-images/31.jpg';
-import animaIMG32 from '../../assets/images/dalle/intro-images/32.jpg';
-import animaIMG33 from '../../assets/images/dalle/intro-images/33.jpg';
-import animaIMG34 from '../../assets/images/dalle/intro-images/34.jpg';
-import animaIMG35 from '../../assets/images/dalle/intro-images/35.jpg';
-import animaIMG36 from '../../assets/images/dalle/intro-images/36.jpg';
-import animaIMG37 from '../../assets/images/dalle/intro-images/37.jpg';
-import animaIMG38 from '../../assets/images/dalle/intro-images/38.jpg';
-import animaIMG39 from '../../assets/images/dalle/intro-images/39.jpg';
-import animaIMG40 from '../../assets/images/dalle/intro-images/40.jpg';
-import animaIMG41 from '../../assets/images/dalle/intro-images/41.jpg';
-import animaIMG42 from '../../assets/images/dalle/intro-images/42.jpg';
-import animaIMG43 from '../../assets/images/dalle/intro-images/43.jpg';
-import animaIMG44 from '../../assets/images/dalle/intro-images/44.jpg';
-import animaIMG45 from '../../assets/images/dalle/intro-images/45.jpg';
-import animaIMG46 from '../../assets/images/dalle/intro-images/46.jpg';
-import animaIMG47 from '../../assets/images/dalle/intro-images/47.jpg';
-import animaIMG48 from '../../assets/images/dalle/intro-images/48.jpg';
-import animaIMG49 from '../../assets/images/dalle/intro-images/49.jpg';
-import animaIMG50 from '../../assets/images/dalle/intro-images/50.jpg';
 
 import FirstExample from './components/first-example/FirstExample';
 import SecondExample from './components/second-example/SecondExample';
@@ -381,7 +328,20 @@ const VimeoWrapper = styled.div`
     margin-bottom: 150px;
     iframe {
         width: 100%;
-        height: 850px;
+        height: 830px;
+        @media ${({theme}) => theme.media.extraLarge} {
+            height: 580px;
+        }
+        @media ${({theme}) => theme.media.large} {
+            margin-top: ${({theme}) => theme.sizes.l.header.height}px;
+        }
+        @media ${({theme}) => theme.media.medium} {
+            margin-top: ${({theme}) => theme.sizes.m.header.height}px;
+        }
+        @media ${({theme}) => theme.media.small} {
+            margin-top: ${({theme}) => theme.sizes.s.header.height}px;
+            padding: 15vh 0 100px 0;
+        }
     }
     p {
         color: #fff;
@@ -500,22 +460,45 @@ const TeamName = styled.div`
 
 const DallePage: FC = () => {
 
+    const [images, setImages] = useState<any>([]);
+
     useEffect(() => {
         // window.scrollTo(0, 0);
+        importImages();
         dispatch(changeTheme(dalleTheme));
-        fadeForImages(topImageWrapper);
-        fadeForImages(botImageWrapper)
     }, []);
 
+    useEffect(() => {
+        if (images.length > 0) {
+            fadeForImages(topImageWrapper);
+            fadeForImages(botImageWrapper)
+        }
+    }, [images]);
 
     const dispatch = useDispatch();
 
     const topImageWrapper = useRef<HTMLDivElement>(null);
     const botImageWrapper = useRef<HTMLDivElement>(null);
 
+    const importImages = async () => {
+        const rndPosition = (min: number, max: number) => {
+            return (Math.random() * (max - min) + min)
+        };
+        let obj = await import('./AnimaImages');
+        let pictures = obj.default.map((image,i) => {
+            return(<AnimaImage 
+                    key={i} 
+                    src={image} 
+                    left={`${rndPosition(10, 90)}%`} 
+                    top={`${rndPosition(10, 90)}%`}
+                    />)
+        })
+        setImages(pictures);
+    };
 
     const fadeForImages = (wrapper: RefObject<HTMLDivElement>) => {
-        const images = wrapper.current!.querySelectorAll(AnimaImage) as NodeListOf<HTMLElement>;
+
+        const images = wrapper.current!.querySelectorAll('img') as NodeListOf<HTMLElement>;
 
         const rndImageIndex = () => {
             return +(Math.random() * (50 - 0) + 0).toFixed();
@@ -584,57 +567,7 @@ const DallePage: FC = () => {
             </Container>
             <IntroWrapper>
                 <ImagesWrapper ref={topImageWrapper}>
-                    <AnimaImage src={animaIMG0} top="10%" left="10%"></AnimaImage>
-                    <AnimaImage src={animaIMG1} top="13%" left="22%"></AnimaImage>
-                    <AnimaImage src={animaIMG2} top="17%" left="29%"></AnimaImage>
-                    <AnimaImage src={animaIMG3} top="15%" left="37%"></AnimaImage>
-                    <AnimaImage src={animaIMG4} top="11%" left="52%"></AnimaImage>
-                    <AnimaImage src={animaIMG5} top="13%" left="60%"></AnimaImage>
-                    <AnimaImage src={animaIMG6} top="10%" left="69%"></AnimaImage>
-                    <AnimaImage src={animaIMG7} top="23%" left="77%"></AnimaImage>
-                    <AnimaImage src={animaIMG8} top="20%" left="97%"></AnimaImage>
-                    <AnimaImage src={animaIMG9} top="24%" left="8%"></AnimaImage>
-                    <AnimaImage src={animaIMG10} top="27%" left="15%"></AnimaImage>
-                    <AnimaImage src={animaIMG11} top="29%" left="26%"></AnimaImage>
-                    <AnimaImage src={animaIMG12} top="25%" left="37%"></AnimaImage>
-                    <AnimaImage src={animaIMG13} top="33%" left="44%"></AnimaImage>
-                    <AnimaImage src={animaIMG14} top="25%" left="58%"></AnimaImage>
-                    <AnimaImage src={animaIMG15} top="33%" left="66%"></AnimaImage>
-                    <AnimaImage src={animaIMG16} top="36%" left="79%"></AnimaImage>
-                    <AnimaImage src={animaIMG17} top="33%" left="90%"></AnimaImage>
-                    <AnimaImage src={animaIMG18} top="41%" left="6%"></AnimaImage>
-                    <AnimaImage src={animaIMG19} top="51%" left="14%"></AnimaImage>
-                    <AnimaImage src={animaIMG20} top="53%" left="20%"></AnimaImage>
-                    <AnimaImage src={animaIMG21} top="57%" left="27%"></AnimaImage>
-                    <AnimaImage src={animaIMG22} top="45%" left="35%"></AnimaImage>
-                    <AnimaImage src={animaIMG23} top="52%" left="46%"></AnimaImage>
-                    <AnimaImage src={animaIMG24} top="44%" left="55%"></AnimaImage>
-                    <AnimaImage src={animaIMG25} top="49%" left="66%"></AnimaImage>
-                    <AnimaImage src={animaIMG26} top="60%" left="73%"></AnimaImage>
-                    <AnimaImage src={animaIMG27} top="59%" left="84%"></AnimaImage>
-                    <AnimaImage src={animaIMG28} top="49%" left="97%"></AnimaImage>
-                    <AnimaImage src={animaIMG29} top="61%" left="6%"></AnimaImage>
-                    <AnimaImage src={animaIMG30} top="67%" left="14%"></AnimaImage>
-                    <AnimaImage src={animaIMG31} top="70%" left="20%"></AnimaImage>
-                    <AnimaImage src={animaIMG32} top="57%" left="27%"></AnimaImage>
-                    <AnimaImage src={animaIMG33} top="68%" left="35%"></AnimaImage>
-                    <AnimaImage src={animaIMG34} top="63%" left="46%"></AnimaImage>
-                    <AnimaImage src={animaIMG35} top="66%" left="55%"></AnimaImage>
-                    <AnimaImage src={animaIMG36} top="69%" left="66%"></AnimaImage>
-                    <AnimaImage src={animaIMG37} top="71%" left="73%"></AnimaImage>
-                    <AnimaImage src={animaIMG38} top="58%" left="84%"></AnimaImage>
-                    <AnimaImage src={animaIMG39} top="65%" left="97%"></AnimaImage>
-                    <AnimaImage src={animaIMG40} top="68%" left="97%"></AnimaImage>
-                    <AnimaImage src={animaIMG41} top="86%" left="6%"></AnimaImage>
-                    <AnimaImage src={animaIMG42} top="89%" left="14%"></AnimaImage>
-                    <AnimaImage src={animaIMG43} top="79%" left="23%"></AnimaImage>
-                    <AnimaImage src={animaIMG44} top="88%" left="33%"></AnimaImage>
-                    <AnimaImage src={animaIMG45} top="89%" left="45%"></AnimaImage>
-                    <AnimaImage src={animaIMG46} top="90%" left="59%"></AnimaImage>
-                    <AnimaImage src={animaIMG47} top="79%" left="67%"></AnimaImage>
-                    <AnimaImage src={animaIMG48} top="89%" left="75%"></AnimaImage>
-                    <AnimaImage src={animaIMG49} top="86%" left="84%"></AnimaImage>
-                    <AnimaImage src={animaIMG50} top="78%" left="98%"></AnimaImage>
+                    {images}
                 </ImagesWrapper>
                 <Container>
                     <motion.h1
@@ -792,57 +725,7 @@ const DallePage: FC = () => {
                 </Container>
             </WhiteWrapper>
             <BottomImages ref={botImageWrapper}>
-            <AnimaImage src={animaIMG0} top="10%" left="10%"></AnimaImage>
-                    <AnimaImage src={animaIMG1} top="13%" left="22%"></AnimaImage>
-                    <AnimaImage src={animaIMG2} top="17%" left="29%"></AnimaImage>
-                    <AnimaImage src={animaIMG3} top="15%" left="37%"></AnimaImage>
-                    <AnimaImage src={animaIMG4} top="11%" left="52%"></AnimaImage>
-                    <AnimaImage src={animaIMG5} top="13%" left="60%"></AnimaImage>
-                    <AnimaImage src={animaIMG6} top="10%" left="69%"></AnimaImage>
-                    <AnimaImage src={animaIMG7} top="23%" left="77%"></AnimaImage>
-                    <AnimaImage src={animaIMG8} top="20%" left="97%"></AnimaImage>
-                    <AnimaImage src={animaIMG9} top="24%" left="8%"></AnimaImage>
-                    <AnimaImage src={animaIMG10} top="27%" left="15%"></AnimaImage>
-                    <AnimaImage src={animaIMG11} top="29%" left="26%"></AnimaImage>
-                    <AnimaImage src={animaIMG12} top="25%" left="37%"></AnimaImage>
-                    <AnimaImage src={animaIMG13} top="33%" left="44%"></AnimaImage>
-                    <AnimaImage src={animaIMG14} top="25%" left="58%"></AnimaImage>
-                    <AnimaImage src={animaIMG15} top="33%" left="66%"></AnimaImage>
-                    <AnimaImage src={animaIMG16} top="36%" left="79%"></AnimaImage>
-                    <AnimaImage src={animaIMG17} top="33%" left="90%"></AnimaImage>
-                    <AnimaImage src={animaIMG18} top="41%" left="6%"></AnimaImage>
-                    <AnimaImage src={animaIMG19} top="51%" left="14%"></AnimaImage>
-                    <AnimaImage src={animaIMG20} top="53%" left="20%"></AnimaImage>
-                    <AnimaImage src={animaIMG21} top="57%" left="27%"></AnimaImage>
-                    <AnimaImage src={animaIMG22} top="45%" left="35%"></AnimaImage>
-                    <AnimaImage src={animaIMG23} top="52%" left="46%"></AnimaImage>
-                    <AnimaImage src={animaIMG24} top="44%" left="55%"></AnimaImage>
-                    <AnimaImage src={animaIMG25} top="49%" left="66%"></AnimaImage>
-                    <AnimaImage src={animaIMG26} top="60%" left="73%"></AnimaImage>
-                    <AnimaImage src={animaIMG27} top="59%" left="84%"></AnimaImage>
-                    <AnimaImage src={animaIMG28} top="49%" left="97%"></AnimaImage>
-                    <AnimaImage src={animaIMG29} top="61%" left="6%"></AnimaImage>
-                    <AnimaImage src={animaIMG30} top="67%" left="14%"></AnimaImage>
-                    <AnimaImage src={animaIMG31} top="70%" left="20%"></AnimaImage>
-                    <AnimaImage src={animaIMG32} top="57%" left="27%"></AnimaImage>
-                    <AnimaImage src={animaIMG33} top="68%" left="35%"></AnimaImage>
-                    <AnimaImage src={animaIMG34} top="63%" left="46%"></AnimaImage>
-                    <AnimaImage src={animaIMG35} top="66%" left="55%"></AnimaImage>
-                    <AnimaImage src={animaIMG36} top="69%" left="66%"></AnimaImage>
-                    <AnimaImage src={animaIMG37} top="71%" left="73%"></AnimaImage>
-                    <AnimaImage src={animaIMG38} top="58%" left="84%"></AnimaImage>
-                    <AnimaImage src={animaIMG39} top="65%" left="97%"></AnimaImage>
-                    <AnimaImage src={animaIMG40} top="68%" left="97%"></AnimaImage>
-                    <AnimaImage src={animaIMG41} top="86%" left="6%"></AnimaImage>
-                    <AnimaImage src={animaIMG42} top="89%" left="14%"></AnimaImage>
-                    <AnimaImage src={animaIMG43} top="79%" left="23%"></AnimaImage>
-                    <AnimaImage src={animaIMG44} top="88%" left="33%"></AnimaImage>
-                    <AnimaImage src={animaIMG45} top="89%" left="45%"></AnimaImage>
-                    <AnimaImage src={animaIMG46} top="90%" left="59%"></AnimaImage>
-                    <AnimaImage src={animaIMG47} top="79%" left="67%"></AnimaImage>
-                    <AnimaImage src={animaIMG48} top="89%" left="75%"></AnimaImage>
-                    <AnimaImage src={animaIMG49} top="86%" left="84%"></AnimaImage>
-                    <AnimaImage src={animaIMG50} top="78%" left="98%"></AnimaImage>
+                {images}
                 <Container>
                     <h3>Our hope is that DALL·E 2 will empower people to express themselves creatively. DALL·E 2 also helps us understand how advanced AI systems see and understand our world, which is critical to our mission of creating AI that benefits humanity.</h3>
                     <DalleColors viewBox="0 0 80 16" xmlns="http://www.w3.org/2000/svg">

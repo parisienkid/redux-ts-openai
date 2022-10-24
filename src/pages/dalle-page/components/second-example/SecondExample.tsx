@@ -100,10 +100,7 @@ const SecondExample: FC = () => {
     const changeSlider =  () => {
         switch(variant) {
             case (1): 
-                import('./slider/Var1')
-                    .then(obj => {
-                        setSliderContent(obj.default);
-                    })
+                setSliderContent([image1,image2,image3,image4,image5]);
                 break
             case (2):
                 import('./slider/Var2')
