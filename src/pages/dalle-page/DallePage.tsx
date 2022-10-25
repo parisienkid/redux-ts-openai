@@ -326,6 +326,9 @@ const VimeoWrapper = styled.div`
     width: 100%;
     background-size: cover;
     margin-bottom: 150px;
+    @media ${({theme}) => theme.media.large} {
+       margin-top: 50px;
+    }
     iframe {
         width: 100%;
         height: 830px;
@@ -333,14 +336,13 @@ const VimeoWrapper = styled.div`
             height: 580px;
         }
         @media ${({theme}) => theme.media.large} {
-            margin-top: ${({theme}) => theme.sizes.l.header.height}px;
+            height: 440px;
         }
         @media ${({theme}) => theme.media.medium} {
-            margin-top: ${({theme}) => theme.sizes.m.header.height}px;
+            height: 330px;
         }
         @media ${({theme}) => theme.media.small} {
-            margin-top: ${({theme}) => theme.sizes.s.header.height}px;
-            padding: 15vh 0 100px 0;
+            height: 180px;
         }
     }
     p {
@@ -352,7 +354,11 @@ const FoxesWrapper = styled.div`
     display: grid;
     grid-template-columns: 40fr 40fr 20fr;
     grid-column-gap: 25px;
-    margin-top: 100px;
+    margin-top: 100px;    
+    margin-bottom: 150px;
+    @media ${({theme}) => theme.media.medium} {
+        grid-template-columns: 1fr 1fr;
+    }
 `
 
 const FoxExample = styled.div`
@@ -366,7 +372,6 @@ const FoxExample = styled.div`
     img {
         width: 100%;
     }
-    margin-bottom: 150px;
 `
 
 const FoxDescr = styled.div`
@@ -382,6 +387,14 @@ const Percents = styled.div`
     grid-template-columns: 200px 200px;
     grid-column-gap: 150px;
     margin-bottom: 100px;
+    @media ${({theme}) => theme.media.medium} {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 50px;
+    }
+    @media ${({theme}) => theme.media.small} {
+        grid-template-columns: 1fr;
+        grid-row-gap: 30px;
+    }
 `
 
 const Percent = styled.div`
@@ -400,6 +413,10 @@ const MitigationsWrapper = styled.div`
     grid-column-gap: 30px;
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 150px;
+    @media ${({theme}) => theme.media.medium} {
+        grid-template-columns: 1fr;
+        grid-row-gap: 50px;
+    }
     img {
         width: 100%;
     }
@@ -417,6 +434,14 @@ const MitigationsDescr = styled.div`
 const Btns = styled.div`
     display: flex;
     margin-bottom: 200px;
+    @media ${({theme}) => theme.media.medium} {
+        margin-bottom: 100px;
+    }
+    @media ${({theme}) => theme.media.small} {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 15px;
+    }
 `
 
 const BottomImages = styled.div`
@@ -428,6 +453,12 @@ const BottomImages = styled.div`
     h3 {
         max-width: 800px;
         color: #fff;
+    }
+    @media ${({theme}) => theme.media.medium} {
+        padding: 120px 0;
+    }
+    @media ${({theme}) => theme.media.small} {
+        padding: 70px 0;
     }
 `
 
@@ -445,6 +476,14 @@ const Team = styled.div`
         font-size: .7rem;
         line-height: .95rem;
         margin-top: 7px;
+        @media ${({theme}) => theme.media.medium} {
+            font-size: .6rem;
+            line-height: .85rem;
+        }
+        @media ${({theme}) => theme.media.small} {
+            font-size: .54rem;
+            line-height: .81rem;
+        }
     }
 `
 
@@ -466,6 +505,7 @@ const DallePage: FC = () => {
         // window.scrollTo(0, 0);
         importImages();
         dispatch(changeTheme(dalleTheme));
+        console.log(document.cookie)
     }, []);
 
     useEffect(() => {
