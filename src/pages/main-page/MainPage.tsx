@@ -93,6 +93,7 @@ const MainPage: FC = () => {
                                 date={'AUGUST 31, 2022'} 
                                 title={'DALL·E: Introducing Outpainting'}
                                 to="/redux-ts-openai/dall-e-2"
+                                btn="View"
                             />
                         </motion.div>
                         <motion.div
@@ -109,7 +110,8 @@ const MainPage: FC = () => {
                                 img={jellyfishImage}
                                 date={'AUGUST 24, 2022'}
                                 title={'Our approach to alignment research.'}
-                                to="/redux-ts-openai/"
+                                to="/redux-ts-openai/blog/dall-e-introducing-outpainting"
+                                btn="read now"
                             />
                         </motion.div>
                 </MainPageContent>

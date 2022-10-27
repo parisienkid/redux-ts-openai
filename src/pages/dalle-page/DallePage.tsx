@@ -8,7 +8,7 @@ import { RouterBtn, DefaultBtn } from '../../components/buttons/Btns';
 import Vimeo from '@u-wave/react-vimeo';
 import LazyLoad from 'react-lazy-load';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 
 import "slick-carousel/slick/slick.css";
@@ -505,7 +505,6 @@ const DallePage: FC = () => {
         // window.scrollTo(0, 0);
         importImages();
         dispatch(changeTheme(dalleTheme));
-        console.log(document.cookie)
     }, []);
 
     useEffect(() => {

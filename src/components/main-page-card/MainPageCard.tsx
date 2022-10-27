@@ -86,11 +86,12 @@ interface IMainPage {
     date: string,
     title: string,
     to: string,
+    btn: string,
 }
 
 //
 
-const MainPageCard: FC<IMainPage> = ({img, date, title, to}) => {
+const MainPageCard: FC<IMainPage> = ({img, date, title, to, btn}) => {
 
     const dispatch = useDispatch();
 
@@ -112,7 +113,7 @@ const MainPageCard: FC<IMainPage> = ({img, date, title, to}) => {
             <CardContent>
                 <CardDate>{date}</CardDate>
                 <CardTitle to={to} onClick={onClickLink} >{title}</CardTitle>
-                <RouterBtn after='▻' background='255, 255, 255' to={to} color='0, 0, 0'>Read now</RouterBtn>
+                <RouterBtn after='▻' background='255, 255, 255' to={to} color='0, 0, 0'>{btn}</RouterBtn>
             </CardContent>
         </CardWrapper>
     );
