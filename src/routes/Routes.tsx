@@ -1,5 +1,4 @@
 import { FC, lazy, Suspense } from "react";
-import Header from "../components/header/Header";
 
 import {
     Routes,

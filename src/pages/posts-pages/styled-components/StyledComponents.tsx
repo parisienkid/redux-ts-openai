@@ -20,21 +20,11 @@ export const PostP = styled.p<pProps>`
 export const PostContainer = styled.section`
     margin: 0 auto;
     width: 720px;
-    p {
-
+    @media ${({theme}) => theme.media.medium} {
+        width: 100%;
     }
 `
 
-interface PostInfoProps {
-    top: string
-    left: string
-}
-
-export const PostInfo = styled.div<PostInfoProps>`
-    position: absolute;
-    top: ${props => props.top};
-    left: ${props => props.left};
-`
 
 export const PostDate = styled.time`
     font-family: ${({theme}) => theme.fonts.colfax};
@@ -75,5 +65,32 @@ export const Footnotes = styled.div<FootnotesProps>`
         font-family: ${({theme}) => theme.fonts.colfax};
         font-size: 14px;
         color: rgba(0,0,0,.5);
+    }
+    a {
+        display: inline;
+        font-family: ${({theme}) => theme.fonts.colfax};
+        font-size: 14px;
+        color: rgba(0,0,0,.5);
+        text-decoration: none;
+        span {
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                display: block;
+                height: .5px;
+                background-color: rgba(0,0,0, .2);
+                width: 100%;
+                bottom: -1px;
+                left: 0;
+            }
+        }
+        &:hover {
+            color: rgba(0,0,0,.5);
+            text-decoration: none;
+        }
+    }
+    @media ${({theme}) => theme.media.medium} {
+        grid-template-columns: 1fr;
     }
 `
