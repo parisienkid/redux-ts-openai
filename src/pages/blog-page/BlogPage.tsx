@@ -44,23 +44,19 @@ const BlogPage: FC = () => {
                         <BlogDate>2022</BlogDate>
                     </InfoDescr>
                     <InfoMain>
-                            <InfoLinksWrapper to='/redux-ts-openai/'>
-                                <MDescr>DALL·E Now Available Without Waitlist</MDescr>
-                                <MTime>September 28, 2022 — Announcements</MTime>
-                            </InfoLinksWrapper>
-                            <InfoLinksWrapper to='/redux-ts-openai/'>
-                                <MDescr>Introducing Whisper</MDescr>
-                                <MTime>September 21, 2022 — Research</MTime>
-                            </InfoLinksWrapper>
-                            <InfoLinksWrapper to='/redux-ts-openai/'>
+                            <InfoLinksWrapper to='/redux-ts-openai/blog/dall-e-introducing-outpainting'>
                                 <MDescr>DALL·E: Introducing Outpainting</MDescr>
                                 <MTime>August 31, 2022 — Announcements</MTime>
+                            </InfoLinksWrapper>
+                            <InfoLinksWrapper to='/redux-ts-openai/dall-e-2'>
+                                <MDescr>DALL·E 2</MDescr>
+                                <MTime>April 6, 2022 — Research, Multimodal</MTime>
                             </InfoLinksWrapper>
                     </InfoMain>
                 </BlogBlock>
                 <BlogBlock>
                     <InfoDescr>
-                        <BlogDate>2022</BlogDate>
+                        <BlogDate>2021</BlogDate>
                     </InfoDescr>
                     <InfoMain>
                             <InfoLinksWrapper to='/redux-ts-openai/'>

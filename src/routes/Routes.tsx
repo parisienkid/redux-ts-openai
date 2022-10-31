@@ -15,6 +15,7 @@ const AboutPage = lazy(() => import("../pages/about-page/AboutPage"));
 const DallePage = lazy(() => import("../pages/dalle-page/DallePage"));
 const Page404 = lazy(() => import("../pages/404-page/Page404"));
 const DallePost = lazy(() => import("../pages/posts-pages/DallePost"));
+const ResearchPost = lazy(() => import("../pages/posts-pages/ResearchPost"))
 
 
 const AppRoutes: FC = () => {
@@ -29,6 +30,7 @@ const AppRoutes: FC = () => {
                 <Route path='/redux-ts-openai/blog/dall-e-introducing-outpainting' element={<DallePost/>}/>
                 <Route path='/redux-ts-openai/about' element={<AboutPage/>}/>
                 <Route path='/redux-ts-openai/dall-e-2' element={<DallePage/>}/>
+                <Route path='/redux-ts-openai/our-approach-to-alignment-research' element={<ResearchPost/>}/>
                 <Route path='*' element={<Page404/>}/>
             </Routes>
         </Suspense>
