@@ -11,6 +11,9 @@ const PostInfo = styled.div`
     position: absolute;
     left: 0;
     bottom: 0;
+    @media ${({theme}) => theme.media.medium} {
+        display: none;
+    }
 `
 
 

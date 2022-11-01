@@ -16,12 +16,13 @@ export const PostP = styled.p<MarginProps>`
 export const DefaultIntroBlock = styled.section`
     display: block;
     height: calc(100vh - ${({theme}) => theme.sizes.default.header.height}px);
-    /* padding-top: ${({theme}) => theme.sizes.default.header.height}px; */
+    max-height: 900px;
     padding: calc(${({theme}) => theme.sizes.default.header.height}px * 2) 0;
     display: grid;
     grid-template-columns: 35fr 40fr;
     grid-column-gap: 200px;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-row-gap: 100px;
     overflow: hidden;
     section {
         position: relative;
@@ -41,18 +42,20 @@ export const DefaultIntroBlock = styled.section`
     }
     @media ${({theme}) => theme.media.extraLarge} {
         height: calc(100vh - ${({theme}) => theme.sizes.xl.header.height}px);
-        /* padding-top: ${({theme}) => theme.sizes.xl.header.height}px; */
         padding: calc(${({theme}) => theme.sizes.xl.header.height}px * 2) 0;
+        grid-column-gap: 80px;
     }
     @media ${({theme}) => theme.media.large} {
         height: calc(100vh - ${({theme}) => theme.sizes.l.header.height}px);
-        /* padding-top: ${({theme}) => theme.sizes.l.header.height}px; */
         padding: calc(${({theme}) => theme.sizes.l.header.height}px * 2) 0;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 30px;
     }
     @media ${({theme}) => theme.media.medium} {
         height: calc(100vh - ${({theme}) => theme.sizes.m.header.height}px);
-        /* padding-top: ${({theme}) => theme.sizes.m.header.height}px; */
         padding: calc(${({theme}) => theme.sizes.m.header.height}px * 2) 0;
+        grid-template-columns: 1fr;
+        
     }
     @media ${({theme}) => theme.media.small} {
         height: calc(100vh - ${({theme}) => theme.sizes.s.header.height}px);
@@ -69,6 +72,9 @@ export const PostContainer = styled.section`
     }
     > ul {
         padding-left: 0;
+        @media ${({theme}) => theme.media.small} {
+            padding-left: 15px;
+        }
     }
 `
 
