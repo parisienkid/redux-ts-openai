@@ -16,6 +16,10 @@ body, html {
     font-size: 20px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 
 h1 {
     font-size: 2.2rem;
