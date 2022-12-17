@@ -694,7 +694,7 @@ const DallePage: FC = () => {
                         }}
                     >DALL·E 2 has learned the relationship between images and the text used to describe them. It uses a process called “diffusion,” which starts with a pattern of random dots and gradually alters that pattern towards an image when it recognizes specific aspects of that image.</motion.h3>
                     <VimeoWrapper>
-                        <Vimeo video={'https://player.vimeo.com/video/692375454'}/>
+                        <Vimeo video={'https://vimeo.com/692375454'}/>
                         <p>DALL·E 2 Explained 2:47</p>
                     </VimeoWrapper>
                     <h3>In January 2021, OpenAI introduced DALL·E. One year later, our newest system, DALL·E 2, generates more realistic and accurate images with 4x greater resolution.</h3>

@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://parisienkid.github.io/redux-ts-openai/",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.8.5",
+    "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
